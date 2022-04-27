@@ -1,0 +1,14 @@
+
+<div class="tab-content">
+  <div class="buttons">
+    <button mat-stroked-button color="success" size="large" [disabled]="isRecording" (click)="record()"> Record
+    </button>
+    <button mat-stroked-button color="light" size="large" [disabled]="!isRecording" (click)="stop()"> Stop </button>
+  </div>
+
+  <div class="text">
+    <div class="translation">
+      {{text}}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,9 @@
+.video-block {
+    max-width: 100%;
+}
+
+.video-block video {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
