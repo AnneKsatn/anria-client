@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 declare const RTCPeerConnection: any;
 declare const MediaRecorder: any;
 declare const navigator: any;
+import {FormControl, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-tab1',
@@ -11,6 +12,9 @@ declare const navigator: any;
 export class Tab1Component implements OnInit {
 
   // peer connection
+  // idFromControl: any = 0
+  email: any = 0
+
   pc: any = null;
 
   // data channel
@@ -70,11 +74,12 @@ export class Tab1Component implements OnInit {
       // document.getElementById('offer-sdp').textContent = offer.sdp;
 
       // return fetch('http://192.168.1.91:8000/offer_cv', {
-      return fetch('https://6908-95-161-221-14.eu.ngrok.io/offer_cv', {
+      return fetch('https://8177-95-161-221-14.eu.ngrok.io/offer_cv', {
         body: JSON.stringify({
           sdp: offer.sdp,
           type: offer.type,
-          video_transform: 'none'
+          video_transform: "none",
+          id: qeq.email
         }),
         headers: {
           'Content-Type': 'application/json',
@@ -94,7 +99,6 @@ export class Tab1Component implements OnInit {
 
   start() {
     // document.getElementById('start').style.display = 'none';
-
     this.pc = this.createPeerConnection();
 
     var time_start: any = null;
