@@ -24,7 +24,8 @@ export class Tab1Component implements OnInit {
   createPeerConnection() {
 
     var config = {
-      sdpSemantics: 'unified-plan'
+      sdpSemantics: 'unified-plan',
+      iceServers: [{urls: ['stun:stun.l.google.com:19302']}]
     };
 
     this.pc = new RTCPeerConnection(config);

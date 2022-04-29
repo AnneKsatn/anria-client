@@ -12,12 +12,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatInputModule } from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { Tab3Component } from './tab3/tab3.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     Tab1Component,
-    Tab2Component
+    Tab2Component,
+    Tab3Component
   ],
   imports: [
     BrowserModule,
