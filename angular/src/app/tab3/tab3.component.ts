@@ -31,15 +31,17 @@ export class Tab3Component implements OnInit {
     this.canvas =  document.getElementById('canvas') as HTMLCanvasElement
     this.canvas.getContext('2d').drawImage(this.video, 0, 0, this.canvas.width, this.canvas.height);
 
-    let image_data_url = this.canvas.toDataURL('image/jpeg').split(';base64,')[1];;
-    console.log(image_data_url);
+    let image_data_url = this.canvas.toDataURL('image/jpeg').split(';base64,')[1];
+
+    // this.image = this.canvas.toDataURL('image/jpeg').split(';base64,')[1]
+    console.log(this.canvas.toDataURL('image/jpeg'));
 
     // let b64 = 'data:image/jpeg;base64,' + image_data_url;
 
     let file = this.b64toBlob(image_data_url);
     
 
-    this.saveImage(file)
+    // this.saveImage(file)
     return 
 
     console.log(image_data_url);
@@ -66,10 +68,10 @@ export class Tab3Component implements OnInit {
     const formData = new FormData()
     formData.append('image', audioBlob)
 
-    console.log(audioBlob["file"])
+    let mem = this.sanitizer.bypassSecurityTrustUrl('data:image/jpeg;base64,' + audioBlob)
+    this.image = this.sanitizer.bypassSecurityTrustUrl('data:image/jpeg;base64,' + audioBlob)
 
-    // this.image = this.sanitizer.bypassSecurityTrustUrl('data:image/jpeg;base64,' + audioBlob)
-
+    console.log(mem)
 
     // this.http.post('https://c54b-93-175-28-10.in.ngrok.io/image', formData)
     // .subscribe(

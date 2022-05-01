@@ -75,7 +75,7 @@ export class Tab1Component implements OnInit {
       // document.getElementById('offer-sdp').textContent = offer.sdp;
 
       // return fetch('http://192.168.1.91:8000/offer_cv', {
-      return fetch('https://8177-95-161-221-14.eu.ngrok.io/offer_cv', {
+      return fetch('http://127.0.0.1:8000/offer_cv', {
         body: JSON.stringify({
           sdp: offer.sdp,
           type: offer.type,
@@ -100,8 +100,9 @@ export class Tab1Component implements OnInit {
 
   start() {
     // document.getElementById('start').style.display = 'none';
-    this.pc = this.createPeerConnection();
 
+    this.pc = this.createPeerConnection();
+    console.log("Createt Peer Connection", this.pc)
     var time_start: any = null;
 
     function current_stamp() {
@@ -116,7 +117,7 @@ export class Tab1Component implements OnInit {
     var constraints: any = {
       audio: true,
       video: {
-        facingMode: { exact: "environment" }
+        // facingMode: { exact: "environment" }
       }
     };
 
@@ -155,7 +156,8 @@ export class Tab1Component implements OnInit {
         });
         return qeq.negotiate();
       }, function (err: any) {
-        alert('Could not acquire media: ' + err);
+        console.log("failed to getUserMedia", err)
+        alert(err)
       });
 
     } else {

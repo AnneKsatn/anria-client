@@ -38,7 +38,7 @@ export class Tab2Component implements OnInit {
 
     formData.append('audio', audioBlob, 'audio')
 
-    this.http.post('https://c54b-93-175-28-10.in.ngrok.io/speech', formData)
+    this.http.post('https://f03b-83-69-192-103.eu.ngrok.io/speech', formData)
     .subscribe(
       (resp: any)=>{
         this.text = resp['text']
