@@ -1,15 +1,12 @@
 
 <div class="example-container">
     <mat-form-field appearance="fill">
-      <!-- <mat-label>Enter your email</mat-label>       -->
-        <input matInput [(ngModel)]="email" placeholder="Ex. pat@example.com" required>
-      <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+        <input matInput [(ngModel)]="id_wire" required>
     </mat-form-field>
   </div>
 
 <button mat-stroked-button id="start" color="success" (click)="start()"> Start </button>
 <button mat-stroked-button id="stop" color="light" (click)="stop()"> Stop </button>
-
 
 <div id="media" class="video-block">
     <audio id="audio" autoplay="true"></audio>

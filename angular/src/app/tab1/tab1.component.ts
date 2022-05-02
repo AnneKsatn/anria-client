@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 declare const RTCPeerConnection: any;
 declare const MediaRecorder: any;
 declare const navigator: any;
-import {FormControl, Validators} from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-tab1',
@@ -11,9 +11,7 @@ import {FormControl, Validators} from '@angular/forms';
 })
 export class Tab1Component implements OnInit {
 
-  // peer connection
-  // idFromControl: any = 0
-  email: any = 0
+  id_wire: any = 0
 
   pc: any = null;
 
@@ -25,7 +23,7 @@ export class Tab1Component implements OnInit {
 
     var config = {
       sdpSemantics: 'unified-plan',
-      iceServers: [{urls: ['stun:stun.l.google.com:19302']}]
+      iceServers: [{ urls: ['stun:stun.l.google.com:19302'] }]
     };
 
     this.pc = new RTCPeerConnection(config);
@@ -72,15 +70,13 @@ export class Tab1Component implements OnInit {
 
       codec = 'default'
 
-      // document.getElementById('offer-sdp').textContent = offer.sdp;
-
       // return fetch('http://192.168.1.91:8000/offer_cv', {
       return fetch('http://127.0.0.1:8000/offer_cv', {
         body: JSON.stringify({
           sdp: offer.sdp,
           type: offer.type,
           video_transform: "none",
-          id: qeq.email
+          id: qeq.id_wire
         }),
         headers: {
           'Content-Type': 'application/json',
@@ -122,23 +118,15 @@ export class Tab1Component implements OnInit {
     };
 
     if (constraints.audio || constraints.video) {
-      // if (constraints.video) {
-      //   document.getElementById('media').style.display = 'block';
-      // }
 
-      console.log(this.pc)
-      console.log("this.pc")
-
-      // let pc2 = this.pc
-
-      const onSuccess = (stream: any) => {
-        console.log(this)
-        let qeq = this
-        stream.getTracks().forEach(function (track: any) {
-          qeq.pc.addTrack(track, stream);
-        });
-        return this.negotiate();
-      };
+      // const onSuccess = (stream: any) => {
+      //   console.log(this)
+      //   let qeq = this
+      //   stream.getTracks().forEach(function (track: any) {
+      //     qeq.pc.addTrack(track, stream);
+      //   });
+      //   return this.negotiate();
+      // };
 
       // navigator.mediaDevices.getUserMedia = (
       //   navigator.mediaDevices.getUserMedia ||
@@ -148,13 +136,13 @@ export class Tab1Component implements OnInit {
 
       // navigator.mediaDevices.getUserMedia({ audio: true, video: true }, onSuccess, (e: any) => console.log(e));
 
-      let qeq = this
+      let env = this
       navigator.mediaDevices.getUserMedia(constraints).then(function (stream: any) {
-        console.log(qeq)
+        console.log(env)
         stream.getTracks().forEach(function (track: any) {
-          qeq.pc.addTrack(track, stream);
+          env.pc.addTrack(track, stream);
         });
-        return qeq.negotiate();
+        return env.negotiate();
       }, function (err: any) {
         console.log("failed to getUserMedia", err)
         alert(err)
@@ -163,14 +151,10 @@ export class Tab1Component implements OnInit {
     } else {
       this.negotiate();
     }
-
-    // document.getElementById('stop').style.display = 'inline-block';
   }
 
   stop() {
-    // document.getElementById('stop').style.display = 'none';
-    // document.getElementById('start').style.display = 'inline-block';
-    // close data channel
+
     if (this.dc) {
       this.dc.close();
     }
@@ -184,16 +168,13 @@ export class Tab1Component implements OnInit {
       });
     }
 
-    // close local audio / video
     this.pc.getSenders().forEach(function (sender: any) {
       sender.track.stop();
     });
 
-    // close peer connection
-
-    let qeq = this
+    let env = this
     setTimeout(function () {
-      qeq.pc.close();
+      env.pc.close();
     }, 500);
   }
 
@@ -257,13 +238,11 @@ export class Tab1Component implements OnInit {
   }
 
   escapeRegExp(string: any) {
-    console.log("here")
-    console.log(string)
     return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // $& means the whole matched string
   }
 
 
-  constructor() { 
+  constructor() {
 
   }
 
