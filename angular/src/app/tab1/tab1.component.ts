@@ -45,27 +45,27 @@ export class Tab1Component implements OnInit {
 
   negotiate() {
 
-    let qeq: any = this
+    let env: any = this
     return this.pc.createOffer().then(function (offer: any) {
-      return qeq.pc.setLocalDescription(offer);
+      return env.pc.setLocalDescription(offer);
     }).then(function () {
 
       // wait for ICE gathering to complete
       return new Promise((resolve: any) => {
-        if (qeq.pc.iceGatheringState === 'complete') {
+        if (env.pc.iceGatheringState === 'complete') {
           resolve();
         } else {
           function checkState() {
-            if (qeq.pc.iceGatheringState === 'complete') {
-              qeq.pc.removeEventListener('icegatheringstatechange', checkState);
+            if (env.pc.iceGatheringState === 'complete') {
+              env.pc.removeEventListener('icegatheringstatechange', checkState);
               resolve();
             }
           }
-          qeq.pc.addEventListener('icegatheringstatechange', checkState);
+          env.pc.addEventListener('icegatheringstatechange', checkState);
         }
       });
     }).then(function () {
-      var offer = qeq.pc.localDescription;
+      var offer = env.pc.localDescription;
       var codec;
 
       codec = 'default'
@@ -76,7 +76,7 @@ export class Tab1Component implements OnInit {
           sdp: offer.sdp,
           type: offer.type,
           video_transform: "none",
-          id: qeq.id_wire
+          id: env.id_wire
         }),
         headers: {
           'Content-Type': 'application/json',
@@ -88,7 +88,7 @@ export class Tab1Component implements OnInit {
       return response.json();
     }).then(function (answer: any) {
       // document.getElementById('answer-sdp').textContent = answer.sdp;
-      return qeq.pc.setRemoteDescription(answer);
+      return env.pc.setRemoteDescription(answer);
     }).catch(function (e: any) {
       alert(e);
     });
