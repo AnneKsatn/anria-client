@@ -1,0 +1,65 @@
+<h2 mat-dialog-title>Install Angular</h2>
+<mat-dialog-content class="mat-typography">
+    <p>
+        <mat-form-field appearance="fill">
+          <!-- <mat-label for="email">Email</mat-label> -->
+          <input matInput type="text" class="form-control underlined" id="email" placeholder="Фамилия"
+            formControlName="email">
+        </mat-form-field>
+      </p>
+
+
+      <p>
+        <mat-form-field appearance="fill">
+          <!-- <mat-label for="password">Пароль</mat-label> -->
+          <input matInput type="password" class="form-control underlined" id="password" placeholder="Имя"
+            formControlName="password">
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field appearance="fill">
+          <!-- <mat-label for="email">Email</mat-label> -->
+          <input matInput type="text" class="form-control underlined" id="email" placeholder="Отчество"
+            formControlName="email">
+        </mat-form-field>
+      </p>
+
+
+      <p>
+        <mat-form-field appearance="fill">
+          <!-- <mat-label for="password">Пароль</mat-label> -->
+          <input matInput type="password" class="form-control underlined" id="password" placeholder="Телефон"
+            formControlName="password">
+        </mat-form-field>
+      </p>
+
+
+      <p>
+        <mat-form-field appearance="fill">
+          <!-- <mat-label for="email">Email</mat-label> -->
+          <input matInput type="text" class="form-control underlined" id="email" placeholder="Должность"
+            formControlName="email">
+        </mat-form-field>
+      </p>
+
+
+      <p>
+        <mat-form-field appearance="fill">
+          <!-- <mat-label for="password">Пароль</mat-label> -->
+          <input matInput type="password" class="form-control underlined" id="password" placeholder="Отдел"
+            formControlName="password">
+        </mat-form-field>
+      </p>
+
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Отмена</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Добавить</button>
+</mat-dialog-actions>
+
+
+<!-- Copyright 2022 Google LLC. All Rights Reserved.
+    Use of this source code is governed by an MIT-style license that
+    can be found in the LICENSE file at https://angular.io/license -->
