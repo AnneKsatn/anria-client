@@ -4,53 +4,43 @@
         <mat-form-field appearance="fill">
           <!-- <mat-label for="email">Email</mat-label> -->
           <input matInput type="text" class="form-control underlined" id="email" placeholder="Фамилия"
-            formControlName="email">
+          [(ngModel)]="data.surname" 
+          >
         </mat-form-field>
  
-
-
- 
         <mat-form-field appearance="fill">
-          <!-- <mat-label for="password">Пароль</mat-label> -->
           <input matInput class="form-control underlined" id="password" placeholder="Имя"
-            formControlName="password">
-        </mat-form-field>
-  
-  
-        <mat-form-field appearance="fill">
-          <!-- <mat-label for="email">Email</mat-label> -->
-          <input matInput class="form-control underlined" id="email" placeholder="Отчество"
-            formControlName="email">
-        </mat-form-field>
- 
-
-
-
-        <mat-form-field appearance="fill">
-          <!-- <mat-label for="password">Пароль</mat-label> -->
-          <input matInput  class="form-control underlined" id="password" placeholder="Телефон"
-            formControlName="password">
+          [(ngModel)]="data.name">
         </mat-form-field>
    
-
-
         <mat-form-field appearance="fill">
-          <!-- <mat-label for="email">Email</mat-label> -->
-          <input matInput class="form-control underlined" id="email" placeholder="Должность"
-            formControlName="email">
+          <input matInput class="form-control underlined" id="email" placeholder="Отчество"
+          [(ngModel)]="data.patronymic">
+        </mat-form-field>
+ 
+        <mat-form-field appearance="fill">
+          <input matInput  class="form-control underlined" id="password" placeholder="Телефон"
+          [(ngModel)]="data.phone">
         </mat-form-field>
 
-
+        <mat-form-field appearance="fill">
+          <input matInput class="form-control underlined" id="email" placeholder="Должность"
+            [(ngModel)]="data.position">
+        </mat-form-field>
 
         <mat-form-field appearance="fill">
-          <!-- <mat-label for="password">Пароль</mat-label> -->
+          <input matInput class="form-control underlined" id="email" placeholder="Email"
+            [(ngModel)]="data.email">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
           <input matInput  class="form-control underlined" id="password" placeholder="Отдел"
-            formControlName="password">
+          [(ngModel)]="data.department">
         </mat-form-field>
    
 
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close>Отмена</button>
-  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Добавить</button>
+  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>OK</button>
 </mat-dialog-actions>

@@ -1,18 +1,52 @@
-
-
 <h1>Сотрудники</h1>
 
-<button mat-raised-button color="primary" (click)="addWorker()"> Добавить сотрудника </button>  
+<div class="btn-filter-block">
+  <button mat-raised-button color="primary" (click)="addWorker()"> Добавить сотрудника </button>
+
+  <mat-form-field appearance="standard" class="filter">
+    <mat-label>Фильтр</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Касаткина или 8921573714" #input>
+  </mat-form-field>
+</div>
+
 
 <div class="table">
-    <table mat-table [dataSource]="data" class="mat-elevation-z8">
-        <ng-container [matColumnDef]="column" *ngFor="let column of displayedColumns">
-          <th mat-header-cell *matHeaderCellDef> {{column}} </th>
-          <td mat-cell *matCellDef="let element"> {{element[column]}} </td>
-        </ng-container>
-      
-        <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
-        <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
-      </table>
-      
+  <table mat-table [dataSource]="data" class="mat-elevation-z8">
+    <ng-container [matColumnDef]="column" *ngFor="let column of displayedColumns">
+      <th mat-header-cell *matHeaderCellDef> {{column}} </th>
+      <td mat-cell *matCellDef="let element"> {{element[column]}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="info" stickyEnd>
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let element" (click)="goToWorkerPage(element)">
+        <mat-icon>info</mat-icon>
+      </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="star" stickyEnd>
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let element" (click)="assignWorker(element['id'])">
+        <mat-icon>assignment</mat-icon>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="edit" stickyEnd>
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let element" (click)="editWorker(element)">
+        <mat-icon>edit</mat-icon>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="delete" stickyEnd>
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let element" (click)="deleteWorker(element['id'])">
+        <mat-icon>delete</mat-icon>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+    <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
+  </table>
 </div>

@@ -10,6 +10,23 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SystemModule } from './system/system.module';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app'
+import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { environment } from '../environments/environment';
+import { AngularFireModule } from '@angular/fire/compat';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
+// import { provideAuth,getAuth } from '@angular/fire/auth';
+
+const firebaseConfig = {
+  apiKey: "AIzaSyALDGlAnZThQ1KawzmDPVczRjU-5JhrX4c",
+  authDomain: "anria-cdbf5.firebaseapp.com",
+  projectId: "anria-cdbf5",
+  storageBucket: "anria-cdbf5.appspot.com",
+  messagingSenderId: "771453273473",
+  appId: "1:771453273473:web:6127994a434af30a315480"
+};
 
 @NgModule({
   declarations: [
@@ -25,7 +42,16 @@ import { SystemModule } from './system/system.module';
     MatFormFieldModule,
     MatInputModule,
     BrowserAnimationsModule,
-    SystemModule
+    SystemModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    AngularFireModule.initializeApp(environment.firebase),
+    // provideAuth(() => getAuth()),
+    provideFirestore(() => getFirestore()),
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory,
+    }),
+    NgbModalModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -16,6 +16,13 @@ import {MatInputModule} from '@angular/material/input';
 import { DialogAddWorkerComponent } from './workers-page/dialog-add-worker/dialog-add-worker.component';
 import { TasksPageComponent } from './tasks-page/tasks-page.component';
 import { AssignmentPageComponent } from './assignment-page/assignment-page.component';
+import { WorkerInfoPageComponent } from './worker-info-page/worker-info-page.component';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
+import { FlatpickrModule } from 'angularx-flatpickr';
+
 
 @NgModule({
   declarations: [
@@ -23,9 +30,12 @@ import { AssignmentPageComponent } from './assignment-page/assignment-page.compo
     SystemComponent,
     DialogAddWorkerComponent,
     TasksPageComponent,
-    AssignmentPageComponent
+    AssignmentPageComponent,
+    WorkerInfoPageComponent
   ],
   imports: [
+    NgbModalModule,
+    BrowserAnimationsModule,
     CommonModule,
     SystemRoutingModule,
     MatSidenavModule,
@@ -37,7 +47,12 @@ import { AssignmentPageComponent } from './assignment-page/assignment-page.compo
     MatDialogModule,
     FormsModule, ReactiveFormsModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    FlatpickrModule.forRoot(),
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory,
+    }),
   ]
 })
 export class SystemModule { }

@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "anria-cdbf5"
+  },
+  "targets": {
+    "anria-cdbf5": {
+      "hosting": {
+        "admin-panel": [
+          "anria-cdbf5"
+        ]
+      }
+    }
+  }
+}

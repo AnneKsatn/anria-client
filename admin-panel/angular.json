@@ -105,6 +105,16 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "admin-panel:build:production",
+            "firebaseProject": "anria-cdbf5",
+            "firebaseHostingSite": "anria-cdbf5"
+          }
         }
       }
     }

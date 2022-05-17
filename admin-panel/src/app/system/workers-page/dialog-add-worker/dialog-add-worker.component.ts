@@ -4,10 +4,13 @@ import { FormControl, Validators } from '@angular/forms';
 
 
 export interface DialogData {
-  groom: string;
-  stable: string;
-  stall: string;
-  category: string;
+  surname: string;
+  name: string;
+  patronymic: string;
+  phone: string;
+  email: string;
+  department: string;
+  position: string;
 }
 
 interface Animal {
@@ -22,9 +25,6 @@ interface Animal {
   styleUrls: ['./dialog-add-worker.component.scss']
 })
 export class DialogAddWorkerComponent {
-
-
-  selectFormControl = new FormControl('', Validators.required);
   categories = [];
 
   constructor(
