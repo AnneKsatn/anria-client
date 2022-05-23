@@ -4,13 +4,7 @@ import { FormControl, Validators } from '@angular/forms';
 
 
 export interface DialogData {
-  surname: string;
-  name: string;
-  patronymic: string;
-  phone: string;
-  email: string;
-  department: string;
-  position: string;
+  title: string;
 }
 
 interface Animal {
@@ -20,20 +14,17 @@ interface Animal {
 
 
 @Component({
-  selector: 'app-dialog-add-worker',
-  templateUrl: './dialog-add-worker.component.html',
-  styleUrls: ['./dialog-add-worker.component.scss']
+  selector: 'app-dialog-add-task',
+  templateUrl: './dialog-add-task.component.html',
+  styleUrls: ['./dialog-add-task.component.scss']
 })
-export class DialogAddWorkerComponent {
+export class DialogAddTaskComponent{
+
   categories = [];
 
-  worker: any
-
   constructor(
-    public dialogRef: MatDialogRef<DialogAddWorkerComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any) {
-      console.log(data.worker)
-      this.worker = data.worker
+    public dialogRef: MatDialogRef<DialogAddTaskComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData) {
       // this.horseClubService.getCategories().subscribe((categories: any) => {
       //   this.categories = categories.map(category => {
       //     return {

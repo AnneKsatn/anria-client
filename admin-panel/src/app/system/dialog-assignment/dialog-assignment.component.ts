@@ -1,6 +1,7 @@
 import {Component, Inject} from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { FormControl, Validators } from '@angular/forms';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 
 export interface DialogData {
@@ -20,19 +21,21 @@ interface Animal {
 
 
 @Component({
-  selector: 'app-dialog-add-worker',
-  templateUrl: './dialog-add-worker.component.html',
-  styleUrls: ['./dialog-add-worker.component.scss']
+  selector: 'app-dialog-assignment',
+  templateUrl: './dialog-assignment.component.html',
+  styleUrls: ['./dialog-assignment.component.scss']
 })
-export class DialogAddWorkerComponent {
+export class DialogAssignmentComponent {
+
   categories = [];
 
-  worker: any
+  worker: any;
 
   constructor(
-    public dialogRef: MatDialogRef<DialogAddWorkerComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any) {
-      console.log(data.worker)
+    public dialogRef: MatDialogRef<DialogAssignmentComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    public firestore: AngularFirestore) {
+      console.log(this.data)
       this.worker = data.worker
       // this.horseClubService.getCategories().subscribe((categories: any) => {
       //   this.categories = categories.map(category => {
@@ -48,4 +51,5 @@ export class DialogAddWorkerComponent {
   onNoClick(): void {
     this.dialogRef.close();
   }
+
 }

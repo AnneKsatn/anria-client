@@ -7,6 +7,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 import { WorkerService } from 'src/app/shared/services/worker.service';
 import { Router } from '@angular/router';
+import { DialogAssignmentComponent } from '../dialog-assignment/dialog-assignment.component';
 
 export interface PeriodicElement {
   name: string;
@@ -104,7 +105,23 @@ export class WorkersPageComponent implements OnInit {
     });
   }
 
-  assignWorker(id: string) {
+  assignWorker(worker: string) {
+    const dialogRef = this.dialog.open(DialogAssignmentComponent, {
+      width: '30%',
+      data: { worker: worker}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        console.log(`Dialog result: ${result}`);
+        this.firestore.collection("assignments").add(result)
+          .then(function (docRef) {
+            console.log(docRef.id);
+          })
+      } else {
+        console.log("no")
+      }
+    });
   }
 
   goToWorkerPage(element: any) {

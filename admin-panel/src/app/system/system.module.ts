@@ -22,6 +22,10 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { FlatpickrModule } from 'angularx-flatpickr';
+import { DialogAddTaskComponent } from './tasks-page/dialog-add-task/dialog-add-task.component';
+import { DialogAssignmentComponent } from './dialog-assignment/dialog-assignment.component';
+import { TaskInfoPageComponent } from './task-info-page/task-info-page.component';
+import {OrderListModule} from 'primeng/orderlist';
 
 
 @NgModule({
@@ -31,7 +35,10 @@ import { FlatpickrModule } from 'angularx-flatpickr';
     DialogAddWorkerComponent,
     TasksPageComponent,
     AssignmentPageComponent,
-    WorkerInfoPageComponent
+    WorkerInfoPageComponent,
+    DialogAddTaskComponent,
+    DialogAssignmentComponent,
+    TaskInfoPageComponent
   ],
   imports: [
     NgbModalModule,
@@ -53,6 +60,7 @@ import { FlatpickrModule } from 'angularx-flatpickr';
       provide: DateAdapter,
       useFactory: adapterFactory,
     }),
+    OrderListModule
   ]
 })
 export class SystemModule { }

@@ -1,0 +1,35 @@
+<h2 mat-dialog-title>Назначить задачу</h2>
+<mat-dialog-content class="mat-typography">
+
+  <div> {{worker.surname}} {{worker.name}} {{worker.patronymic}}</div>
+  <div> {{worker.phone}}</div>
+  <div> {{worker.position}}</div>
+  <div> {{worker.department}}</div>
+
+  <mat-form-field appearance="fill">
+    <input matInput class="form-control underlined" id="password" placeholder="Дата" [(ngModel)]="data.department">
+  </mat-form-field>
+
+
+  <mat-form-field appearance="fill">
+    <input matInput class="form-control underlined" id="password" placeholder="Время" [(ngModel)]="data.department">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput type="date" placeholder="start date">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput type="time" placeholder="start date">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput type="datetime-local" placeholder="start date">
+  </mat-form-field>
+
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Отмена</button>
+  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>OK</button>
+</mat-dialog-actions>
