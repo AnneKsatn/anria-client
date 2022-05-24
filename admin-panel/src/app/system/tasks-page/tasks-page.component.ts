@@ -56,13 +56,15 @@ export class TasksPageComponent implements OnInit {
   addTask() {
 
     const dialogRef = this.dialog.open(DialogAddTaskComponent, {
-      width: '30%',
+      width: '50%',
       data: {title: ""}
     });
 
     
 
     dialogRef.afterClosed().subscribe(result => {
+      result.steps = []
+
       this.firestore.collection("tasks").add(result)
       .then(function (docRef) {
         console.log(docRef.id);
@@ -81,7 +83,7 @@ export class TasksPageComponent implements OnInit {
 
   editTask(task: any) {
     const dialogRef = this.dialog.open(DialogAddTaskComponent, {
-      width: '30%',
+      width: '50%',
       data: task
     });
 

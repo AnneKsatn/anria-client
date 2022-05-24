@@ -1,13 +1,11 @@
-
-
-<h2 mat-dialog-title>Внести задачу</h2>
+<h2 mat-dialog-title>Внести шаг</h2>
 <mat-dialog-content class="mat-typography">
 
         <mat-form-field appearance="fill">
           <!-- <mat-label for="email">Email</mat-label> -->
-          <textarea matInput class="form-control underlined" id="email" placeholder="Название"
-          [(ngModel)]="data.title" 
-          ></textarea>
+          <textarea matInput type="text" class="form-control underlined" id="email" placeholder="Название"
+          [(ngModel)]="data.description" 
+          > </textarea>
         </mat-form-field>  
 
 </mat-dialog-content>

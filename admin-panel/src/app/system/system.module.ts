@@ -26,6 +26,7 @@ import { DialogAddTaskComponent } from './tasks-page/dialog-add-task/dialog-add-
 import { DialogAssignmentComponent } from './dialog-assignment/dialog-assignment.component';
 import { TaskInfoPageComponent } from './task-info-page/task-info-page.component';
 import {OrderListModule} from 'primeng/orderlist';
+import { DialogAddStepComponent } from './task-info-page/dialog-add-step/dialog-add-step.component';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import {OrderListModule} from 'primeng/orderlist';
     WorkerInfoPageComponent,
     DialogAddTaskComponent,
     DialogAssignmentComponent,
-    TaskInfoPageComponent
+    TaskInfoPageComponent,
+    DialogAddStepComponent
   ],
   imports: [
     NgbModalModule,
