@@ -27,6 +27,18 @@ import { DialogAssignmentComponent } from './dialog-assignment/dialog-assignment
 import { TaskInfoPageComponent } from './task-info-page/task-info-page.component';
 import {OrderListModule} from 'primeng/orderlist';
 import { DialogAddStepComponent } from './task-info-page/dialog-add-step/dialog-add-step.component';
+import {FullCalendarModule} from '@fullcalendar/angular';
+import dayGridPlugin from '@fullcalendar/daygrid';
+import timeGridPlugin from '@fullcalendar/timegrid';
+import interactionPlugin from '@fullcalendar/interaction';
+import { MatSelectModule } from '@angular/material/select';
+
+
+FullCalendarModule.registerPlugins([
+  dayGridPlugin,
+  timeGridPlugin,
+  interactionPlugin
+]);
 
 
 @NgModule({
@@ -62,7 +74,9 @@ import { DialogAddStepComponent } from './task-info-page/dialog-add-step/dialog-
       provide: DateAdapter,
       useFactory: adapterFactory,
     }),
-    OrderListModule
+    OrderListModule,
+    FullCalendarModule,
+    MatSelectModule
   ]
 })
 export class SystemModule { }

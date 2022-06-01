@@ -69,7 +69,7 @@ export class WorkersPageComponent implements OnInit {
 
   addWorker() {
     const dialogRef = this.dialog.open(DialogAddWorkerComponent, {
-      width: '30%',
+      width: '50%',
       data: { surname: "", name: "", patronymic: "", phone: "", email: "", department: "", position: "" }
       // maxWidth: '100vw',
     });
@@ -92,7 +92,7 @@ export class WorkersPageComponent implements OnInit {
   editWorker(worker: any) {
     console.log(worker.surname)
     const dialogRef = this.dialog.open(DialogAddWorkerComponent, {
-      width: '30%',
+      width: '50%',
       data: worker
     });
 
@@ -107,25 +107,35 @@ export class WorkersPageComponent implements OnInit {
 
   assignWorker(worker: string) {
     const dialogRef = this.dialog.open(DialogAssignmentComponent, {
-      width: '30%',
+      width: '50%',
       data: { worker: worker}
     });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        console.log(`Dialog result: ${result}`);
-        this.firestore.collection("assignments").add(result)
+        console.log(result);
+
+        let assignment = {
+          worker_id: result.worker.id,
+          task_id: result.task_id,
+          date_start: result.date_start,
+          date_end: result.date_end,
+        }
+
+        this.firestore.collection("assignments").add(assignment)
           .then(function (docRef) {
             console.log(docRef.id);
           })
+
       } else {
         console.log("no")
       }
     });
   }
 
-  goToWorkerPage(element: any) {
-    this.router.navigateByUrl("/system/worker-info")
+  goToWorkerPage(worker_id: any) {
+    this.router.navigate(["/system/worker-info"],  {queryParams: {worker_id: worker_id}})
+    // this.router.navigate("/system/worker-info", quer)
   }
 }
 

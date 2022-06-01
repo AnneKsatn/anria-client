@@ -57,18 +57,20 @@ export class TasksPageComponent implements OnInit {
 
     const dialogRef = this.dialog.open(DialogAddTaskComponent, {
       width: '50%',
-      data: {title: ""}
+      data: { title: "" }
     });
 
-    
+
 
     dialogRef.afterClosed().subscribe(result => {
-      result.steps = []
+      if (result) {
+        result.steps = []
 
-      this.firestore.collection("tasks").add(result)
-      .then(function (docRef) {
-        console.log(docRef.id);
-      })
+        this.firestore.collection("tasks").add(result)
+          .then(function (docRef) {
+            console.log(docRef.id);
+          })
+      }
     });
   }
 

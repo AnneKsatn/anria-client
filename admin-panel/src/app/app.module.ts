@@ -19,6 +19,12 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 // import { provideAuth,getAuth } from '@angular/fire/auth';
 
+import {FullCalendarModule} from '@fullcalendar/angular';
+import dayGridPlugin from '@fullcalendar/daygrid';
+import timeGridPlugin from '@fullcalendar/timegrid';
+import interactionPlugin from '@fullcalendar/interaction';
+
+
 const firebaseConfig = {
   apiKey: "AIzaSyALDGlAnZThQ1KawzmDPVczRjU-5JhrX4c",
   authDomain: "anria-cdbf5.firebaseapp.com",
@@ -27,6 +33,13 @@ const firebaseConfig = {
   messagingSenderId: "771453273473",
   appId: "1:771453273473:web:6127994a434af30a315480"
 };
+
+FullCalendarModule.registerPlugins([
+  dayGridPlugin,
+  timeGridPlugin,
+  interactionPlugin
+]);
+
 
 @NgModule({
   declarations: [
@@ -52,6 +65,7 @@ const firebaseConfig = {
       useFactory: adapterFactory,
     }),
     NgbModalModule,
+    FullCalendarModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,3 +1,22 @@
+
+
+
+<!-- <p-fullCalendar [options]="options"></p-fullCalendar>
+
+<p-button label="SomeButton" (onClick)="gotoDate()"></p-button>
+<br> -->
+
+<h3>
+  Edit events
+  <button class="btn btn-primary float-right" (click)="addEvent()">
+    Add new
+  </button>
+  <div class="clearfix"></div>
+</h3>
+
+<full-calendar [options]="options" id="mycal" #mycal></full-calendar>
+<!-- 
+
 <div class="row text-center">
     <div class="col-md-4">
       <div class="btn-group">
@@ -89,8 +108,7 @@
     >
     </mwl-calendar-day-view>
   </div>
-  
-  <!-- Everything you see below is just for the demo, you don't need to include it in your app -->
+
   
   <br /><br /><br />
   
@@ -153,19 +171,6 @@
             />
           </td>
           <td>
-            <!-- <input
-              class="form-control"
-              type="text"
-              mwlFlatpickr
-              [(ngModel)]="event.end"
-              (ngModelChange)="refresh.next()"
-              [altInput]="true"
-              [convertModelValue]="true"
-              [enableTime]="true"
-              dateFormat="Y-m-dTH:i"
-              altFormat="F j, Y H:i"
-              placeholder="Not set"
-            /> -->
 
             <input 
             type="text" 
@@ -208,4 +213,4 @@
       </button>
     </div>
   </ng-template>
-  
+   -->

@@ -1,210 +1,115 @@
-import {
-  Component,
-  ChangeDetectionStrategy,
-  ViewChild,
-  TemplateRef,
-} from '@angular/core';
-import {
-  startOfDay,
-  endOfDay,
-  subDays,
-  addDays,
-  endOfMonth,
-  isSameDay,
-  isSameMonth,
-  addHours,
-} from 'date-fns';
+import { Component, ChangeDetectionStrategy, ViewChild, TemplateRef, OnInit, ElementRef, ChangeDetectorRef} from '@angular/core';
+import { startOfDay, endOfDay, subDays, addDays, endOfMonth, isSameDay, isSameMonth, addHours} from 'date-fns';
 import { Subject } from 'rxjs';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import {
-  CalendarEvent,
-  CalendarEventAction,
-  CalendarEventTimesChangedEvent,
-  CalendarView,
-} from 'angular-calendar';
+import { CalendarEvent, CalendarEventAction, CalendarEventTimesChangedEvent, CalendarView} from 'angular-calendar';
+import { ActivatedRoute } from '@angular/router';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { DialogAssignmentComponent } from '../dialog-assignment/dialog-assignment.component';
+import { MatDialog } from '@angular/material/dialog';
 
 
-const colors: any = {
-  red: {
-    primary: '#ad2121',
-    secondary: '#FAE3E3',
-  },
-  blue: {
-    primary: '#1e90ff',
-    secondary: '#D1E8FF',
-  },
-  yellow: {
-    primary: '#e3bc08',
-    secondary: '#FDF1BA',
-  },
-};
 @Component({
   selector: 'app-worker-info-page',
   templateUrl: './worker-info-page.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./worker-info-page.component.scss']
 })
-export class WorkerInfoPageComponent {
+export class WorkerInfoPageComponent implements OnInit {
 
-  // @ViewChild('modalContent', { static: true }) modalContent: TemplateRef<any>;
-
-  @ViewChild('modalContent', { static: true }) modalContent: any;
-
-  view: CalendarView = CalendarView.Month;
-
-  CalendarView = CalendarView;
-
-  viewDate: Date = new Date();
-
-  actions: CalendarEventAction[] = [
-    {
-      label: '<i class="fas fa-fw fa-pencil-alt"></i>',
-      a11yLabel: 'Edit',
-      onClick: ({ event }: { event: CalendarEvent }): void => {
-        this.handleEvent('Edited', event);
-      },
-    },
-    {
-      label: '<i class="fas fa-fw fa-trash-alt"></i>',
-      a11yLabel: 'Delete',
-      onClick: ({ event }: { event: CalendarEvent }): void => {
-        this.events = this.events.filter((iEvent) => iEvent !== event);
-        this.handleEvent('Deleted', event);
-      },
-    },
-  ];
-
-  modalData: any = {
-    action: "",
-    event: {
-      start: subDays(startOfDay(new Date()), 1),
-      end: addDays(new Date(), 1),
-      title: 'A 3 day event',
-      color: colors.red,
-      actions: this.actions,
-      allDay: true,
-      resizable: {
-        beforeStart: true,
-        afterEnd: true,
-      },
-      draggable: true,
-    }
-  }
-
-
-  refresh = new Subject<void>();
-
-  events: CalendarEvent[] = [
-    {
-      start: subDays(startOfDay(new Date()), 1),
-      end: addDays(new Date(), 1),
-      title: 'A 3 day event',
-      color: colors.red,
-      actions: this.actions,
-      allDay: true,
-      resizable: {
-        beforeStart: true,
-        afterEnd: true,
-      },
-      draggable: true,
-    },
-    {
-      start: startOfDay(new Date()),
-      title: 'An event with no end date',
-      color: colors.yellow,
-      actions: this.actions,
-    },
-    {
-      start: subDays(endOfMonth(new Date()), 3),
-      end: addDays(endOfMonth(new Date()), 3),
-      title: 'A long event that spans 2 months',
-      color: colors.blue,
-      allDay: true,
-    },
-    {
-      start: addHours(startOfDay(new Date()), 2),
-      end: addHours(new Date(), 2),
-      title: 'A draggable and resizable event',
-      color: colors.yellow,
-      actions: this.actions,
-      resizable: {
-        beforeStart: true,
-        afterEnd: true,
-      },
-      draggable: true,
-    },
-  ];
-
-  activeDayIsOpen: boolean = true;
+  options: any = {};
+  worker_id: string = "";
 
   constructor(
-    private modal: NgbModal
+    private modal: NgbModal,
+    private activatedRoute: ActivatedRoute,
+    private firestore: AngularFirestore,
+    private cd: ChangeDetectorRef,
+    public dialog: MatDialog, 
     ) {}
 
-  dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
-    if (isSameMonth(date, this.viewDate)) {
-      if (
-        (isSameDay(this.viewDate, date) && this.activeDayIsOpen === true) ||
-        events.length === 0
-      ) {
-        this.activeDayIsOpen = false;
-      } else {
-        this.activeDayIsOpen = true;
-      }
-      this.viewDate = date;
-    }
-  }
-
-  eventTimesChanged({
-    event,
-    newStart,
-    newEnd,
-  }: CalendarEventTimesChangedEvent): void {
-    this.events = this.events.map((iEvent) => {
-      if (iEvent === event) {
-        return {
-          ...event,
-          start: newStart,
-          end: newEnd,
-        };
-      }
-      return iEvent;
+  ngOnInit(): void {
+    this.activatedRoute.queryParams.subscribe( (params: any) => {
+      this.worker_id = params['worker_id']
     });
-    this.handleEvent('Dropped or resized', event);
-  }
 
-  handleEvent(action: string, event: CalendarEvent): void {
-    this.modalData = { event, action };
-    this.modal.open(this.modalContent, { size: 'lg' });
+    this.setOptions()
+    this.getAssignments()
   }
 
   addEvent(): void {
-    this.events = [
-      ...this.events,
-      {
-        title: 'New event',
-        start: startOfDay(new Date()),
-        end: endOfDay(new Date()),
-        color: colors.red,
-        draggable: true,
-        resizable: {
-          beforeStart: true,
-          afterEnd: true,
-        },
-      },
-    ];
+
+    let worker = {
+      id: this.worker_id
+    }
+    const dialogRef = this.dialog.open(DialogAssignmentComponent, {
+      width: '50%',
+      data: { worker: worker }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        console.log(result);
+
+        let assignment = {
+          worker_id: result.worker.id,
+          task_id: result.task.id,
+          date_start: result.date_start,
+          date_end: result.date_end,
+          task_title: result.task.title
+        }
+
+        this.firestore.collection("assignments").add(assignment)
+          .then(function (docRef) {
+            console.log(docRef.id);
+          })
+
+      } else {
+        console.log("no")
+      }
+    });
   }
 
   deleteEvent(eventToDelete: CalendarEvent) {
-    this.events = this.events.filter((event) => event !== eventToDelete);
+    // this.events = this.events.filter((event) => event !== eventToDelete);
   }
 
-  setView(view: CalendarView) {
-    this.view = view;
+  setOptions(){
+    this.options = {
+      headerToolbar: {
+        left: 'prev,next today',
+        center: 'title',
+        right: 'dayGridMonth,timeGridWeek,timeGridDay'
+      },
+      // editable: false,
+      // selectable: true,
+      selectMirror: true,
+      dayMaxEvents: true,
+      events: []
+    };
   }
+    
+  getAssignments() {
+    this.firestore.collection("assignments", ref => ref.where("worker_id", "==", this.worker_id))
+      .snapshotChanges().subscribe((data: any) => {
+        this.options.events = data.map(function (event: any) {
+          return {
+            start: new Date(event.payload.doc.data().date_start),
+            end: new Date(event.payload.doc.data().date_end),
+            task_id: event.payload.doc.data().task_id,
+            title: event.payload.doc.data().task_title
+          }
+        })
 
-  closeOpenMonthViewDay() {
-    this.activeDayIsOpen = false;
+        // this.options.events.forEach((element: any) => {
+        //   this.firestore.collection("tasks").doc(element.task_id).get().subscribe((data_2: any) => {
+        //     element.title = data_2.data().title
+        //     console.log(element.title)
+        //     element.title="keeeek"
+        //   })
+        // });
+
+        this.cd.detectChanges();
+      })
   }
-
 }

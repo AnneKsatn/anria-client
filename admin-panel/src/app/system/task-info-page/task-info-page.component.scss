@@ -77,11 +77,19 @@ table {
     padding-right: 8px;
   }
   
-  .btn-filter-block {
-    display: flex;
-    justify-content: space-between;
-  }
-  
   .filter {
     width: 50%;
+  }
+
+
+.title {
+    font-size: 15px;
+    padding-bottom: 30px;
+    padding-top: 10px;
+}
+
+  
+.btn-filter-block {
+    display: flex;
+    justify-content: end;
   }

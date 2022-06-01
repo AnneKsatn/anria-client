@@ -34,8 +34,6 @@ export class TaskInfoPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
-
     this.activatedRoute.queryParams.subscribe( (params: any) => {
       this.task_id = params['element_id']
     });

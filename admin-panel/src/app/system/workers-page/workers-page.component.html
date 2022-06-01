@@ -19,7 +19,7 @@
 
     <ng-container matColumnDef="info" stickyEnd>
       <th mat-header-cell *matHeaderCellDef></th>
-      <td mat-cell *matCellDef="let element" (click)="goToWorkerPage(element)">
+      <td mat-cell *matCellDef="let element" (click)="goToWorkerPage(element.id)">
         <mat-icon>info</mat-icon>
       </td>
     </ng-container>

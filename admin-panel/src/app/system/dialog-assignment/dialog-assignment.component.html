@@ -1,32 +1,36 @@
 <h2 mat-dialog-title>Назначить задачу</h2>
 <mat-dialog-content class="mat-typography">
 
-  <div> {{worker.surname}} {{worker.name}} {{worker.patronymic}}</div>
-  <div> {{worker.phone}}</div>
-  <div> {{worker.position}}</div>
-  <div> {{worker.department}}</div>
+  <div clas="content">
 
-  <mat-form-field appearance="fill">
-    <input matInput class="form-control underlined" id="password" placeholder="Дата" [(ngModel)]="data.department">
-  </mat-form-field>
+    <div> {{worker.surname}} {{worker.name}} {{worker.patronymic}}</div>
+    <div> {{worker.phone}}</div>
+    <div> {{worker.position}}</div>
+    <div> {{worker.department}}</div>
 
 
-  <mat-form-field appearance="fill">
-    <input matInput class="form-control underlined" id="password" placeholder="Время" [(ngModel)]="data.department">
-  </mat-form-field>
 
-  <mat-form-field>
-    <input matInput type="date" placeholder="start date">
-  </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Задача</mat-label>
+      <mat-select [(ngModel)]="data.task" name="food">
+        <mat-option *ngFor="let task of tasks" [value]="task">
+          {{task.title}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
 
-  <mat-form-field>
-    <input matInput type="time" placeholder="start date">
-  </mat-form-field>
+    <div>
+      <mat-form-field>
+        <input matInput type="datetime-local" placeholder="Дата и время начала выполнения задачи" [(ngModel)]="data.date_start">
+      </mat-form-field>
+    </div>
 
-  <mat-form-field>
-    <input matInput type="datetime-local" placeholder="start date">
-  </mat-form-field>
-
+    <div>
+      <mat-form-field>
+        <input matInput type="datetime-local" placeholder="Дата и время окончания выполнения задачи" [(ngModel)]="data.date_end">
+      </mat-form-field>
+    </div>
+  </div>
 
 </mat-dialog-content>
 <mat-dialog-actions align="end">
