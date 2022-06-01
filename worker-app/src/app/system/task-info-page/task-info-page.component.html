@@ -1,0 +1,42 @@
+<h1>Задача</h1>
+
+<div class="title"> {{task.title}}</div>
+
+<div class="btn-filter-block">
+  <button mat-raised-button color="primary"  (click)="addStep()"> Добавить шаг </button>
+
+  <!-- <mat-form-field appearance="standard" class="filter">
+    <mat-label>Фильтр</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Касаткина или 8921573714" #input>
+  </mat-form-field> -->
+</div>
+
+
+<!-- 
+<button mat-raised-button color="primary" (click)="addStep()"> Добавить шаг </button> -->
+
+<!-- <p-orderList [value]="task.steps" [listStyle]="{'height':'auto'}" header="Шаги задачи" 
+    (onReorder)="orderChanged()">
+    <ng-template let-step pTemplate="item">
+        <div class="step-item">
+            <div class="step-number">
+                {{step.number}}
+            </div>
+            <div>
+                <div>
+                    {{step.description}}
+                </div>
+            
+                <div>
+                    <mat-list role="list" *ngFor="let check_point of step.check_list">
+                        <mat-list-item role="listitem">{{check_point}}</mat-list-item>
+                    </mat-list>
+                </div>
+            </div>
+
+            <div (click)="deleteStep(step)">
+                <mat-icon>delete</mat-icon>
+            </div>
+        </div>
+    </ng-template>
+</p-orderList> -->
