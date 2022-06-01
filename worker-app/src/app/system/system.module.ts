@@ -22,7 +22,9 @@ import { DialogAssignmentComponent } from './dialog-assignment/dialog-assignment
 import { TaskInfoPageComponent } from './task-info-page/task-info-page.component';
 import { DialogAddStepComponent } from './task-info-page/dialog-add-step/dialog-add-step.component';
 import { MatSelectModule } from '@angular/material/select';
-import { MatCardModule } from '@angular/material/card'
+import { MatCardModule } from '@angular/material/card';
+import { AssignmentInfoComponent } from './assignment-info/assignment-info.component';
+import { MainPageComponent } from './main-page/main-page.component'
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import { MatCardModule } from '@angular/material/card'
     DialogAddTaskComponent,
     DialogAssignmentComponent,
     TaskInfoPageComponent,
-    DialogAddStepComponent
+    DialogAddStepComponent,
+    AssignmentInfoComponent,
+    MainPageComponent
   ],
   imports: [
     BrowserAnimationsModule,

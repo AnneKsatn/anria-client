@@ -1,6 +1,7 @@
 import { MediaMatcher } from '@angular/cdk/layout';
 import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
     selector: 'app-system',
@@ -11,6 +12,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 export class SystemComponent implements OnInit {
     // showFiller = false;
     assignments: any = []
+    
 
     mobileQuery: MediaQueryList;
 
@@ -31,7 +33,9 @@ export class SystemComponent implements OnInit {
     constructor(
         changeDetectorRef: ChangeDetectorRef, 
         media: MediaMatcher,
-        private firestore: AngularFirestore) {
+        private firestore: AngularFirestore,
+        private router: Router
+        ) {
         this.mobileQuery = media.matchMedia('(max-width: 600px)');
         this._mobileQueryListener = () => changeDetectorRef.detectChanges();
         this.mobileQuery.addListener(this._mobileQueryListener);
@@ -46,7 +50,7 @@ export class SystemComponent implements OnInit {
                     "date_start": assignment.payload.doc.data().date_start,
                     "task_id": assignment.payload.doc.data().task_id,
                     "task_title": assignment.payload.doc.data().task_title,
-                    "assignment_id": assignment.payload.doc.id,
+                    "id": assignment.payload.doc.id,
                 }
             })
 
@@ -56,6 +60,10 @@ export class SystemComponent implements OnInit {
 
     ngOnDestroy(): void {
         this.mobileQuery.removeListener(this._mobileQueryListener);
+    }
+
+    goToAssignment(id: any) {
+        this.router.navigate(["/system/assignment"],  {queryParams: {id: id}})
     }
 
     shouldRun = true

@@ -1,0 +1,15 @@
+Задачи
+<p></p>
+<div *ngFor="let assignment of assignments" (click)="goToAssignment(assignment.id)">
+  <mat-card> 
+    <div>
+      {{assignment.task_title}}
+    </div>
+    <div>
+      {{assignment.date_start}}
+    </div>
+    <div>
+      {{assignment.date_end}}
+    </div>
+  </mat-card>
+</div>
