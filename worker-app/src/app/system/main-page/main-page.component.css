@@ -1,0 +1,20 @@
+/* background: #f5f5f5;
+color: rgba(0,0,0,.87) */
+.greeting-block {
+    /* min-height: 150px; */
+    background-color: aliceblue;
+    padding: 20px 0px 20px 0px;
+}
+
+.greeting-block .name {
+    padding-top: 20px;
+    font-size: 30px;
+}
+
+.greeting-block .greeting {
+    font-size: 18px;
+}
+
+.card {
+    margin-top: 15px;
+}

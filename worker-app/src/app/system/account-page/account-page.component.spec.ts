@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DialogAddStepComponent } from './dialog-add-step.component';
+import { AccountPageComponent } from './account-page.component';
 
-describe('DialogAddStepComponent', () => {
-  let component: DialogAddStepComponent;
-  let fixture: ComponentFixture<DialogAddStepComponent>;
+describe('AccountPageComponent', () => {
+  let component: AccountPageComponent;
+  let fixture: ComponentFixture<AccountPageComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DialogAddStepComponent ]
+      declarations: [ AccountPageComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DialogAddStepComponent);
+    fixture = TestBed.createComponent(AccountPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

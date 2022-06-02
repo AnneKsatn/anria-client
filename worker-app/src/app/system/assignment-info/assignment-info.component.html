@@ -1,1 +1,18 @@
-<p>assignment-info works!</p>
+
+<div class="assignment">
+    <div>
+
+        <ul>
+            <li *ngFor="let step of steps">
+                <mat-checkbox [(ngModel)]="step.completed">
+                    <div class="step">
+                        {{step.description}}
+                    </div>
+                </mat-checkbox>
+            </li>
+        </ul>
+    </div>
+
+
+    <button mat-stroked-button color="primary" (click)="completeTask()">Завершить задание</button>
+</div>

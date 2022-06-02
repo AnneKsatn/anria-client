@@ -1,15 +1,10 @@
-Задачи
-<p></p>
-<div *ngFor="let assignment of assignments" (click)="goToAssignment(assignment.id)">
-  <mat-card> 
-    <div>
-      {{assignment.task_title}}
-    </div>
-    <div>
-      {{assignment.date_start}}
-    </div>
-    <div>
-      {{assignment.date_end}}
-    </div>
-  </mat-card>
+<div class="card" *ngFor="let assignment of assignments" (click)="goToAssignment(assignment)">
+  <div class="card-header">
+    {{assignment.date_start.getHours()}}:{{assignment.date_start.getMinutes()}}
+    -
+    {{assignment.date_end.getHours()}}:{{assignment.date_end.getMinutes()}}
+  </div>
+  <div class="card-body">
+    <p class="card-text">{{assignment.task_title}}</p>
+  </div>
 </div>

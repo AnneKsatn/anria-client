@@ -2,6 +2,7 @@ import { MediaMatcher } from '@angular/cdk/layout';
 import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from '../shared/services/auth.service';
 
 @Component({
     selector: 'app-system',
@@ -34,7 +35,8 @@ export class SystemComponent implements OnInit {
         changeDetectorRef: ChangeDetectorRef, 
         media: MediaMatcher,
         private firestore: AngularFirestore,
-        private router: Router
+        private router: Router,
+        private authService: AuthService
         ) {
         this.mobileQuery = media.matchMedia('(max-width: 600px)');
         this._mobileQueryListener = () => changeDetectorRef.detectChanges();
@@ -67,4 +69,13 @@ export class SystemComponent implements OnInit {
     }
 
     shouldRun = true
+
+    logout() {
+        this.authService.logout()
+        this.router.navigateByUrl("/login")
+    }
+
+    goToAccountPage() {
+        this.router.navigateByUrl("/system/account")
+    }
 }
