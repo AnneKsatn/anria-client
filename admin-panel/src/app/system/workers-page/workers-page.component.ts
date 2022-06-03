@@ -70,7 +70,7 @@ export class WorkersPageComponent implements OnInit {
   addWorker() {
     const dialogRef = this.dialog.open(DialogAddWorkerComponent, {
       width: '50%',
-      data: { surname: "", name: "", patronymic: "", phone: "", email: "", department: "", position: "" }
+      data: { surname: "", name: "", patronymic: "", phone: "", email: "", department: "", position: "", password: "" }
       // maxWidth: '100vw',
     });
 

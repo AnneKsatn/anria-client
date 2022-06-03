@@ -11,6 +11,7 @@ export interface DialogData {
   email: string;
   department: string;
   position: string;
+  password: string
 }
 
 interface Animal {
