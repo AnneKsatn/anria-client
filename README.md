@@ -1,10 +1,16 @@
 
 ## Запуск
 
-1. cd angular
-2. npm install -g @angular/cli
-3. npm install
-4. ng serve
+Мобильное приложение - в папке worker-app
+Административная панель - в папке admin-panel
 
-src -> app -> tab1 -> fetch('https://6908-95-161-221-14.eu.ngrok.io/offer_cv' <p>
-src -> app -> tab2 -> fetch('https://6908-95-161-221-14.eu.ngrok.io/offer_cv'
+Перед запуском установить:
+1. node
+2. npm
+3. npm install -g @angular/cli
+
+Для запуска: 
+1. cd admin-panel или worker-app
+2. npm install
+3. ng serve
+4. перейти по ссылке
