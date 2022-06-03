@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/shared/services/auth.service';
+import { UsersService } from 'src/app/shared/services/users.service';
 
 @Component({
   selector: 'app-login',
@@ -17,13 +20,26 @@ export class LoginComponent implements OnInit {
     'password': new FormControl(null)
   });
 
-  constructor(private router: Router) { }
+  constructor(
+    private router: Router,
+    private usersService: UsersService,
+    private authService: AuthService
+  ) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
-  onSubmit(){
-    console.log(this.form)
-    this.router.navigateByUrl("/system")
+  onSubmit() {
+    console.log(this.form.value)
+
+    this.usersService.getUserByEmail(this.form.value.email).subscribe((data: any) => {
+      if (data) {
+        if (this.form.value.password == data[0].payload.doc.data().password) {
+
+          window.localStorage.setItem('user_id', data[0].payload.doc.id)
+          this.authService.login()
+          this.router.navigateByUrl("/system/main-page")
+        }
+      }
+    })
   }
-
 }

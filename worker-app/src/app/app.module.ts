@@ -14,6 +14,8 @@ import { initializeApp,provideFirebaseApp } from '@angular/fire/app'
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
 import { AngularFireModule } from '@angular/fire/compat';
+import { UsersService } from './shared/services/users.service';
+import { AuthService } from './shared/services/auth.service';
 
 
 const firebaseConfig = {
@@ -45,7 +47,7 @@ const firebaseConfig = {
     // provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
   ],
-  providers: [],
+  providers: [UsersService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
