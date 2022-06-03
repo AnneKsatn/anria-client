@@ -27,7 +27,7 @@ export class WorkersPageComponent implements OnInit {
 
   data: any = [];
   displayedColumns: string[] = ['fullname', 'phone', 'position', 'department'];
-  columnsToDisplay: string[] = ['fullname', 'phone', 'position', 'department', 'info', 'star', 'edit', 'delete'];
+  columnsToDisplay: string[] = ['fullname', 'phone', 'position', 'department', 'info'];
 
   // columnsToDisplay: string[] = this.displayedColumns.slice();
 
@@ -61,7 +61,6 @@ export class WorkersPageComponent implements OnInit {
     });
   }
 
-
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.data.filter = filterValue.trim().toLowerCase();
@@ -85,57 +84,8 @@ export class WorkersPageComponent implements OnInit {
     });
   }
 
-  deleteWorker(id: string) {
-    this.firestore.collection('/workers').doc(id).delete()
-  }
-
-  editWorker(worker: any) {
-    console.log(worker.surname)
-    const dialogRef = this.dialog.open(DialogAddWorkerComponent, {
-      width: '50%',
-      data: worker
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        console.log(result)
-        console.log(`Dialog result: ${result}`);
-        this.firestore.collection("workers").doc(result.id).update(result)
-      }
-    });
-  }
-
-  assignWorker(worker: string) {
-    const dialogRef = this.dialog.open(DialogAssignmentComponent, {
-      width: '50%',
-      data: { worker: worker}
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        console.log(result);
-
-        let assignment = {
-          worker_id: result.worker.id,
-          task_id: result.task_id,
-          date_start: result.date_start,
-          date_end: result.date_end,
-        }
-
-        this.firestore.collection("assignments").add(assignment)
-          .then(function (docRef) {
-            console.log(docRef.id);
-          })
-
-      } else {
-        console.log("no")
-      }
-    });
-  }
-
   goToWorkerPage(worker_id: any) {
     this.router.navigate(["/system/worker-info"],  {queryParams: {worker_id: worker_id}})
-    // this.router.navigate("/system/worker-info", quer)
   }
 }
 

@@ -1,12 +1,13 @@
-import { Component, ChangeDetectionStrategy, ViewChild, TemplateRef, OnInit, ElementRef, ChangeDetectorRef} from '@angular/core';
-import { startOfDay, endOfDay, subDays, addDays, endOfMonth, isSameDay, isSameMonth, addHours} from 'date-fns';
+import { Component, ChangeDetectionStrategy, ViewChild, TemplateRef, OnInit, ElementRef, ChangeDetectorRef } from '@angular/core';
+import { startOfDay, endOfDay, subDays, addDays, endOfMonth, isSameDay, isSameMonth, addHours, weeksToDays } from 'date-fns';
 import { Subject } from 'rxjs';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { CalendarEvent, CalendarEventAction, CalendarEventTimesChangedEvent, CalendarView} from 'angular-calendar';
-import { ActivatedRoute } from '@angular/router';
+import { CalendarEvent, CalendarEventAction, CalendarEventTimesChangedEvent, CalendarView } from 'angular-calendar';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { DialogAssignmentComponent } from '../dialog-assignment/dialog-assignment.component';
 import { MatDialog } from '@angular/material/dialog';
+import { WorkerService } from 'src/app/shared/services/worker.service';
 
 
 @Component({
@@ -19,22 +20,26 @@ export class WorkerInfoPageComponent implements OnInit {
 
   options: any = {};
   worker_id: string = "";
+  worker: any = {}
 
   constructor(
     private modal: NgbModal,
     private activatedRoute: ActivatedRoute,
     private firestore: AngularFirestore,
     private cd: ChangeDetectorRef,
-    public dialog: MatDialog, 
-    ) {}
+    public dialog: MatDialog,
+    private workerService: WorkerService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
-    this.activatedRoute.queryParams.subscribe( (params: any) => {
+    this.activatedRoute.queryParams.subscribe((params: any) => {
       this.worker_id = params['worker_id']
     });
 
     this.setOptions()
     this.getAssignments()
+    this.getWorkerInfo()
   }
 
   addEvent(): void {
@@ -74,7 +79,7 @@ export class WorkerInfoPageComponent implements OnInit {
     // this.events = this.events.filter((event) => event !== eventToDelete);
   }
 
-  setOptions(){
+  setOptions() {
     this.options = {
       headerToolbar: {
         left: 'prev,next today',
@@ -83,12 +88,16 @@ export class WorkerInfoPageComponent implements OnInit {
       },
       // editable: false,
       // selectable: true,
+      weekends: false,
       selectMirror: true,
       dayMaxEvents: true,
-      events: []
+      initialView: 'timeGridWeek',
+      locale: 'ru',
+      events: [],
+      scrollTime: '9:00:00',
     };
   }
-    
+
   getAssignments() {
     this.firestore.collection("assignments", ref => ref.where("worker_id", "==", this.worker_id))
       .snapshotChanges().subscribe((data: any) => {
@@ -111,5 +120,23 @@ export class WorkerInfoPageComponent implements OnInit {
 
         this.cd.detectChanges();
       })
+  }
+
+  getWorkerInfo() {
+    this.workerService.getWorkerById(this.worker_id).subscribe((doc: any) => {
+      this.worker = doc.data()
+
+      this.cd.detectChanges();
+    })
+  }
+
+  deleteWorker() {
+    this.workerService.deleteWorkerById(this.worker_id).then((data) => {
+      this.router.navigateByUrl("/system/workers")
+    })
+  }
+
+  saveWorker() {
+    this.firestore.collection("workers").doc(this.worker_id).update(this.worker)
   }
 }

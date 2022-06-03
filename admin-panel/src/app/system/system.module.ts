@@ -32,6 +32,7 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import { MatSelectModule } from '@angular/material/select';
+import {InputTextModule} from 'primeng/inputtext';
 
 
 FullCalendarModule.registerPlugins([
@@ -76,7 +77,8 @@ FullCalendarModule.registerPlugins([
     }),
     OrderListModule,
     FullCalendarModule,
-    MatSelectModule
+    MatSelectModule,
+    InputTextModule
   ]
 })
 export class SystemModule { }

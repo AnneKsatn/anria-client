@@ -11,6 +11,15 @@ export class WorkerService {
   getWorkers(){
     return this.firestore.collection("/workers").snapshotChanges()
   }
+
+  getWorkerById(id: string) {
+    return this.firestore.collection("workers").doc(id).get()
+  }
+
+  deleteWorkerById(id: string){
+    return this.firestore.collection("/workers").doc(id).delete()
+  }
+
     
   //   .subscribe((data: any) => {
   //     let data2 = data.map(function (procedure: any) {
