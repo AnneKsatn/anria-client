@@ -95,6 +95,7 @@ export class WorkerInfoPageComponent implements OnInit {
       locale: 'ru',
       events: [],
       scrollTime: '9:00:00',
+      height: "100%"
     };
   }
 

@@ -3,16 +3,16 @@ import { CommonModule } from '@angular/common';
 import { SystemRoutingModule } from './system-routing.module';
 import { WorkersPageComponent } from './workers-page/workers-page.component';
 import { SystemComponent } from './system.component';
-import {MatSidenavModule} from '@angular/material/sidenav';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatListModule} from '@angular/material/list';
-import {MatIconModule} from '@angular/material/icon';
-import {MatButtonModule} from '@angular/material/button';
-import {MatTableModule} from '@angular/material/table';
-import {MatDialogModule} from '@angular/material/dialog';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatListModule } from '@angular/material/list';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatTableModule } from '@angular/material/table';
+import { MatDialogModule } from '@angular/material/dialog';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { DialogAddWorkerComponent } from './workers-page/dialog-add-worker/dialog-add-worker.component';
 import { TasksPageComponent } from './tasks-page/tasks-page.component';
 import { AssignmentPageComponent } from './assignment-page/assignment-page.component';
@@ -25,14 +25,18 @@ import { FlatpickrModule } from 'angularx-flatpickr';
 import { DialogAddTaskComponent } from './tasks-page/dialog-add-task/dialog-add-task.component';
 import { DialogAssignmentComponent } from './dialog-assignment/dialog-assignment.component';
 import { TaskInfoPageComponent } from './task-info-page/task-info-page.component';
-import {OrderListModule} from 'primeng/orderlist';
+import { OrderListModule } from 'primeng/orderlist';
 import { DialogAddStepComponent } from './task-info-page/dialog-add-step/dialog-add-step.component';
-import {FullCalendarModule} from '@fullcalendar/angular';
+import { FullCalendarModule } from '@fullcalendar/angular';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import { MatSelectModule } from '@angular/material/select';
-import {InputTextModule} from 'primeng/inputtext';
+import { InputTextModule } from 'primeng/inputtext';
+import { ToolbarModule } from 'primeng/toolbar';
+import { SplitButtonModule } from 'primeng/splitbutton';
+import { ButtonModule } from 'primeng/button';
+
 
 
 FullCalendarModule.registerPlugins([
@@ -78,7 +82,10 @@ FullCalendarModule.registerPlugins([
     OrderListModule,
     FullCalendarModule,
     MatSelectModule,
-    InputTextModule
+    InputTextModule,
+    ToolbarModule,
+    ButtonModule,
+    SplitButtonModule
   ]
 })
 export class SystemModule { }

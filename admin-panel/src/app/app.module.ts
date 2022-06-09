@@ -6,12 +6,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthModule } from './auth/auth.module';
 import { MainLayoutComponent } from './shared/components/main-layout/main-layout.component';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SystemModule } from './system/system.module';
-import { initializeApp,provideFirebaseApp } from '@angular/fire/app'
-import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app'
+import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
 import { AngularFireModule } from '@angular/fire/compat';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
@@ -19,10 +19,11 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 // import { provideAuth,getAuth } from '@angular/fire/auth';
 
-import {FullCalendarModule} from '@fullcalendar/angular';
+import { FullCalendarModule } from '@fullcalendar/angular';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
+import { ToolbarModule } from 'primeng/toolbar';
 
 
 const firebaseConfig = {
@@ -66,6 +67,7 @@ FullCalendarModule.registerPlugins([
     }),
     NgbModalModule,
     FullCalendarModule,
+    ToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
