@@ -1,102 +1,82 @@
 <h2 mat-dialog-title>Добавить пользователя</h2>
 
 
-<div>
+<form class="form" [formGroup]="form">
     <div class="row">
         <div>
             <span class="p-float-label">
-                <input type="text" id="inputtext" pInputText [(ngModel)]="value1" />
+                <input type="text" id="inputtext" pInputText formControlName="lastName" />
                 <label>Фамилия</label>
             </span>
         </div>
         <div>
             <span class="p-float-label">
-                <input type="text" id="inputtext" pInputText [(ngModel)]="valueIconLeft" />
-                <label>Left Icon</label>
+                <input type="text" id="inputtext" pInputText formControlName="name" />
+                <label>Имя</label>
             </span>
         </div>
         <div>
             <span class="p-float-label">
-                <input type="text" pInputText [(ngModel)]="valueIconRight" />
-                <label>Right Icon</label>
+                <input type="text" pInputText formControlName="middleName" />
+                <label>Отчество</label>
             </span>
         </div>
     </div>
 
-
-<!-- 
-    <div>
-        <span class="p-float-label">
-
-        </span>
-    </div>
-    <div>
-        <span class="p-float-label">
-            <p-calendar inputId="calendar" [(ngModel)]="value3"></p-calendar>
-            <label for="calendar">Calendar</label>
-        </span>
-    </div>
-    <div>
-        <span class="p-float-label">
-            <p-chips inputId="chips" [(ngModel)]="value4"></p-chips>
-            <label for="chips">Chips</label>
-        </span>
-    </div>
-    <div>
-        <span class="p-float-label">
-            <p-inputMask inputId="inputmask" mask="99/99/9999" [(ngModel)]="value5"></p-inputMask>
-            <label for="inputmask">InputMask</label>
-        </span>
-    </div>
-    <div>
-        <span class="p-float-label">
-            <p-inputNumber inputId="inputnumber" [(ngModel)]="value6"></p-inputNumber>
-            <label for="inputnumber">InputNumber</label>
-        </span>
-    </div>
-    <div>
-        <div class="p-inputgroup">
-            <span class="p-inputgroup-addon">
-                <i class="pi pi-user"></i>
-            </span>
+    <div class="row">
+        <div>
             <span class="p-float-label">
-                <input type="text" id="inputgroup" pInputText [(ngModel)]="value7" />
-                <label for="inputgroup">InputGroup</label>
+                <input type="text" id="inputtext" pInputText formControlName="phone" />
+                <label>Телефон</label>
+            </span>
+        </div>
+        <div>
+            <span class="p-float-label">
+                <input type="email" id="inputtext" pInputText formControlName="email" />
+                <label>Email</label>
             </span>
         </div>
     </div>
-    <div>
-        <span class="p-float-label">
 
-        </span>
+    <div class="row">
+        <div>
+            <span class="p-float-label">
+                <input type="text" id="inputtext" pInputText formContolName="region" />
+                <label>Регион</label>
+            </span>
+        </div>
+        <div>
+            <span class="p-float-label">
+                <input type="text" id="inputtext" pInputText formControlName="department" />
+                <label>Отдел</label>
+            </span>
+        </div>
+        <div>
+            <span class="p-float-label">
+                <input type="text" id="inputtext" pInputText formControlName="position" />
+                <label>Должность</label>
+            </span>
+        </div>
     </div>
-    <div>
-        <span class="p-float-label">
-            <p-dropdown inputId="dropdown" [autoDisplayFirst]="false" [options]="cities" [(ngModel)]="value8"
-                optionLabel="name"></p-dropdown>
-            <label for="dropdown">Dropdown</label>
-        </span>
+    <div class="row">
+        <div>
+            <span class="p-float-label">
+                <input type="text" id="inputtext" pInputText formControlName="password" />
+                <label>Пароль</label>
+            </span>
+        </div>
     </div>
-    <div>
-        <span class="p-float-label">
-            <p-multiSelect inputId="multiselect" [options]="cities" [(ngModel)]="value9" optionLabel="name"
-                [filter]="false"></p-multiSelect>
-            <label for="multiselect">MultiSelect</label>
-        </span>
-    </div>
-    <div>
-        <span class="p-float-label">
-            <textarea inputId="textarea" [(ngModel)]="value10" pInputTextarea></textarea>
-            <label for="textarea">Textarea</label>
-        </span>
-    </div> -->
+</form>
+
+<div class="add-button">
+    <button pButton pRipple type="button" class="p-button-outlined p-button-rounded">Добавить
+        пользователя</button>
 </div>
 
-
-<mat-dialog-content class="mat-typography">
+<!-- <mat-dialog-content class="mat-typography">
 
     <mat-form-field appearance="fill">
-        <!-- <mat-label for="email">Email</mat-label> -->
+       
         <input matInput type="text" class="form-control underlined" id="email" placeholder="Фамилия"
             [(ngModel)]="data.surname">
     </mat-form-field>
@@ -127,4 +107,4 @@
 
     <mat-form-field appearance="fill">
         <input matInput class="form-control underlined" id="password" placeholder="Пароль" [(ngModel)]="data.password">
-    </mat-form-field>
+    </mat-form-field> -->

@@ -48,10 +48,19 @@
     flex: 1 0 auto;
   }
   
-  .content {
-    max-width: 100%;
-    min-height: 100vh;
-    padding: 5%;
-    padding-bottom: 5%;
-    padding-top: 2%;
-  }
+.content {
+  max-width: 100%;
+  min-height: 100vh;
+  padding: 5%;
+  padding-bottom: 5%;
+  padding-top: 2%;
+}
+
+// :host ::ng-deep .p-toolbar {
+//   background-color:#6495ED;
+// }
+
+// button {
+//   background-color: white;
+//   color: white;
+// }

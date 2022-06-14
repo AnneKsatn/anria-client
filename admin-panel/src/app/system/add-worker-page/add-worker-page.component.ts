@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-add-worker-page',
@@ -52,8 +53,23 @@ export class AddWorkerPageComponent implements OnInit {
     ];
   }
 
+  form!: FormGroup;
+
 
   ngOnInit() {
+    this.form = new FormGroup({
+      'lastName': new FormControl(),
+      'name': new FormControl(),
+      'middleName': new FormControl(),
+      'phone': new FormControl(),
+      'email': new FormControl(),
+      'password': new FormControl(),
+      'region': new FormControl(),
+      'department': new FormControl(),
+      'position': new FormControl(),
+      'number': new FormControl()
+    })
+
     // this.countryService.getCountries().then(countries => {
     //   this.countries = countries;
     // });

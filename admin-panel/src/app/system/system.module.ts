@@ -89,7 +89,8 @@ FullCalendarModule.registerPlugins([
     DropdownModule,
     MultiSelectModule,
     SliderModule,
-    ProgressBarModule
+    ProgressBarModule,
+    ReactiveFormsModule
   ]
 })
 export class SystemModule { }
