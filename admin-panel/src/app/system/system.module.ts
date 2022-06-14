@@ -36,7 +36,13 @@ import { InputTextModule } from 'primeng/inputtext';
 import { ToolbarModule } from 'primeng/toolbar';
 import { SplitButtonModule } from 'primeng/splitbutton';
 import { ButtonModule } from 'primeng/button';
+import { TableModule } from 'primeng/table';
+import { DropdownModule } from 'primeng/dropdown';
+import { MultiSelectModule } from 'primeng/multiselect';
+import { SliderModule } from 'primeng/slider';
 
+import { ProgressBarModule } from 'primeng/progressbar';
+import { AddWorkerPageComponent } from './add-worker-page/add-worker-page.component';
 
 
 FullCalendarModule.registerPlugins([
@@ -57,7 +63,8 @@ FullCalendarModule.registerPlugins([
     DialogAddTaskComponent,
     DialogAssignmentComponent,
     TaskInfoPageComponent,
-    DialogAddStepComponent
+    DialogAddStepComponent,
+    AddWorkerPageComponent
   ],
   imports: [
     NgbModalModule,
@@ -85,7 +92,12 @@ FullCalendarModule.registerPlugins([
     InputTextModule,
     ToolbarModule,
     ButtonModule,
-    SplitButtonModule
+    SplitButtonModule,
+    TableModule,
+    DropdownModule,
+    MultiSelectModule,
+    SliderModule,
+    ProgressBarModule
   ]
 })
 export class SystemModule { }
