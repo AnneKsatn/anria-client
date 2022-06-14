@@ -1,8 +1,6 @@
 import { Component, ChangeDetectionStrategy, ViewChild, TemplateRef, OnInit, ElementRef, ChangeDetectorRef } from '@angular/core';
 import { startOfDay, endOfDay, subDays, addDays, endOfMonth, isSameDay, isSameMonth, addHours, weeksToDays } from 'date-fns';
 import { Subject } from 'rxjs';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { CalendarEvent, CalendarEventAction, CalendarEventTimesChangedEvent, CalendarView } from 'angular-calendar';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { DialogAssignmentComponent } from '../dialog-assignment/dialog-assignment.component';
@@ -23,7 +21,6 @@ export class WorkerInfoPageComponent implements OnInit {
   worker: any = {}
 
   constructor(
-    private modal: NgbModal,
     private activatedRoute: ActivatedRoute,
     private firestore: AngularFirestore,
     private cd: ChangeDetectorRef,
@@ -75,7 +72,7 @@ export class WorkerInfoPageComponent implements OnInit {
     });
   }
 
-  deleteEvent(eventToDelete: CalendarEvent) {
+  deleteEvent(eventToDelete: any) {
     // this.events = this.events.filter((event) => event !== eventToDelete);
   }
 
