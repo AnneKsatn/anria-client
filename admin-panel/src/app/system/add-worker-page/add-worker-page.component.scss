@@ -11,5 +11,21 @@
 
 .add-button {
     display: flex;
+    // height: 40px;
+    flex-direction: column;
+    // width: 100%;
+    align-items: flex-end;
     justify-content: end;
+    flex-grow: 1;
+}
+
+.btn {
+    height: 40px;
+    margin-top: 20px;
+}
+
+.add-user-form {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }

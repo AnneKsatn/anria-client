@@ -1,110 +1,102 @@
 <h2 mat-dialog-title>Добавить пользователя</h2>
 
 
-<form class="form" [formGroup]="form">
-    <div class="row">
-        <div>
-            <span class="p-float-label">
-                <input type="text" id="inputtext" pInputText formControlName="lastName" />
-                <label>Фамилия</label>
-            </span>
+<form class="add-user-form" [formGroup]="form" (ngSubmit)="addUser()">
+    
+    <div>
+        <div class="row">
+            <div>
+                <span class="p-float-label">
+                    <input type="text" id="inputtext" pInputText formControlName="lastName"
+                        [ngClass]="{'ng-invalid ng-dirty': form.get('lastName')!.invalid && form.get('lastName')!.touched}" />
+                    <label>Фамилия</label>
+                </span>
+            </div>
+            <div>
+                <span class="p-float-label">
+                    <input type="text" id="inputtext" pInputText formControlName="name"
+                        [ngClass]="{'ng-invalid ng-dirty': form.get('name')!.invalid && form.get('name')!.touched}" />
+                    <label>Имя</label>
+                </span>
+            </div>
+            <div>
+                <span class="p-float-label">
+                    <input type="text" pInputText formControlName="middleName" />
+                    <label>Отчество</label>
+                </span>
+            </div>
         </div>
-        <div>
-            <span class="p-float-label">
-                <input type="text" id="inputtext" pInputText formControlName="name" />
-                <label>Имя</label>
-            </span>
+
+        <div class="row">
+            <div>
+                <span class="p-float-label">
+                    <input type="text" id="inputtext" pInputText formControlName="phone"
+                        [ngClass]="{'ng-invalid ng-dirty': form.get('phone')!.invalid && form.get('phone')!.touched}" />
+                    <label>Телефон</label>
+                </span>
+            </div>
+            <div>
+                <span class="p-float-label">
+                    <input type="email" id="email" pInputText formControlName="email"
+                        [ngClass]="{'ng-invalid ng-dirty': form.get('email')!.invalid && form.get('email')!.touched}" />
+                    <label>Email</label>
+                </span>
+            </div>
         </div>
-        <div>
-            <span class="p-float-label">
-                <input type="text" pInputText formControlName="middleName" />
-                <label>Отчество</label>
-            </span>
+
+        <div class="row">
+            <div>
+                <span class="p-float-label">
+                    <input type="text" id="inputtext" pInputText formContolName="region" />
+                    <label>Регион</label>
+                </span>
+            </div>
+            <div>
+                <span class="p-float-label">
+                    <input type="text" id="inputtext" pInputText formControlName="department" />
+                    <label>Отдел</label>
+                </span>
+            </div>
+            <div>
+                <span class="p-float-label">
+                    <input type="text" id="inputtext" pInputText formControlName="position" />
+                    <label>Должность</label>
+                </span>
+            </div>
+        </div>
+        <div class="row">
+            <div>
+                <span class="p-float-label">
+                    <input type="text" id="inputtext" pInputText formControlName="password"
+                        [ngClass]="{'ng-invalid ng-dirty': form.get('password')!.invalid && form.get('password')!.touched}" />
+                    <label>Пароль</label>
+                </span>
+            </div>
         </div>
     </div>
 
-    <div class="row">
-        <div>
-            <span class="p-float-label">
-                <input type="text" id="inputtext" pInputText formControlName="phone" />
-                <label>Телефон</label>
-            </span>
-        </div>
-        <div>
-            <span class="p-float-label">
-                <input type="email" id="inputtext" pInputText formControlName="email" />
-                <label>Email</label>
-            </span>
-        </div>
-    </div>
+    <div class="add-button">
 
-    <div class="row">
         <div>
-            <span class="p-float-label">
-                <input type="text" id="inputtext" pInputText formContolName="region" />
-                <label>Регион</label>
-            </span>
+            <p *ngIf="form.get('password')!.invalid && form.get('password')!.touched">Пользователь с таким телефоном уже
+                существует</p>
         </div>
         <div>
-            <span class="p-float-label">
-                <input type="text" id="inputtext" pInputText formControlName="department" />
-                <label>Отдел</label>
-            </span>
+            <p *ngIf="form.get('password')!.invalid && form.get('password')!.touched">Пароль должен содержать не менее 5
+                символов</p>
         </div>
         <div>
-            <span class="p-float-label">
-                <input type="text" id="inputtext" pInputText formControlName="position" />
-                <label>Должность</label>
-            </span>
+            <p *ngIf="form.get('password')!.invalid && form.get('password')!.touched">Введен некорректный адрес
+                электронной
+                почты</p>
         </div>
-    </div>
-    <div class="row">
         <div>
-            <span class="p-float-label">
-                <input type="text" id="inputtext" pInputText formControlName="password" />
-                <label>Пароль</label>
-            </span>
+            <p *ngIf="form.get('email')!.errors?.['isUserError'] && form.get('email')!.touched">Пользователь с таким
+                email уже
+                существует</p>
         </div>
+        <!-- [disabled]="form.invalid" -->
+        <button pButton pRipple type="submit" class="p-button-outlined p-button-rounded btn">Добавить
+            пользователя</button>
     </div>
 </form>
-
-<div class="add-button">
-    <button pButton pRipple type="button" class="p-button-outlined p-button-rounded">Добавить
-        пользователя</button>
-</div>
-
-<!-- <mat-dialog-content class="mat-typography">
-
-    <mat-form-field appearance="fill">
-       
-        <input matInput type="text" class="form-control underlined" id="email" placeholder="Фамилия"
-            [(ngModel)]="data.surname">
-    </mat-form-field>
-
-    <mat-form-field appearance="fill">
-        <input matInput class="form-control underlined" id="password" placeholder="Имя" [(ngModel)]="data.name">
-    </mat-form-field>
-
-    <mat-form-field appearance="fill">
-        <input matInput class="form-control underlined" id="email" placeholder="Отчество" [(ngModel)]="data.patronymic">
-    </mat-form-field>
-
-    <mat-form-field appearance="fill">
-        <input matInput class="form-control underlined" id="password" placeholder="Телефон" [(ngModel)]="data.phone">
-    </mat-form-field>
-
-    <mat-form-field appearance="fill">
-        <input matInput class="form-control underlined" id="email" placeholder="Должность" [(ngModel)]="data.position">
-    </mat-form-field>
-
-    <mat-form-field appearance="fill">
-        <input matInput class="form-control underlined" id="email" placeholder="Email" [(ngModel)]="data.email">
-    </mat-form-field>
-
-    <mat-form-field appearance="fill">
-        <input matInput class="form-control underlined" id="password" placeholder="Отдел" [(ngModel)]="data.department">
-    </mat-form-field>
-
-    <mat-form-field appearance="fill">
-        <input matInput class="form-control underlined" id="password" placeholder="Пароль" [(ngModel)]="data.password">
-    </mat-form-field> -->
