@@ -1,13 +1,7 @@
 <h1>Пользователи</h1>
 
 <div class="btn-filter-block">
-  <!-- <button mat-raised-button color="primary" (click)="addWorker()"> Добавить пользователя </button> -->
   <button pButton pRipple type="button" class="p-button-outlined p-button-rounded" (click)="addWorker()">Добавить пользователя</button>
-
-  <!-- <mat-form-field appearance="standard" class="filter">
-    <mat-label>Фильтр</mat-label>
-    <input matInput (keyup)="applyFilter($event)" placeholder="Касаткина или 8921573714" #input>
-  </mat-form-field> -->
 </div>
 
 
@@ -46,7 +40,7 @@
         </th>
 
         <th style="width:16%">
-          <p-columnFilter field="representative" matchMode="in" [showMenu]="false">
+          <!-- <p-columnFilter field="representative" matchMode="in" [showMenu]="false">
             <ng-template pTemplate="filter" let-value let-filter="filterCallback">
               <p-multiSelect [ngModel]="value" [options]="representatives" placeholder="Any"
                 (onChange)="filter($event.value)" optionLabel="name">
@@ -59,10 +53,10 @@
                 </ng-template>
               </p-multiSelect>
             </ng-template>
-          </p-columnFilter>
+          </p-columnFilter> -->
         </th>
         <th style="width:16%">
-          <p-columnFilter field="representative" matchMode="in" [showMenu]="false">
+          <!-- <p-columnFilter field="representative" matchMode="in" [showMenu]="false">
             <ng-template pTemplate="filter" let-value let-filter="filterCallback">
               <p-multiSelect [ngModel]="value" [options]="representatives" placeholder="Any"
                 (onChange)="filter($event.value)" optionLabel="name">
@@ -75,11 +69,11 @@
                 </ng-template>
               </p-multiSelect>
             </ng-template>
-          </p-columnFilter>
+          </p-columnFilter> -->
         </th>
 
         <th style="width:16%">
-          <p-columnFilter field="representative" matchMode="in" [showMenu]="false">
+          <!-- <p-columnFilter field="representative" matchMode="in" [showMenu]="false">
             <ng-template pTemplate="filter" let-value let-filter="filterCallback">
               <p-multiSelect [ngModel]="value" [options]="representatives" placeholder="Any"
                 (onChange)="filter($event.value)" optionLabel="name">
@@ -92,7 +86,7 @@
                 </ng-template>
               </p-multiSelect>
             </ng-template>
-          </p-columnFilter>
+          </p-columnFilter> -->
         </th>
 
         <th style="width:16%">

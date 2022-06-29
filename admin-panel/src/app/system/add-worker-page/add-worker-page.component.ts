@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { WorkerService } from 'src/app/shared/services/worker.service';
 import { debounceTime, switchMap } from 'rxjs/operators';
 import { map } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-worker-page',
@@ -12,7 +13,10 @@ import { map } from 'rxjs/operators';
 })
 export class AddWorkerPageComponent implements OnInit {
 
-  constructor(private workerService: WorkerService) { }
+  constructor(
+    private workerService: WorkerService,
+    private router: Router
+  ) { }
 
   form!: FormGroup;
 
@@ -33,9 +37,8 @@ export class AddWorkerPageComponent implements OnInit {
   }
 
   addUser() {
-    this.workerService.addWorker(this.form.value).catch(err => {
-      console.log(err)
+    this.workerService.addWorker(this.form.value).then(err => {
+      this.router.navigateByUrl("system/workers")
     })
-
   }
 }

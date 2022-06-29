@@ -93,7 +93,8 @@ export class TaskInfoPageComponent implements OnInit {
   }
 
   info(step: any) {
-    this.router.navigateByUrl("/system/step-info")
+    this.router.navigate(["/system/step-info"], { queryParams: { "step": JSON.stringify(step) } })
+    // this.router.navigateByUrl("/system/step-info")
     console.log(step)
   }
 }

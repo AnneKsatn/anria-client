@@ -15,6 +15,14 @@
 <!-- 
 <button mat-raised-button color="primary" (click)="addStep()"> Добавить шаг </button> -->
 
+
+<!-- <div>
+    <div class="step" *ngFor="let step of task.steps">
+{{step.description}}
+    </div>
+</div> -->
+
+
 <p-orderList [value]="task.steps" [listStyle]="{'height':'auto'}" header="Шаги задачи" [dragdrop]="true"
     (onReorder)="orderChanged()" class="order-list">
     <ng-template let-step pTemplate="item" class="order-list">
