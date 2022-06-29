@@ -2,11 +2,32 @@
     <h2>Профиль сотрудника</h2>
 
     <div class="btns">
-        <button pButton pRipple icon="bx bx-edit" type="button" class="p-button-outlined"
-            (click)="editWorker()"></button>
-        <button pButton pRipple icon="bx bx-lock" type="button" class="p-button-outlined" disabled></button>
-        <button pButton pRipple icon="bx bx-trash" type="button" class="p-button-outlined"
-            (click)="showDeleteDialog()"></button>
+        <button 
+            pButton 
+            pRipple 
+            icon="bx bx-edit" 
+            type="button" 
+            class="p-button-outlined"
+            (click)="editWorker()">
+        </button>
+
+        <button 
+            pButton
+            pRipple
+            icon="bx bx-lock"
+            type="button"
+            class="p-button-outlined"
+            (click)="showResertPaswordDialog()">
+        </button>
+
+        <button 
+            pButton
+            pRipple
+            icon="bx bx-trash"
+            type="button"
+            class="p-button-outlined"
+            (click)="showDeleteDialog()">
+        </button>
     </div>
 </div>
 
@@ -89,10 +110,25 @@
 </div>
 
 <p-dialog header="Удалить сотрудника?" [(visible)]="displayDeleteDialog" [breakpoints]="{'960px': '75vw'}"
-    [style]="{width: '50vw'}" [draggable]="false" [resizable]="false">
+    [style]="{width: '40vw'}" [draggable]="false" [resizable]="false">
     <p>Если вы удалите сотрудника, действие невозможно будет отменить</p>
     <ng-template pTemplate="footer">
         <p-button (click)="displayDeleteDialog=false" label="No" styleClass="p-button-text"></p-button>
         <p-button (click)="deleteWorker()" label="Yes" styleClass="p-button-text"></p-button>
+    </ng-template>
+</p-dialog>
+
+
+<p-dialog header="Сменить пароль сотрудника" [(visible)]="displayPasswordDialog" [breakpoints]="{'960px': '75vw'}"
+    [style]="{width: '40vw'}" [draggable]="false" [resizable]="false">
+
+    <span class="p-float-label">
+        <input type="text" id="inputtext" pInputText [(ngModel)]="password"/>
+        <label>Пароль</label>
+    </span>
+
+    <ng-template pTemplate="footer">
+        <p-button (click)="displayPasswordDialog=false" label="Отмена" styleClass="p-button-text"></p-button>
+        <p-button (click)="resertPassword()" label="Сохранить" styleClass="p-button-text"></p-button>
     </ng-template>
 </p-dialog>

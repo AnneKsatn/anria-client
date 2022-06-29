@@ -39,7 +39,8 @@ export class UserCalendarComponent implements OnInit {
       events: [],
       scrollTime: '9:00:00',
       height: "100%",
-      eventClick: this.eventClick.bind(this)
+      eventClick: this.eventClick.bind(this),
+      eventColor: '#0081a7'
     };
 
 

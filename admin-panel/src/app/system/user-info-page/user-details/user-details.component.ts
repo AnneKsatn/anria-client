@@ -12,6 +12,8 @@ export class UserDetailsComponent implements OnInit {
   worker_id: any;
   worker: any;
   displayDeleteDialog: boolean = false;
+  displayPasswordDialog: boolean = false;
+  password?: string;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -41,5 +43,14 @@ export class UserDetailsComponent implements OnInit {
 
   editWorker() {
     this.router.navigate(["system/edit-profile-page"], { queryParams: { id: this.worker_id } })
+  }
+
+  showResertPaswordDialog() {
+    this.displayPasswordDialog = true;
+  }
+
+  resertPassword() {
+    this.workerService.updateWorker(this.worker_id, { 'password': this.password })
+    this.displayPasswordDialog = false;
   }
 }
