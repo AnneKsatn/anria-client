@@ -16,6 +16,7 @@ import { AssignTaskComponent } from './user-info-page/assign-task/assign-task.co
 import { UserOnboardingComponent } from './user-info-page/user-onboarding/user-onboarding.component';
 import { LocalizationPageComponent } from './localization-page/localization-page.component';
 import { StepInfoPageComponent } from './task-info-page/step-info-page/step-info-page.component';
+import { AssignmentInfoComponent } from './user-info-page/assignment-info/assignment-info.component';
 
 
 const routes: Routes = [
@@ -27,7 +28,8 @@ const routes: Routes = [
           { path: 'details', component: UserDetailsComponent },
           { path: 'activity', component: UserActivityComponent },
           { path: 'assign-task', component: AssignTaskComponent },
-          { path: 'user-onboarding', component: UserOnboardingComponent }
+          { path: 'user-onboarding', component: UserOnboardingComponent },
+          { path: 'assignment/:id', component: AssignmentInfoComponent }
         ]
       },
       { path: 'workers', component: WorkersPageComponent },

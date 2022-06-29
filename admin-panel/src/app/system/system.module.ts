@@ -54,6 +54,7 @@ import { CardModule } from 'primeng/card';
 import { LocalizationPageComponent } from './localization-page/localization-page.component';
 import { StepInfoPageComponent } from './task-info-page/step-info-page/step-info-page.component';
 import { DialogModule } from 'primeng/dialog';
+import { AssignmentInfoComponent } from './user-info-page/assignment-info/assignment-info.component';
 
 
 FullCalendarModule.registerPlugins([
@@ -84,7 +85,8 @@ FullCalendarModule.registerPlugins([
     AssignTaskComponent,
     UserOnboardingComponent,
     LocalizationPageComponent,
-    StepInfoPageComponent
+    StepInfoPageComponent,
+    AssignmentInfoComponent
   ],
   imports: [
     BrowserAnimationsModule,

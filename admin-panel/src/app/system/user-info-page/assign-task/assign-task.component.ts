@@ -2,30 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 
-export interface DialogData {
-  surname: string;
-  name: string;
-  patronymic: string;
-  phone: string;
-  email: string;
-  department: string;
-  position: string;
-
-  date_start: Date;
-  date_end: Date;
-  task: any
-}
-
-interface Animal {
-  name: string;
-  sound: string;
-}
-
-interface Food {
-  value: string;
-  viewValue: string;
-}
-
 
 @Component({
   selector: 'app-assign-task',
@@ -39,24 +15,9 @@ export class AssignTaskComponent implements OnInit {
   }
 
   task: any;
-  data: any = {};
-  categories = [];
-
   worker: any;
+  available_tasks: any;
 
-  selectedCity1: any;
-
-  selectedValue: string = "";
-  selectedCar: string = "";
-
-  foods: Food[] = [
-    { value: 'steak-0', viewValue: 'Steak' },
-    { value: 'pizza-1', viewValue: 'Pizza' },
-    { value: 'tacos-2', viewValue: 'Tacos' },
-  ];
-
-  tasks: any = []
-  s1: any
 
   ngOnInit(): void {
 
@@ -65,7 +26,7 @@ export class AssignTaskComponent implements OnInit {
     })
 
     this.firestore.collection("tasks").snapshotChanges().subscribe((data: any) => {
-      this.tasks = data.map(function (task: any) {
+      this.available_tasks = data.map(function (task: any) {
         return {
           "id": task.payload.doc.id,
           "title": task.payload.doc.data().title,
@@ -84,11 +45,12 @@ export class AssignTaskComponent implements OnInit {
 
   assignTask() {
 
-    console.log(this.task)
-
     this.assignment.task_id = this.task.id
     this.assignment.task_title = this.task.title
     this.assignment.steps = this.task.steps
+
+    this.assignment.date_start = new Date(this.assignment.date_start).toISOString()
+    this.assignment.date_end = new Date(this.assignment.date_end).toISOString()
 
     var context = this
     this.firestore.collection("assignments").add(this.assignment)

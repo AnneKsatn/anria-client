@@ -132,7 +132,7 @@ export class UserInfoPageComponent implements OnInit {
     this.workerService.getWorkerById(this.worker_id).subscribe((doc: any) => {
       this.worker = doc.data()
 
-      console.log(this.worker)
+      // console.log(this.worker)
 
       this.cd.detectChanges();
     })
