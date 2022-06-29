@@ -1,1 +1,36 @@
-{{assignment_id}}
+<h2 mat-dialog-title>Информация о назначении</h2>
+
+<div>
+    <span>
+        <label>Задача</label>
+        <div class="data">
+            {{assignment.task_title}}
+        </div>
+    </span>
+</div>
+
+<div class="time">
+    <div class="time-picker">
+        <div>
+            <h3>Время начала выполнения задания</h3>
+        </div>
+        <p-calendar [(ngModel)]="assignment.date_start" [showTime]="true" [showSeconds]="true" inputId="time">
+        </p-calendar>
+    </div>
+
+    <div class="time-picker">
+        <div>
+            <h3>Время окончания выполнения задания</h3>
+        </div>
+        <p-calendar [(ngModel)]="assignment.date_end" [showTime]="true" [showSeconds]="true" inputId="time">
+        </p-calendar>
+    </div>
+</div>
+
+<div class="confirm-btn">
+    <button pButton pRipple type="button" label="Сохранить изменения" class="p-button-outlined"
+        (click)="assignTask()"></button>
+
+    <button pButton pRipple type="button" label="Удалить назначение" class="p-button-outlined delete-btn"
+        (click)="deleteTask()"></button>
+</div>
