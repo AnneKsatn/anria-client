@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { WorkerInfoPageComponent } from './worker-info-page.component';
+import { LocalizationPageComponent } from './localization-page.component';
 
-describe('WorkerInfoPageComponent', () => {
-  let component: WorkerInfoPageComponent;
-  let fixture: ComponentFixture<WorkerInfoPageComponent>;
+describe('LocalizationPageComponent', () => {
+  let component: LocalizationPageComponent;
+  let fixture: ComponentFixture<LocalizationPageComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ WorkerInfoPageComponent ]
+      declarations: [ LocalizationPageComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(WorkerInfoPageComponent);
+    fixture = TestBed.createComponent(LocalizationPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

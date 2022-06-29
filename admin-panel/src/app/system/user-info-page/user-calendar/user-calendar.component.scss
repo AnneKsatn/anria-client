@@ -4,7 +4,25 @@
         margin-right: 20px;
     }
 
-    //     .fc .fc-scroller-liquid-absolute::-webkit-scrollbar {
-    //     width: 0;
-    // }
+
+    .fc.fc-theme-standard .fc-toolbar .fc-button {
+
+        // background-color:#4A7B9D;
+        // border: 1px solid #4A7B9D;
+        // color: black;
+
+        background-color: #06A77D;
+        border: 1px solid #06A77D;
+        color: #fff;
+    }
+
+    .fc.fc-theme-standard .fc-toolbar .fc-button.fc-timeGridWeek-button.fc-button-active {
+        background-color: #0081a7;
+        border: 1px solid #0081a7;
+        color: #fff;
+
+        // background-color: #4A7B9D;
+        // border: 1px solid #4A7B9D;
+        // color: black;
+    }
 }

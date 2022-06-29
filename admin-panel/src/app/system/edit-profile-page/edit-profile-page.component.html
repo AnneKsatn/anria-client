@@ -1,7 +1,7 @@
-<h2 mat-dialog-title>Добавить пользователя</h2>
+<h2 mat-dialog-title>Редактировать профиль</h2>
 
 
-<form class="add-user-form" [formGroup]="form" (ngSubmit)="addUser()">
+<form class="add-user-form" [formGroup]="form" (ngSubmit)="updateUser()">
 
     <div>
         <div class="row">
@@ -27,7 +27,7 @@
             </div>
         </div>
 
-        <div class="row">
+       <div class="row">
             <div>
                 <span class="p-float-label">
                     <input type="text" id="inputtext" pInputText formControlName="phone"
@@ -47,7 +47,7 @@
         <div class="row">
             <div>
                 <span class="p-float-label">
-                    <input type="text" id="inputtext" pInputText formContolName="region" />
+                    <input type="text" id="inputtext" pInputText formControlName="region" />
                     <label>Регион</label>
                 </span>
             </div>
@@ -65,23 +65,11 @@
             </div>
         </div>
         <div class="row">
-            <div>
-                <span class="p-float-label">
-                    <input type="text" id="inputtext" pInputText formControlName="password"
-                        [ngClass]="{'ng-invalid ng-dirty': form.get('password')!.invalid && form.get('password')!.touched}" />
-                    <label>Пароль</label>
-                </span>
-            </div>
-        </div>
+        </div> 
     </div>
 
     <div class="add-button">
-
         <!-- <div>
-            <p *ngIf="form.get('phone')!.errors?.['isUserError']">Пользователь с таким телефоном уже
-                существует</p>
-        </div> -->
-        <div>
             <p *ngIf="form.get('password')!.invalid && form.get('password')!.touched">Пароль должен содержать не менее 5
                 символов</p>
         </div>
@@ -89,14 +77,9 @@
             <p *ngIf="form.get('email')!.invalid && form.get('email')!.touched">Введен некорректный адрес
                 электронной
                 почты</p>
-        </div>
-        <!-- <div>
-            <p *ngIf="form.get('email')!.errors?.['isUserError']">Пользователь с таким
-                email уже
-                существует</p>
         </div> -->
 
-        <button [disabled]="form.invalid" pButton pRipple type="submit" class="p-button-outlined p-button-rounded btn">Добавить
-            пользователя</button>
+        <button [disabled]="form.invalid" pButton pRipple type="submit"
+            class="p-button-outlined p-button-rounded btn">Сохранить</button>
     </div>
 </form>

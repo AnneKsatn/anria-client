@@ -93,7 +93,7 @@ export class WorkersPageComponent implements OnInit {
   }
 
   goToWorkerPage(worker_id: any) {
-    this.router.navigate(["/system/worker-info"], { queryParams: { worker_id: worker_id } })
+    this.router.navigate(["/system/user-info", worker_id, "calendar"])
   }
 
 

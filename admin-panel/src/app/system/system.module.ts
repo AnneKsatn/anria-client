@@ -16,7 +16,6 @@ import { MatInputModule } from '@angular/material/input';
 import { DialogAddWorkerComponent } from './workers-page/dialog-add-worker/dialog-add-worker.component';
 import { TasksPageComponent } from './tasks-page/tasks-page.component';
 import { AssignmentPageComponent } from './assignment-page/assignment-page.component';
-import { WorkerInfoPageComponent } from './worker-info-page/worker-info-page.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlatpickrModule } from 'angularx-flatpickr';
 import { DialogAddTaskComponent } from './tasks-page/dialog-add-task/dialog-add-task.component';
@@ -37,9 +36,24 @@ import { TableModule } from 'primeng/table';
 import { DropdownModule } from 'primeng/dropdown';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { SliderModule } from 'primeng/slider';
-
 import { ProgressBarModule } from 'primeng/progressbar';
 import { AddWorkerPageComponent } from './add-worker-page/add-worker-page.component';
+import { EditProfilePageComponent } from './edit-profile-page/edit-profile-page.component';
+import { UserCalendarComponent } from './user-info-page/user-calendar/user-calendar.component';
+import { TabViewModule } from 'primeng/tabview';
+import { UserInfoPageComponent } from './user-info-page/user-info-page.component';
+import { UserDetailsComponent } from './user-info-page/user-details/user-details.component';
+import { UserActivityComponent } from './user-info-page/user-activity/user-activity.component';
+import { GroupsComponent } from './groups/groups.component';
+import { AssignTaskComponent } from './user-info-page/assign-task/assign-task.component';
+
+import { CalendarModule } from 'primeng/calendar';
+import { UserOnboardingComponent } from './user-info-page/user-onboarding/user-onboarding.component';
+import { TimelineModule } from 'primeng/timeline';
+import { CardModule } from 'primeng/card';
+import { LocalizationPageComponent } from './localization-page/localization-page.component';
+import { StepInfoPageComponent } from './task-info-page/step-info-page/step-info-page.component';
+import { DialogModule } from 'primeng/dialog';
 
 
 FullCalendarModule.registerPlugins([
@@ -56,12 +70,21 @@ FullCalendarModule.registerPlugins([
     DialogAddWorkerComponent,
     TasksPageComponent,
     AssignmentPageComponent,
-    WorkerInfoPageComponent,
     DialogAddTaskComponent,
     DialogAssignmentComponent,
     TaskInfoPageComponent,
     DialogAddStepComponent,
-    AddWorkerPageComponent
+    AddWorkerPageComponent,
+    EditProfilePageComponent,
+    UserCalendarComponent,
+    UserInfoPageComponent,
+    UserDetailsComponent,
+    UserActivityComponent,
+    GroupsComponent,
+    AssignTaskComponent,
+    UserOnboardingComponent,
+    LocalizationPageComponent,
+    StepInfoPageComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -90,7 +113,12 @@ FullCalendarModule.registerPlugins([
     MultiSelectModule,
     SliderModule,
     ProgressBarModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    TabViewModule,
+    CalendarModule,
+    TimelineModule,
+    CardModule,
+    DialogModule
   ]
 })
 export class SystemModule { }

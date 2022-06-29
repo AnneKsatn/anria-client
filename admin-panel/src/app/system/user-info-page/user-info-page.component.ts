@@ -44,37 +44,40 @@ export class UserInfoPageComponent implements OnInit {
     this.getWorkerInfo()
   }
 
-  addEvent(): void {
+  assignTask(): void {
 
-    let worker = {
-      id: this.worker_id
-    }
-    const dialogRef = this.dialog.open(DialogAssignmentComponent, {
-      width: '50%',
-      data: { worker: worker }
-    });
+    this.router.navigate(["/system/user-info", this.worker_id, "assign-task"])
 
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        console.log(result);
 
-        let assignment = {
-          worker_id: result.worker.id,
-          task_id: result.task.id,
-          date_start: result.date_start,
-          date_end: result.date_end,
-          task_title: result.task.title
-        }
+    // let worker = {
+    //   id: this.worker_id
+    // }
+    // const dialogRef = this.dialog.open(DialogAssignmentComponent, {
+    //   width: '50%',
+    //   data: { worker: worker }
+    // });
 
-        this.firestore.collection("assignments").add(assignment)
-          .then(function (docRef) {
-            console.log(docRef.id);
-          })
+    // dialogRef.afterClosed().subscribe(result => {
+    //   if (result) {
+    //     console.log(result);
 
-      } else {
-        console.log("no")
-      }
-    });
+    //     let assignment = {
+    //       worker_id: result.worker.id,
+    //       task_id: result.task.id,
+    //       date_start: result.date_start,
+    //       date_end: result.date_end,
+    //       task_title: result.task.title
+    //     }
+
+    //     this.firestore.collection("assignments").add(assignment)
+    //       .then(function (docRef) {
+    //         console.log(docRef.id);
+    //       })
+
+    //   } else {
+    //     console.log("no")
+    //   }
+    // });
   }
 
   deleteEvent(eventToDelete: any) {
@@ -147,5 +150,21 @@ export class UserInfoPageComponent implements OnInit {
 
   editWorker() {
     this.router.navigateByUrl("system/edit-profile-page")
+  }
+
+  openInfo() {
+    this.router.navigate(["/system/user-info", this.worker_id, "details"])
+  }
+
+  openCalendar() {
+    this.router.navigate(["/system/user-info", this.worker_id, "calendar"])
+  }
+
+  openActivity() {
+    this.router.navigate(["/system/user-info", this.worker_id, "activity"])
+  }
+
+  openOnboarding() {
+    this.router.navigate(["/system/user-info", this.worker_id, "user-onboarding"])
   }
 }

@@ -1,1 +1,98 @@
-<p>user-details works!</p>
+<div class="row-header">
+    <h2>Профиль сотрудника</h2>
+
+    <div class="btns">
+        <button pButton pRipple icon="bx bx-edit" type="button" class="p-button-outlined"
+            (click)="editWorker()"></button>
+        <button pButton pRipple icon="bx bx-lock" type="button" class="p-button-outlined" disabled></button>
+        <button pButton pRipple icon="bx bx-trash" type="button" class="p-button-outlined"
+            (click)="showDeleteDialog()"></button>
+    </div>
+</div>
+
+
+<div class="add-user-form">
+    <div>
+        <div class="row">
+            <div>
+                <span>
+                    <label>Фамилия</label>
+                    <div class="data">
+                        {{worker.surname}}
+                    </div>
+                </span>
+            </div>
+            <div>
+                <span>
+                    <label>Имя</label>
+                    <div class="data">
+                        {{worker.name}}
+                    </div>
+                </span>
+            </div>
+            <div>
+                <span>
+                    <label>Отчество</label>
+                    <div class="data">
+                        {{worker.patronymic}}
+                    </div>
+                </span>
+            </div>
+        </div>
+
+        <div class="row">
+            <div>
+                <span>
+                    <label>Телефон</label>
+                    <div class="data">
+                        {{worker.phone}}
+                    </div>
+                </span>
+            </div>
+            <div>
+                <span>
+                    <label>Email</label>
+                    <div class="data">
+                        {{worker.email}}
+                    </div>
+                </span>
+            </div>
+        </div>
+
+        <div class="row">
+            <div>
+                <span>
+                    <label>Регион</label>
+                    <div class="data">
+                        {{worker.region}}
+                    </div>
+                </span>
+            </div>
+            <div>
+                <span>
+                    <label>Отдел</label>
+                    <div class="data">
+                        {{worker.department}}
+                    </div>
+                </span>
+            </div>
+            <div>
+                <span>
+                    <label>Позиция</label>
+                    <div class="data">
+                        {{worker.position}}
+                    </div>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<p-dialog header="Удалить сотрудника?" [(visible)]="displayDeleteDialog" [breakpoints]="{'960px': '75vw'}"
+    [style]="{width: '50vw'}" [draggable]="false" [resizable]="false">
+    <p>Если вы удалите сотрудника, действие невозможно будет отменить</p>
+    <ng-template pTemplate="footer">
+        <p-button (click)="displayDeleteDialog=false" label="No" styleClass="p-button-text"></p-button>
+        <p-button (click)="deleteWorker()" label="Yes" styleClass="p-button-text"></p-button>
+    </ng-template>
+</p-dialog>

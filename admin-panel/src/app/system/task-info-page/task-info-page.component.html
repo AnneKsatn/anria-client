@@ -16,8 +16,8 @@
 <button mat-raised-button color="primary" (click)="addStep()"> Добавить шаг </button> -->
 
 <p-orderList [value]="task.steps" [listStyle]="{'height':'auto'}" header="Шаги задачи" [dragdrop]="true"
-    (onReorder)="orderChanged()">
-    <ng-template let-step pTemplate="item">
+    (onReorder)="orderChanged()" class="order-list">
+    <ng-template let-step pTemplate="item" class="order-list">
         <div class="step-item">
             <div class="step-number">
                 {{step.number}}
@@ -34,9 +34,15 @@
                 </div>
             </div>
 
-            <div (click)="deleteStep(step)">
-                <mat-icon>delete</mat-icon>
+            <div class="butns">
+                <div (click)="info(step)">
+                    <mat-icon>info</mat-icon>
+                </div>
+                <div (click)="deleteStep(step)">
+                    <mat-icon>delete</mat-icon>
+                </div>
             </div>
         </div>
     </ng-template>
 </p-orderList>
+

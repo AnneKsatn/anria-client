@@ -11,12 +11,12 @@ export interface PeriodicElement {
 }
 
 const ELEMENT_DATA: PeriodicElement[] = [
-  {title: "Проверка функционарирования предохранительного выклчателя задних ворот листогибочного пресса TrueBend 5230"},
-  {title: "Проверка функционарирования предохранительного выклчателя задних ворот листогибочного пресса TrueBend 5230"},
-  {title: "Проверка функционарирования предохранительного выклчателя задних ворот листогибочного пресса TrueBend 5230"},
-  {title: "Проверка функционарирования предохранительного выклчателя задних ворот листогибочного пресса TrueBend 5230"},
-  {title: "Проверка функционарирования предохранительного выклчателя задних ворот листогибочного пресса TrueBend 5230"},
-  {title: "Проверка функционарирования предохранительного выклчателя задних ворот листогибочного пресса TrueBend 5230"},
+  { title: "Проверка функционарирования предохранительного выклчателя задних ворот листогибочного пресса TrueBend 5230" },
+  { title: "Проверка функционарирования предохранительного выклчателя задних ворот листогибочного пресса TrueBend 5230" },
+  { title: "Проверка функционарирования предохранительного выклчателя задних ворот листогибочного пресса TrueBend 5230" },
+  { title: "Проверка функционарирования предохранительного выклчателя задних ворот листогибочного пресса TrueBend 5230" },
+  { title: "Проверка функционарирования предохранительного выклчателя задних ворот листогибочного пресса TrueBend 5230" },
+  { title: "Проверка функционарирования предохранительного выклчателя задних ворот листогибочного пресса TrueBend 5230" },
 ];
 
 
@@ -27,7 +27,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export class TasksPageComponent implements OnInit {
 
-  dataR: any = []
+  tasks: any = []
 
   constructor(
     public dialog: MatDialog,
@@ -36,16 +36,14 @@ export class TasksPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.firestore.collection('/tasks').snapshotChanges().subscribe((data: any) => {
-      this.dataR = data.map(function(item: any){
+      this.tasks = data.map(function (item: any) {
         return {
           "title": item.payload.doc.data().title,
           "id": item.payload.doc.id
         }
       })
 
-      this.dataR = new MatTableDataSource(this.dataR)
-
-      console.log(this.dataR)
+      // this.tasks = new MatTableDataSource(this.dataR)
     })
   }
 
@@ -74,11 +72,6 @@ export class TasksPageComponent implements OnInit {
     });
   }
 
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataR.filter = filterValue.trim().toLowerCase();
-  }
-
   deleteTask(id_element: any) {
     this.firestore.collection("tasks").doc(id_element).delete()
   }
@@ -98,6 +91,6 @@ export class TasksPageComponent implements OnInit {
 
   goToTaskPage(element: any) {
     console.log(element)
-    this.router.navigate(["/system/task-info"],  {queryParams: {element_id: element.id}})
+    this.router.navigate(["/system/task-info"], { queryParams: { element_id: element.id } })
   }
 }

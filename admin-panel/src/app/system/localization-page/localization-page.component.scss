@@ -1,0 +1,35 @@
+
+
+.content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: stretch;
+}
+
+.assistent-card {
+    max-width: 250px;
+    margin-right: 10px;
+    margin-top: 10px;
+
+
+    border-radius: 4px;
+    background: #fff;
+
+    box-shadow: 0 6px 10px rgba(0, 0, 0, .08), 0 0 6px rgba(0, 0, 0, .05);
+    transition: .3s transform cubic-bezier(.155, 1.105, .295, 1.12), .3s box-shadow, .3s -webkit-transform cubic-bezier(.155, 1.105, .295, 1.12);
+
+    cursor: pointer;
+}
+
+.assistent-card-img {
+    max-width: 250px;
+    height: 150px;  
+    background-size: cover;
+    margin-bottom: 30px;
+}
+
+.assistent-card p {
+    padding-left: 20px;
+    padding-bottom: 20px;
+}

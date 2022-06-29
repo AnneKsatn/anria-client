@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFirestore} from '@angular/fire/compat/firestore';
-import { ActivatedRoute } from '@angular/router';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { ActivatedRoute, Router } from '@angular/router';
 import * as firebase from 'firebase/app';
 import 'firebase/firestore'
 import { MatDialog, MatDialogModule, MAT_DIALOG_DATA, MatDialogConfig } from '@angular/material/dialog';
@@ -17,8 +17,10 @@ export class TaskInfoPageComponent implements OnInit {
 
   constructor(
     public dialog: MatDialog,
-    private activatedRoute: ActivatedRoute, 
-    private firestore: AngularFirestore) { }
+    private activatedRoute: ActivatedRoute,
+    private firestore: AngularFirestore,
+    private router: Router
+  ) { }
 
   task: any = {
     steps: []
@@ -28,13 +30,13 @@ export class TaskInfoPageComponent implements OnInit {
 
   getData() {
     this.firestore.collection("tasks").doc(this.task_id).get()
-    .subscribe((data: any) => {
-      this.task = data.data()
-    })
+      .subscribe((data: any) => {
+        this.task = data.data()
+      })
   }
 
   ngOnInit(): void {
-    this.activatedRoute.queryParams.subscribe( (params: any) => {
+    this.activatedRoute.queryParams.subscribe((params: any) => {
       this.task_id = params['element_id']
     });
 
@@ -49,20 +51,20 @@ export class TaskInfoPageComponent implements OnInit {
 
     const dialogRef = this.dialog.open(DialogAddStepComponent, {
       width: '50%',
-      data: {description: ""}
+      data: { description: "" }
     });
 
-    
+
     dialogRef.afterClosed().subscribe(result => {
       console.log(result)
 
-        this.task.steps = [...this.task.steps, {
-          description: result.description
-        }];
-        
-        this.firestore.collection("tasks").doc(this.task_id).update(
-          this.task
-          );
+      this.task.steps = [...this.task.steps, {
+        description: result.description
+      }];
+
+      this.firestore.collection("tasks").doc(this.task_id).update(
+        this.task
+      );
 
     });
 
@@ -88,6 +90,11 @@ export class TaskInfoPageComponent implements OnInit {
     );
 
     this.getData()
+  }
+
+  info(step: any) {
+    this.router.navigateByUrl("/system/step-info")
+    console.log(step)
   }
 }
 

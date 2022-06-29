@@ -1,0 +1,20 @@
+
+<h2>Onboarding</h2>
+
+<div class="card">
+   
+    <p-timeline [value]="events1" align="alternate" styleClass="customized-timeline">
+        <ng-template pTemplate="marker" let-event>
+            <span class="custom-marker shadow-2" [style.backgroundColor]="event.color">
+                <!-- <i [ngClass]="event.icon"></i> -->
+            </span>
+        </ng-template>
+        <ng-template pTemplate="content" let-event>
+            <p-card [header]="event.title" [subheader]="event.date">
+                <p>Статус: {{event.status}}</p>
+                <p>Базовая информация</p>
+                <!-- <button pButton label="Read more" class="p-button-text"></button> -->
+            </p-card>
+        </ng-template>
+    </p-timeline>
+</div>

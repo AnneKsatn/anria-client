@@ -1,0 +1,7 @@
+h2 {
+    padding-top: 10px;
+}
+
+:host::ng-deep.p-card .p-card-content {
+    padding-bottom: 0px;
+}

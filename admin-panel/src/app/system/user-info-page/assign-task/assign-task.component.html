@@ -1,0 +1,35 @@
+
+
+<h2 mat-dialog-title>Назначить задачу</h2>
+
+<div class="task-dropdown">
+    <p-dropdown [options]="tasks" [(ngModel)]="task" placeholder="Выберете задачу" optionLabel="title"
+        [showClear]="true"></p-dropdown>
+</div>
+
+<div class="time">
+    <div class="time-picker">
+        <div>
+            <h3>Время начала выполнения задания</h3>
+        </div>
+        <p-calendar [(ngModel)]="assignment.date_start" [showTime]="true" [showSeconds]="true" inputId="time"></p-calendar>
+    </div>
+
+    <div class="time-picker">
+        <div>
+            <h3>Время окончания выполнения задания</h3>
+        </div>
+        <p-calendar [(ngModel)]="assignment.date_end" [showTime]="true" [showSeconds]="true" inputId="time"></p-calendar>
+    </div>
+</div>
+
+<div class="confirm-btn">
+    <button 
+    pButton 
+    pRipple 
+    type="button" 
+    label="Подтвердить" 
+    class="p-button-outlined"
+    (click)="assignTask()"
+    ></button>
+</div>

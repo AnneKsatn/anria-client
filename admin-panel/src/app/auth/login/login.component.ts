@@ -19,11 +19,11 @@ export class LoginComponent implements OnInit {
 
   constructor(private router: Router) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
-  onSubmit(){
+  onSubmit() {
     console.log(this.form)
-    this.router.navigateByUrl("/system")
+    this.router.navigateByUrl("/system/workers")
   }
 
 }

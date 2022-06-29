@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { WorkerService } from 'src/app/shared/services/worker.service';
+import { debounceTime, switchMap } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-add-worker-page',
@@ -8,18 +12,18 @@ import { AbstractControl, FormControl, FormGroup, ValidationErrors, Validators }
 })
 export class AddWorkerPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private workerService: WorkerService) { }
 
   form!: FormGroup;
 
 
   ngOnInit() {
     this.form = new FormGroup({
-      'lastName': new FormControl('', [Validators.required]),
+      'surname': new FormControl('', [Validators.required]),
       'name': new FormControl('', [Validators.required]),
-      'middleName': new FormControl(),
+      'patronymic': new FormControl(),
       'phone': new FormControl('', [Validators.required]),
-      'email': new FormControl('', [Validators.required, Validators.email, this.checkUser]),
+      'email': new FormControl('', [Validators.required, Validators.email]),
       'password': new FormControl('', [Validators.required, Validators.minLength(6)]),
       'region': new FormControl(),
       'department': new FormControl(),
@@ -29,15 +33,9 @@ export class AddWorkerPageComponent implements OnInit {
   }
 
   addUser() {
-    console.log(this.form)
-  }
+    this.workerService.addWorker(this.form.value).catch(err => {
+      console.log(err)
+    })
 
-  checkUser(control: AbstractControl): ValidationErrors | null {
-    if (control.value.length <= 4) {
-      return {
-        'isUserError': true
-      }
-    }
-    return null
   }
 }
