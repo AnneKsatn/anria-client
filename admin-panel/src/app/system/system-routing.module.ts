@@ -18,6 +18,7 @@ import { StepInfoPageComponent } from './task-info-page/step-info-page/step-info
 import { AssignmentInfoComponent } from './user-info-page/assignment-info/assignment-info.component';
 import { AssingmentsPageComponent } from './assingments-page/assingments-page.component';
 import { AssingmentIngoPageComponent } from './assingment-ingo-page/assingment-ingo-page.component';
+import { AddStepPageComponent } from './task-info-page/add-step-page/add-step-page.component';
 
 
 const routes: Routes = [
@@ -42,7 +43,8 @@ const routes: Routes = [
       { path: 'groups', component: GroupsComponent },
       { path: 'assistant', component: LocalizationPageComponent },
       { path: 'step-info', component: StepInfoPageComponent },
-      { path: 'assignments', component: AssingmentsPageComponent }
+      { path: 'assignments', component: AssingmentsPageComponent },
+      { path: 'add-step', component: AddStepPageComponent }
     ]
   }
 ]

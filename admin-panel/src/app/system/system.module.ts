@@ -84,7 +84,7 @@ FullCalendarModule.registerPlugins([
     StepInfoPageComponent,
     AssignmentInfoComponent,
     AssingmentsPageComponent,
-    AssingmentIngoPageComponent
+    AssingmentIngoPageComponent,
   ],
   imports: [
     BrowserAnimationsModule,

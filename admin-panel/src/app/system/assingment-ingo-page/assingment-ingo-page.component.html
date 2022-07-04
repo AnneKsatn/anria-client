@@ -1,1 +1,62 @@
-<p>assingment-ingo-page works!</p>
+<h2 mat-dialog-title>Информация о назначении</h2>
+
+
+<div>
+    <span>
+        <label>Задача</label>
+        <div class="data-box task-title">
+            {{assignment.task_title}}
+        </div>
+    </span>
+</div>
+
+<div class="row">
+    <span class="user-data">
+        <label>Исполнитель</label>
+        <div class="data-box">
+            {{assignment.worker_name}}
+        </div>
+    </span>
+    <span class="user-data">
+        <label>Инициатор</label>
+        <div class="data-box">
+            {{assignment.initiator}}
+        </div>
+    </span>
+
+    <span class="user-data">
+        <label>Статус</label>
+        <div class="data-box">
+            {{assignment.status}}
+        </div>
+    </span>
+</div>
+
+
+<div class="row">
+    <div class="time-picker">
+        <label>Время начала выполнения задания</label>
+        <p-calendar [(ngModel)]="assignment.date_start" [showTime]="true" [showSeconds]="true" inputId="time">
+        </p-calendar>
+    </div>
+
+    <div class="time-picker">
+        <label>Время окончания выполнения задания</label>
+        <p-calendar [(ngModel)]="assignment.date_end" [showTime]="true" [showSeconds]="true" inputId="time">
+        </p-calendar>
+    </div>
+</div>
+
+
+<div>
+    {{assignment.steps}}
+
+</div>
+
+<div class="confirm-btn">
+    <!-- <button pButton pRipple type="button" label="Сохранить изменения" class="p-button-outlined"
+        (click)="assignTask()"></button>
+
+    <button pButton pRipple type="button" label="Удалить назначение" class="p-button-outlined delete-btn"
+        (click)="deleteTask()"></button> -->
+</div>
