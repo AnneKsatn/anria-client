@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { StepService } from 'src/app/shared/services/step.service';
 
 @Component({
   selector: 'app-step-info-page',
@@ -7,9 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StepInfoPageComponent implements OnInit {
 
-  constructor() { }
+  step_id!: string;
+  step!: any;
+
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private stepService: StepService
+  ) { }
 
   ngOnInit(): void {
-  }
+    this.activatedRoute.queryParams.subscribe((params: any) => {
+      this.step_id = params["id"]
 
+      this.stepService.getStepById(this.step_id).subscribe((data: any) => {
+        this.step = data.data()
+        console.log(this.step)
+      })
+    })
+  }
 }

@@ -4,23 +4,8 @@
 
 <div class="btn-filter-block">
   <button mat-raised-button color="primary"  (click)="addStep()"> Добавить шаг </button>
-
-  <!-- <mat-form-field appearance="standard" class="filter">
-    <mat-label>Фильтр</mat-label>
-    <input matInput (keyup)="applyFilter($event)" placeholder="Касаткина или 8921573714" #input>
-  </mat-form-field> -->
 </div>
 
-
-<!-- 
-<button mat-raised-button color="primary" (click)="addStep()"> Добавить шаг </button> -->
-
-
-<!-- <div>
-    <div class="step" *ngFor="let step of task.steps">
-{{step.description}}
-    </div>
-</div> -->
 
 
 <p-orderList [value]="task.steps" [listStyle]="{'height':'auto'}" header="Шаги задачи" [dragdrop]="true"
@@ -28,11 +13,11 @@
     <ng-template let-step pTemplate="item" class="order-list">
         <div class="step-item">
             <div class="step-number">
-                {{step.number}}
+                <!-- {{step.number}} -->
             </div>
             <div>
                 <div>
-                    {{step.description}}
+                    {{steps[step]?.title}}
                 </div>
             
                 <div>
@@ -54,3 +39,16 @@
     </ng-template>
 </p-orderList>
 
+<h5>Responsive</h5>
+<p-dialog header="Header" [(visible)]="display" [breakpoints]="{'960px': '75vw'}" [style]="{width: '50vw'}"
+    [draggable]="false" [resizable]="false">
+
+    <h5>Basic</h5>
+    <input type="text" pInputText [(ngModel)]="value1">
+    <span class="ml-2">{{value1}}</span>
+    
+    <ng-template pTemplate="footer">
+        <p-button (click)="display=false" label="No" styleClass="p-button-text"></p-button>
+        <p-button (click)="display=false" label="Yes" styleClass="p-button-text"></p-button>
+    </ng-template>
+</p-dialog>
