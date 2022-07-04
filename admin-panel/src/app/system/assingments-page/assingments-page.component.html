@@ -1,1 +1,56 @@
-<p>assingments-page works!</p>
+<h2>Назначения задач</h2>
+
+<div class="table">
+    <div class="card">
+        <p-table #dt1 [value]="tasks" dataKey="id" [rows]="10" [showCurrentPageReport]="true"
+            [rowsPerPageOptions]="[10,25,50]" styleClass="p-datatable-gridlines" [paginator]="true"
+            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [scrollable]="true"
+            scrollDirection="both">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th style="width:15%">Пользователь</th>
+                    <th style="width:50%">Задача</th>
+                    <th style="width:15%">Статус</th>
+                    <th style="width:15%">Старт</th>
+                    <th style="width:15%">Конец</th>
+                    <th style="width:30%">Инициатор</th>
+                    <th style="width:30%">Проверяющий</th>
+                </tr>
+            </ng-template>
+
+            <ng-template pTemplate="body" let-task>
+                <tr (click)="goToTaskPage(task)">
+
+                                        <td style="width:15%">
+                                            {{task.user}}
+                                        </td>
+
+                    <td style="width:50%">
+                        {{task.title}}
+                    </td>
+
+                    <td style="width:15%">
+                        {{task.status}}
+                    </td>
+                    <td style="width:15%">
+                        {{task.start}}
+                    </td>
+                    <td style="width:15%">
+                        {{task.end}}
+                    </td>
+                    <td style="width:30%">
+                        {{task.creator}}
+                    </td>
+                    <td style="width:30%">
+                        {{task.reviewer}}
+                    </td>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage">
+                <tr>
+                    <td>Задач не найдено.</td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</div>

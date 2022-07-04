@@ -17,6 +17,7 @@ import { UserOnboardingComponent } from './user-info-page/user-onboarding/user-o
 import { LocalizationPageComponent } from './localization-page/localization-page.component';
 import { StepInfoPageComponent } from './task-info-page/step-info-page/step-info-page.component';
 import { AssignmentInfoComponent } from './user-info-page/assignment-info/assignment-info.component';
+import { AssingmentsPageComponent } from './assingments-page/assingments-page.component';
 
 
 const routes: Routes = [
@@ -40,7 +41,8 @@ const routes: Routes = [
       { path: 'edit-profile-page', component: EditProfilePageComponent },
       { path: 'groups', component: GroupsComponent },
       { path: 'assistant', component: LocalizationPageComponent },
-      { path: 'step-info', component: StepInfoPageComponent }
+      { path: 'step-info', component: StepInfoPageComponent },
+      { path: 'assignments', component: AssingmentsPageComponent }
     ]
   }
 ]
