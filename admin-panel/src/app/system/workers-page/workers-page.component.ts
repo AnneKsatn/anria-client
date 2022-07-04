@@ -1,13 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogModule, MAT_DIALOG_DATA, MatDialogConfig } from '@angular/material/dialog';
-import { DialogAddWorkerComponent } from './dialog-add-worker/dialog-add-worker.component';
 import { Firestore, collectionData, collection } from '@angular/fire/firestore';
 import { MatTableDataSource } from '@angular/material/table';
 
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 import { WorkerService } from 'src/app/shared/services/worker.service';
 import { Router } from '@angular/router';
-import { DialogAssignmentComponent } from '../dialog-assignment/dialog-assignment.component';
 
 export interface PeriodicElement {
   name: string;

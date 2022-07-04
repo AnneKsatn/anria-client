@@ -13,13 +13,11 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { DialogAddWorkerComponent } from './workers-page/dialog-add-worker/dialog-add-worker.component';
 import { TasksPageComponent } from './tasks-page/tasks-page.component';
 import { AssignmentPageComponent } from './assignment-page/assignment-page.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlatpickrModule } from 'angularx-flatpickr';
 import { DialogAddTaskComponent } from './tasks-page/dialog-add-task/dialog-add-task.component';
-import { DialogAssignmentComponent } from './dialog-assignment/dialog-assignment.component';
 import { TaskInfoPageComponent } from './task-info-page/task-info-page.component';
 import { OrderListModule } from 'primeng/orderlist';
 import { DialogAddStepComponent } from './task-info-page/dialog-add-step/dialog-add-step.component';
@@ -55,6 +53,7 @@ import { LocalizationPageComponent } from './localization-page/localization-page
 import { StepInfoPageComponent } from './task-info-page/step-info-page/step-info-page.component';
 import { DialogModule } from 'primeng/dialog';
 import { AssignmentInfoComponent } from './user-info-page/assignment-info/assignment-info.component';
+import { AssingmentsPageComponent } from './assingments-page/assingments-page.component';
 
 
 FullCalendarModule.registerPlugins([
@@ -68,11 +67,9 @@ FullCalendarModule.registerPlugins([
   declarations: [
     WorkersPageComponent,
     SystemComponent,
-    DialogAddWorkerComponent,
     TasksPageComponent,
     AssignmentPageComponent,
     DialogAddTaskComponent,
-    DialogAssignmentComponent,
     TaskInfoPageComponent,
     DialogAddStepComponent,
     AddWorkerPageComponent,
@@ -86,7 +83,8 @@ FullCalendarModule.registerPlugins([
     UserOnboardingComponent,
     LocalizationPageComponent,
     StepInfoPageComponent,
-    AssignmentInfoComponent
+    AssignmentInfoComponent,
+    AssingmentsPageComponent
   ],
   imports: [
     BrowserAnimationsModule,

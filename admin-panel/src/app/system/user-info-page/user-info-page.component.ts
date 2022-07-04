@@ -3,7 +3,6 @@ import { startOfDay, endOfDay, subDays, addDays, endOfMonth, isSameDay, isSameMo
 import { Subject } from 'rxjs';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { DialogAssignmentComponent } from '../dialog-assignment/dialog-assignment.component';
 import { MatDialog } from '@angular/material/dialog';
 import { WorkerService } from 'src/app/shared/services/worker.service';
 import { ConditionalExpr } from '@angular/compiler';
