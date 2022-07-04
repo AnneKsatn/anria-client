@@ -14,7 +14,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { TasksPageComponent } from './tasks-page/tasks-page.component';
-import { AssignmentPageComponent } from './assignment-page/assignment-page.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlatpickrModule } from 'angularx-flatpickr';
 import { DialogAddTaskComponent } from './tasks-page/dialog-add-task/dialog-add-task.component';
@@ -54,6 +53,7 @@ import { StepInfoPageComponent } from './task-info-page/step-info-page/step-info
 import { DialogModule } from 'primeng/dialog';
 import { AssignmentInfoComponent } from './user-info-page/assignment-info/assignment-info.component';
 import { AssingmentsPageComponent } from './assingments-page/assingments-page.component';
+import { AssingmentIngoPageComponent } from './assingment-ingo-page/assingment-ingo-page.component';
 
 
 FullCalendarModule.registerPlugins([
@@ -68,7 +68,6 @@ FullCalendarModule.registerPlugins([
     WorkersPageComponent,
     SystemComponent,
     TasksPageComponent,
-    AssignmentPageComponent,
     DialogAddTaskComponent,
     TaskInfoPageComponent,
     DialogAddStepComponent,
@@ -84,7 +83,8 @@ FullCalendarModule.registerPlugins([
     LocalizationPageComponent,
     StepInfoPageComponent,
     AssignmentInfoComponent,
-    AssingmentsPageComponent
+    AssingmentsPageComponent,
+    AssingmentIngoPageComponent
   ],
   imports: [
     BrowserAnimationsModule,

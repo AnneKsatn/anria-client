@@ -14,35 +14,31 @@
                     <th style="width:15%">Старт</th>
                     <th style="width:15%">Конец</th>
                     <th style="width:30%">Инициатор</th>
-                    <th style="width:30%">Проверяющий</th>
                 </tr>
             </ng-template>
 
             <ng-template pTemplate="body" let-task>
                 <tr (click)="goToTaskPage(task)">
 
-                                        <td style="width:15%">
-                                            {{task.user}}
-                                        </td>
+                    <td style="width:15%">
+                        {{task.worker.surname}} {{task.worker.name}} {{task.worker.patronymic}}
+                    </td>
 
                     <td style="width:50%">
-                        {{task.title}}
+                        {{task.task_title}}
                     </td>
 
                     <td style="width:15%">
                         {{task.status}}
                     </td>
                     <td style="width:15%">
-                        {{task.start}}
+                        {{task.date_start}}
                     </td>
                     <td style="width:15%">
-                        {{task.end}}
+                        {{task.date_end}}
                     </td>
                     <td style="width:30%">
-                        {{task.creator}}
-                    </td>
-                    <td style="width:30%">
-                        {{task.reviewer}}
+                        {{task.initiator}}
                     </td>
                 </tr>
             </ng-template>

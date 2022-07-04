@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AssignmentPageComponent } from './assignment-page/assignment-page.component';
 import { SystemComponent } from './system.component';
 import { TaskInfoPageComponent } from './task-info-page/task-info-page.component';
 import { TasksPageComponent } from './tasks-page/tasks-page.component';
@@ -18,6 +17,7 @@ import { LocalizationPageComponent } from './localization-page/localization-page
 import { StepInfoPageComponent } from './task-info-page/step-info-page/step-info-page.component';
 import { AssignmentInfoComponent } from './user-info-page/assignment-info/assignment-info.component';
 import { AssingmentsPageComponent } from './assingments-page/assingments-page.component';
+import { AssingmentIngoPageComponent } from './assingment-ingo-page/assingment-ingo-page.component';
 
 
 const routes: Routes = [
@@ -35,7 +35,7 @@ const routes: Routes = [
       },
       { path: 'workers', component: WorkersPageComponent },
       { path: 'tasks', component: TasksPageComponent },
-      { path: 'assignment', component: AssignmentPageComponent },
+      { path: 'assignment-info', component: AssingmentIngoPageComponent },
       { path: 'task-info', component: TaskInfoPageComponent },
       { path: 'add-worker', component: AddWorkerPageComponent },
       { path: 'edit-profile-page', component: EditProfilePageComponent },

@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AssignmentPageComponent } from './assignment-page.component';
+import { AssingmentIngoPageComponent } from './assingment-ingo-page.component';
 
-describe('AssignmentPageComponent', () => {
-  let component: AssignmentPageComponent;
-  let fixture: ComponentFixture<AssignmentPageComponent>;
+describe('AssingmentIngoPageComponent', () => {
+  let component: AssingmentIngoPageComponent;
+  let fixture: ComponentFixture<AssingmentIngoPageComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AssignmentPageComponent ]
+      declarations: [ AssingmentIngoPageComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AssignmentPageComponent);
+    fixture = TestBed.createComponent(AssingmentIngoPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

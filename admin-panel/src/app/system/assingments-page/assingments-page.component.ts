@@ -10,15 +10,15 @@ import { Router } from '@angular/router';
 export class AssingmentsPageComponent implements OnInit {
 
   tasks: any = [
-    {
-      user: "Касаткина Мария Сергеевна",
-      title: "Автоматизированное обслуживание оборудования. 'Листогибочный пресс TruBend 5230'",
-      status: "Выполнено без ошибок",
-      start: "25.09.2022 12:00",
-      end: "25.09.2022 14:00",
-      creator: "Сухова Анна Сергевна",
-      reviewer: "Сухова Анна Сергеевна"
-    }
+    // {
+    //   user: "Касаткина Мария Сергеевна",
+    //   title: "Автоматизированное обслуживание оборудования. 'Листогибочный пресс TruBend 5230'",
+    //   status: "Выполнено без ошибок",
+    //   start: "25.09.2022 12:00",
+    //   end: "25.09.2022 14:00",
+    //   creator: "Сухова Анна Сергевна",
+    //   reviewer: "Сухова Анна Сергеевна"
+    // }
   ]
 
   constructor(
@@ -26,44 +26,34 @@ export class AssingmentsPageComponent implements OnInit {
     public router: Router) { }
 
   ngOnInit(): void {
-    this.firestore.collection('/tasks').snapshotChanges().subscribe((data: any) => {
-      // this.tasks = data.map(function (item: any) {
-      //   return {
-      //     "title": item.payload.doc.data().title,
-      //     "id": item.payload.doc.id
-      //   }
-      // })
+    this.firestore.collection('/assignments').snapshotChanges().subscribe((data: any) => {
+      this.tasks = data.map(function (assignment: any) {
+        return {
+          date_start: new Date(assignment.payload.doc.data().date_start),
+          date_end: new Date(assignment.payload.doc.data().date_end),
+          status: assignment.payload.doc.data().isCompleted,
+          task_title: assignment.payload.doc.data().task_title,
+          worker_id: assignment.payload.doc.data().worker_id,
+          worker: {},
+          initiator: "Касаткина Анна Сергеевна",
+          id: assignment.payload.doc.id
+        }
+      })
 
-      // this.tasks = new MatTableDataSource(this.dataR)
+      this.tasks.forEach((element: any) => {
+        this.firestore.collection("workers").doc(element.worker_id).get().subscribe(data => {
+          element.worker = data.data()
+        })
+      });
     })
   }
 
-  displayedColumns: string[] = ['title'];
-  columnsToDisplay: string[] = ['title', 'info', 'edit', 'delete'];
-
-
   addTask() {
-  }
 
-  deleteTask(id_element: any) {
-    this.firestore.collection("tasks").doc(id_element).delete()
-  }
-
-  editTask(task: any) {
-    // const dialogRef = this.dialog.open(DialogAddTaskComponent, {
-    //   width: '50%',
-    //   data: task
-    // });
-
-    // dialogRef.afterClosed().subscribe(result => {
-    //   if (result) {
-    //     this.firestore.collection("tasks").doc(result.id).update(result)
-    //   }
-    // });
   }
 
   goToTaskPage(element: any) {
     console.log(element)
-    this.router.navigate(["/system/task-info"], { queryParams: { element_id: element.id } })
+    this.router.navigate(["/system/assignment-info"], { queryParams: { id: element.id } })
   }
 }
