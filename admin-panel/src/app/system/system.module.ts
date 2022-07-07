@@ -19,7 +19,7 @@ import { FlatpickrModule } from 'angularx-flatpickr';
 import { DialogAddTaskComponent } from './tasks-page/dialog-add-task/dialog-add-task.component';
 import { TaskInfoPageComponent } from './task-info-page/task-info-page.component';
 import { OrderListModule } from 'primeng/orderlist';
-import { DialogAddStepComponent } from './task-info-page/dialog-add-step/dialog-add-step.component';
+// import { DialogAddStepComponent } from './task-info-page/dialog-add-step/dialog-add-step.component';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
@@ -54,7 +54,10 @@ import { DialogModule } from 'primeng/dialog';
 import { AssignmentInfoComponent } from './user-info-page/assignment-info/assignment-info.component';
 import { AssingmentsPageComponent } from './assingments-page/assingments-page.component';
 import { AssingmentIngoPageComponent } from './assingment-ingo-page/assingment-ingo-page.component';
-
+import { AddStepPageComponent } from './task-info-page/add-step-page/add-step-page.component';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { FileUploadModule } from 'primeng/fileupload';
+import { HttpClientModule } from '@angular/common/http';
 
 FullCalendarModule.registerPlugins([
   dayGridPlugin,
@@ -70,7 +73,7 @@ FullCalendarModule.registerPlugins([
     TasksPageComponent,
     DialogAddTaskComponent,
     TaskInfoPageComponent,
-    DialogAddStepComponent,
+    // DialogAddStepComponent,
     AddWorkerPageComponent,
     EditProfilePageComponent,
     UserCalendarComponent,
@@ -85,6 +88,7 @@ FullCalendarModule.registerPlugins([
     AssignmentInfoComponent,
     AssingmentsPageComponent,
     AssingmentIngoPageComponent,
+    AddStepPageComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -118,7 +122,10 @@ FullCalendarModule.registerPlugins([
     CalendarModule,
     TimelineModule,
     CardModule,
-    DialogModule
+    DialogModule,
+    InputTextareaModule,
+    FileUploadModule,
+    HttpClientModule
   ]
 })
 export class SystemModule { }

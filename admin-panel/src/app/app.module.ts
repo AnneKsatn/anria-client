@@ -19,6 +19,7 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import { ToolbarModule } from 'primeng/toolbar';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 
 
 const firebaseConfig = {
@@ -57,7 +58,8 @@ FullCalendarModule.registerPlugins([
     // provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
     FullCalendarModule,
-    ToolbarModule
+    ToolbarModule,
+    AngularFireStorageModule
   ],
   providers: [],
   bootstrap: [AppComponent]

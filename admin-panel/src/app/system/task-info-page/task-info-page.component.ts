@@ -19,8 +19,6 @@ export class TaskInfoPageComponent implements OnInit {
   };
 
   steps: any = {}
-  display: boolean = false;
-  value1 = "";
 
   constructor(
     public dialog: MatDialog,
@@ -62,7 +60,9 @@ export class TaskInfoPageComponent implements OnInit {
   }
 
   addStep() {
-    this.router.navigateByUrl("/system/add-step")
+    this.router.navigate(["/system/add-step"], { queryParams: { "id": this.taskId } })
+
+
     // this.display = true;
 
     // const dialogRef = this.dialog.open(DialogAddStepComponent, {

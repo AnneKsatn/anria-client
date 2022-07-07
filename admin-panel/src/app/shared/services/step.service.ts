@@ -14,4 +14,17 @@ export class StepService {
   getStepById(id: string): Observable<any> {
     return this.firestore.collection("steps").doc(id).get()
   }
+
+  createStep(step: any, task_id: string, task: any) {
+
+    let context = this;
+
+    return this.firestore.collection("steps").add(step).then(function (docRef) {
+
+      task.steps = [...task.steps, docRef.id];
+      context.firestore.collection("tasks").doc(task_id).update(
+        task
+      )
+    })
+  }
 }

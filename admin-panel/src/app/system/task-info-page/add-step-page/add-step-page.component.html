@@ -1,1 +1,58 @@
-<p>add-step-page works!</p>
+<h2>Добавление шага</h2>
+
+<form [formGroup]="form" (ngSubmit)="createStep()">
+
+    <div class="input-box">
+        <h4>Название шага</h4>
+        <input type="text" pInputText formControlName="title">
+    </div>
+
+
+    <div class="input-box">
+        <h4>Описание шага</h4>
+        <textarea [rows]="4" pInputTextarea formControlName="description"> </textarea>
+    </div>
+
+    <div class="input-box">
+        <h4>Фотография - подсказка</h4>
+            <p-fileUpload
+            accept="image/*"
+            (uploadHandler)="myUploader($event)"
+            [customUpload]="true"
+            [auto]="true"
+            [maxFileSize]="1000000">
+            </p-fileUpload>
+
+    
+        <!-- <p-fileUpload name="demo[]" (onUpload)="onUpload($event)" accept="image/*" [maxFileSize]="1000000"
+            [showUploadButton]="false" [showCancelButton]="false" [auto]="true">
+            <ng-template pTemplate="content">
+                <ul *ngIf="uploadedFiles.length">
+                    <li *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes</li>
+                </ul>
+            </ng-template>
+        </p-fileUpload> -->
+    </div>
+
+    <div class="input-box">
+
+        <div class="box-title">
+            <h4>Check-list</h4>
+            <button pButton pRipple type="button" icon="pi pi-plus" class="p-button-rounded p-button-text"
+                (click)="pushItemToChecklist()"></button>
+        </div>
+
+        <div>
+            <div formArrayName="checklist" *ngFor="let item of checklist.controls; let i=index">
+                <input type="text" pInputText [formControlName]="i">
+
+                <button pButton pRipple type="button" icon="pi pi-trash" class="p-button-rounded p-button-text"
+                    (click)="deleteItemFromChecklist(i)"></button>
+            </div>
+        </div>
+    </div>
+
+    <button pButton pRipple type="submit" class="p-button-outlined create-step-btn" [disabled]="form.invalid">Добавить
+        шаг</button>
+</form>
+
