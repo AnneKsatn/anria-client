@@ -16,15 +16,17 @@ export class AssignmentsService {
 
     date = new Date()
 
-
-
-    return this.firestore.collection("assignments", ref => 
-    ref
-      .where("worker_id", "==", user_id)
-      // .where("date_start", "==", date)
-      .where("isCompleted", "!=", true)
-      .orderBy("isCompleted")
-      .orderBy("date_start")
+    return this.firestore.collection("assignments", ref =>
+      ref
+        .where("worker_id", "==", user_id)
+        // .where("date_start", "==", date)
+        .where("isCompleted", "!=", true)
+        .orderBy("isCompleted")
+        .orderBy("date_start")
     ).snapshotChanges()
+  }
+
+  getAssignment(id: string) {
+    return this.firestore.collection("assignments").doc(id).get()
   }
 }
