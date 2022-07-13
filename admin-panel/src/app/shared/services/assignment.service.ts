@@ -14,4 +14,8 @@ export class AssignmentService {
   getAssignmentById(id: string): Observable<any> {
     return this.firestore.collection("/assignments").doc(id).get()
   }
+
+  deleteAssignment(id: string): any {
+    return this.firestore.collection("/assignments").doc(id).delete()
+  }
 }

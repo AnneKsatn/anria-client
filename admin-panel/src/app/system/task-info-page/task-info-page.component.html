@@ -38,3 +38,7 @@
         </div>
     </ng-template>
 </p-orderList>
+
+<div *ngIf="task.steps.length == 0" class="btn-filter-block">
+    <button mat-raised-button color="primary" (click)="deleteTask()"> Удалить шаблон </button>
+</div>

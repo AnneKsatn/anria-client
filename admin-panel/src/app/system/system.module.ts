@@ -58,6 +58,7 @@ import { AddStepPageComponent } from './task-info-page/add-step-page/add-step-pa
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { FileUploadModule } from 'primeng/fileupload';
 import { HttpClientModule } from '@angular/common/http';
+import { StepPhotoComponent } from './task-info-page/step-photo/step-photo.component';
 
 FullCalendarModule.registerPlugins([
   dayGridPlugin,
@@ -88,7 +89,8 @@ FullCalendarModule.registerPlugins([
     AssignmentInfoComponent,
     AssingmentsPageComponent,
     AssingmentIngoPageComponent,
-    AddStepPageComponent
+    AddStepPageComponent,
+    StepPhotoComponent,
   ],
   imports: [
     BrowserAnimationsModule,

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AssignmentService } from 'src/app/shared/services/assignment.service';
 
 @Component({
@@ -9,12 +9,13 @@ import { AssignmentService } from 'src/app/shared/services/assignment.service';
 })
 export class AssingmentIngoPageComponent implements OnInit {
 
-  id?: string;
+  id!: string;
   assignment?: any;
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private assignmentService: AssignmentService
+    private assignmentService: AssignmentService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -32,6 +33,12 @@ export class AssingmentIngoPageComponent implements OnInit {
 
         console.log(this.assignment)
       })
+    })
+  }
+
+  deleteAssignment() {
+    this.assignmentService.deleteAssignment(this.id).then((data: any) => {
+      this.router.navigateByUrl("system/assignments")
     })
   }
 }

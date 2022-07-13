@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import * as firebase from 'firebase/app';
 import 'firebase/firestore'
 import { MatDialog, MatDialogModule, MAT_DIALOG_DATA, MatDialogConfig } from '@angular/material/dialog';
+import { TaskService } from 'src/app/shared/services/task.service';
 
 
 @Component({
@@ -24,7 +25,8 @@ export class TaskInfoPageComponent implements OnInit {
     public dialog: MatDialog,
     private activatedRoute: ActivatedRoute,
     private firestore: AngularFirestore,
-    private router: Router
+    private router: Router,
+    private taskService: TaskService
   ) { }
 
 
@@ -61,28 +63,6 @@ export class TaskInfoPageComponent implements OnInit {
 
   addStep() {
     this.router.navigate(["/system/add-step"], { queryParams: { "id": this.taskId } })
-
-
-    // this.display = true;
-
-    // const dialogRef = this.dialog.open(DialogAddStepComponent, {
-    //   width: '50%',
-    //   data: { description: "" }
-    // });
-
-
-    // dialogRef.afterClosed().subscribe(result => {
-    //   console.log(result)
-
-    //   this.task.steps = [...this.task.steps, {
-    //     description: result.description
-    //   }];
-
-    //   this.firestore.collection("tasks").doc(this.taskId).update(
-    //     this.task
-    //   );
-
-    // });
   }
 
   deleteStep(step: any) {
@@ -98,9 +78,15 @@ export class TaskInfoPageComponent implements OnInit {
   }
 
   info(step: any) {
-    this.router.navigate(["/system/step-info"], { queryParams: { id: step } })
+    this.router.navigate(["/system/step-info"], { queryParams: { id: step, task_id: this.taskId } })
     // this.router.navigateByUrl("/system/step-info")
     console.log(step)
+  }
+
+  deleteTask() {
+    this.taskService.deleteTask(this.taskId).then((data: any) => {
+      this.router.navigateByUrl("system/tasks")
+    })
   }
 }
 

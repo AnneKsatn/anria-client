@@ -20,7 +20,6 @@ export class StepInfoPageComponent implements OnInit {
   });
 
   task_id!: string;
-  task!: any;
   file: any;
 
   get checklist() {
@@ -31,16 +30,11 @@ export class StepInfoPageComponent implements OnInit {
   step!: any;
   image_src: any;
 
-  @ViewChild('fileInput') fileInput?: FileUpload;
-
   constructor(
     private activatedRoute: ActivatedRoute,
     private stepService: StepService,
     private storage: AngularFireStorage,
     private fb: FormBuilder,
-    // private activatedRoute: ActivatedRoute,
-    private firestore: AngularFirestore,
-    // private stepService: StepService,
     private router: Router,
     private afStorage: AngularFireStorage
   ) { }
@@ -48,6 +42,7 @@ export class StepInfoPageComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.queryParams.subscribe((params: any) => {
       this.step_id = params["id"]
+      this.task_id = params["task_id"]
 
       this.stepService.getStepById(this.step_id).subscribe((data: any) => {
         this.step = data.data()
@@ -65,30 +60,13 @@ export class StepInfoPageComponent implements OnInit {
         const ref = this.storage.ref(this.step.file);
         ref.getDownloadURL().subscribe((data: any) => {
           this.image_src = data
-
-          this.fileInput?.files.push()
           console.log(this.image_src)
         })
 
       })
     })
-
-
-    this.activatedRoute.queryParams.subscribe((data: any) => {
-      this.task_id = data['id']
-    })
-
-    this.firestore.collection("tasks").doc(this.task_id).get().subscribe((data: any) => {
-      this.task = data.data();
-    })
   }
 
-  send() {
-    console.log(this.fileInput?.files)
-    this.fileInput?._files.push()
-
-
-  }
 
   pushItemToChecklist() {
     this.checklist.push(this.fb.control('', Validators.required));
@@ -98,21 +76,37 @@ export class StepInfoPageComponent implements OnInit {
     this.checklist.removeAt(index)
   }
 
-  createStep() {
-    let file_id = '/images' + Math.random() + this.file
-
-    const ref = this.afStorage.ref(file_id);
-    const task = ref.put(this.file);
-
+  updateStep(file: any) {
     let step = this.form.value
-    step.file = file_id
+    step.file = file
 
-    this.stepService.createStep(step, this.task_id, this.task).then((data: any) => {
+    this.stepService.updateStep(step, this.step_id).then((data: any) => {
       this.router.navigate(["/system/task-info"], { queryParams: { element_id: this.task_id } })
     })
   }
 
   myUploader(event: any) {
     this.file = event.files[0]
+  }
+
+  deletePhoto() {
+    this.afStorage.ref(this.step.file).delete()
+    this.step.file = ""
+
+    this.stepService.updateStep(this.step, this.step_id).then((data: any) => {
+
+    })
+  }
+
+  addPhoto() {
+    let file_id = '/images' + Math.random() + this.file
+    const ref = this.afStorage.ref(file_id);
+    const task = ref.put(this.file);
+
+    this.step.file = file_id
+
+    this.stepService.updateStep(this.step, this.step_id).then((data: any) => {
+
+    })
   }
 }

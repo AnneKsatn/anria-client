@@ -1,7 +1,26 @@
+
+.container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+form {
+    width: 50%;
+}
+
+img {
+width: 90%;
+}
+
+.photo {
+    width: 50%;
+}
+
 input,
 textarea {
     margin-bottom: 5px;
-    width: 50%;
+    width: 80%;
 }
 
 .input-box {

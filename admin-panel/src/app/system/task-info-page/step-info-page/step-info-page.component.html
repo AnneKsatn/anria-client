@@ -1,65 +1,65 @@
-
 <h2>Информация о шаге</h2>
 
-<form [formGroup]="form" (ngSubmit)="createStep()">
+<div class="container">
 
-    <div class="input-box">
-        <h4>Название шага</h4>
-        <input type="text" pInputText formControlName="title">
-    </div>
+    <form [formGroup]="form" (ngSubmit)="updateStep(step.file)">
 
-
-    <div class="input-box">
-        <h4>Описание шага</h4>
-        <textarea [rows]="4" pInputTextarea formControlName="description"> </textarea>
-    </div>
-
-    <div class="input-box">
-        <h4>Фотография - подсказка</h4>
-    </div>
-
-    <div class="input-box">
-
-        <div class="box-title">
-            <h4>Check-list</h4>
-            <button pButton pRipple type="button" icon="pi pi-plus" class="p-button-rounded p-button-text"
-                (click)="pushItemToChecklist()"></button>
+        <div class="input-box">
+            <h4>Название шага</h4>
+            <input type="text" pInputText formControlName="title">
         </div>
 
-        <div>
-            <div formArrayName="checklist" *ngFor="let item of checklist.controls; let i=index">
-                <input type="text" pInputText [formControlName]="i">
 
-                <button pButton pRipple type="button" icon="pi pi-trash" class="p-button-rounded p-button-text"
-                    (click)="deleteItemFromChecklist(i)"></button>
+        <div class="input-box">
+            <h4>Описание шага</h4>
+            <textarea [rows]="4" pInputTextarea formControlName="description"> </textarea>
+        </div>
+
+        <div class="input-box">
+
+            <div class="box-title">
+                <h4>Check-list</h4>
+                <button pButton pRipple type="button" icon="pi pi-plus" class="p-button-rounded p-button-text"
+                    (click)="pushItemToChecklist()"></button>
+            </div>
+
+            <div>
+                <div formArrayName="checklist" *ngFor="let item of checklist.controls; let i=index">
+                    <input type="text" pInputText [formControlName]="i">
+
+                    <button pButton pRipple type="button" icon="pi pi-trash" class="p-button-rounded p-button-text"
+                        (click)="deleteItemFromChecklist(i)"></button>
+                </div>
             </div>
         </div>
-    </div>
 
-    <button pButton pRipple type="submit" class="p-button-outlined create-step-btn" [disabled]="form.invalid">Сохранить</button>
-</form>
+        <button pButton pRipple type="submit" class="p-button-outlined create-step-btn"
+            [disabled]="form.invalid">Сохранить</button>
+    </form>
 
+    <div class="photo">
+        <div class="input-box">
 
+            <h4>Фотография - подсказка</h4>
+            <div *ngIf="step.file">
+                <img [src]="image_src">
+                <button 
+                    pButton 
+                    pRipple 
+                    class="p-button-outlined create-step-btn"
+                    (click)="deletePhoto()"
+                    >Удалить фото</button>
+            </div>
 
+            <div *ngIf="!step.file">
+                <p-fileUpload accept="image/*" (uploadHandler)="myUploader($event)" [customUpload]="true" [auto]="true"
+                    [maxFileSize]="1000000">
+                </p-fileUpload>
+                <button pButton pRipple type="submit" (click)="addPhoto()"class="p-button-outlined create-step-btn">Сохранить</button>
+            </div>
+        </div>
 
-
-
-<!-- <h1>Шаг задачи</h1>
-
-<div class="title"> {{step?.title}}</div>
-
-<div class="">
-    <div *ngFor="let point of step?.checklist">
-        {{point}}
     </div>
 </div>
 
-<button (click)="send()">Кнопка</button> -->
 
-<!-- <p-fileUpload accept="image/*" (uploadHandler)="myUploader($event)" [customUpload]="true" [auto]="true"
-    [maxFileSize]="1000000" #fileInput>
-</p-fileUpload> -->
-
-
-<!-- <img [src]="image_src">
- -->
