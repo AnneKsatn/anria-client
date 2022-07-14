@@ -4,6 +4,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ignoreElements } from 'rxjs';
 import { StepService } from 'src/app/shared/services/step.service';
 
 
@@ -57,13 +58,23 @@ export class AddStepPageComponent implements OnInit {
   }
 
   createStep() {
-    let file_id = '/images' + Math.random() + this.file
-
-    const ref = this.afStorage.ref(file_id);
-    const task = ref.put(this.file);
 
     let step = this.form.value
-    step.file = file_id
+    step.checklist = step.checklist.map(function (item: any) {
+      console.log(item)
+      return {
+        "status": "not_started",
+        "title": item
+      }
+    })
+
+    if (this.file) {
+      let file_id = '/images' + Math.random() + this.file
+
+      const ref = this.afStorage.ref(file_id);
+      const task = ref.put(this.file);
+      step.file = file_id
+    }
 
     this.stepService.createStep(step, this.task_id, this.task).then((data: any) => {
       this.router.navigate(["/system/task-info"], { queryParams: { element_id: this.task_id } })

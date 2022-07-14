@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AssignmentService } from 'src/app/shared/services/assignment.service';
+import { StepService } from 'src/app/shared/services/step.service';
 
 @Component({
   selector: 'app-assingment-ingo-page',
@@ -11,10 +12,12 @@ export class AssingmentIngoPageComponent implements OnInit {
 
   id!: string;
   assignment?: any;
+  steps?: any = [];
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private assignmentService: AssignmentService,
+    private stepService: StepService,
     private router: Router
   ) { }
 
@@ -32,6 +35,14 @@ export class AssingmentIngoPageComponent implements OnInit {
         this.assignment.initiator = "Касаткина Анна Сергеевна"
 
         console.log(this.assignment)
+
+        this.assignment.steps.forEach((step: any) => {
+          this.stepService.getStepById(step).subscribe((data: any) => {
+            step = data.data()
+            this.steps.push(data.data())
+            console.log(this.steps)
+          })
+        });
       })
     })
   }

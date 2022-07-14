@@ -16,7 +16,7 @@ export class StepInfoPageComponent implements OnInit {
   form: FormGroup = this.fb.group({
     title: new FormControl('', Validators.required),
     description: new FormControl(''),
-    checklist: this.fb.array([])
+    checklist: new FormArray([])
   });
 
   task_id!: string;
@@ -48,7 +48,12 @@ export class StepInfoPageComponent implements OnInit {
         this.step = data.data()
 
         data.data().checklist.forEach((element: any) => {
-          this.checklist.push(this.fb.control('', Validators.required));
+          this.checklist.push(
+            new FormGroup({
+              title: new FormControl(''),
+              status: new FormControl('')
+            })
+          );
         });
 
         this.form.setValue({
@@ -62,14 +67,18 @@ export class StepInfoPageComponent implements OnInit {
           this.image_src = data
           console.log(this.image_src)
         })
-
       })
     })
   }
 
 
   pushItemToChecklist() {
-    this.checklist.push(this.fb.control('', Validators.required));
+    this.checklist.push(
+      new FormGroup({
+        title: new FormControl(''),
+        status: new FormControl('not_started')
+      })
+    );
   }
 
   deleteItemFromChecklist(index: number) {
@@ -79,6 +88,8 @@ export class StepInfoPageComponent implements OnInit {
   updateStep(file: any) {
     let step = this.form.value
     step.file = file
+
+    // console.log(step)
 
     this.stepService.updateStep(step, this.step_id).then((data: any) => {
       this.router.navigate(["/system/task-info"], { queryParams: { element_id: this.task_id } })

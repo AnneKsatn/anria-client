@@ -48,9 +48,12 @@
 </div>
 
 
-<div>
-    {{assignment.steps}}
+<div class="steps-title">Шаги задачи</div>
 
+<div *ngFor="let step of steps">
+        <div class="data-box task-title">
+            {{step.title}}
+        </div>
 </div>
 
 <div class="confirm-btn">
