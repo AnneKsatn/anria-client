@@ -13,7 +13,7 @@ import { AuthService } from '../shared/services/auth.service';
 export class SystemComponent implements OnInit {
     // showFiller = false;
     assignments: any = []
-    
+
 
     mobileQuery: MediaQueryList;
 
@@ -32,12 +32,12 @@ export class SystemComponent implements OnInit {
     private _mobileQueryListener: () => void;
 
     constructor(
-        changeDetectorRef: ChangeDetectorRef, 
+        changeDetectorRef: ChangeDetectorRef,
         media: MediaMatcher,
         private firestore: AngularFirestore,
         private router: Router,
         private authService: AuthService
-        ) {
+    ) {
         this.mobileQuery = media.matchMedia('(max-width: 600px)');
         this._mobileQueryListener = () => changeDetectorRef.detectChanges();
         this.mobileQuery.addListener(this._mobileQueryListener);
@@ -45,19 +45,16 @@ export class SystemComponent implements OnInit {
 
     ngOnInit(): void {
         this.firestore.collection("assignments", ref => ref.where("worker_id", "==", "2R1BEiD1pMx3jKfGeHLV"))
-        .snapshotChanges().subscribe((data: any) => {
-            this.assignments = data.map(function(assignment: any) {
-                return {
-                    "date_end": assignment.payload.doc.data().date_end,
-                    "date_start": assignment.payload.doc.data().date_start,
-                    "task_id": assignment.payload.doc.data().task_id,
-                    "task_title": assignment.payload.doc.data().task_title,
-                    "id": assignment.payload.doc.id,
-                }
+            .snapshotChanges().subscribe((data: any) => {
+                this.assignments = data.map(function (assignment: any) {
+                    return {
+                        "date_end": assignment.payload.doc.data().date_end,
+                        "date_start": assignment.payload.doc.data().date_start,
+                        "task_title": assignment.payload.doc.data().task_title,
+                        "id": assignment.payload.doc.id,
+                    }
+                })
             })
-
-            console.log(this.assignments)
-        })
     }
 
     ngOnDestroy(): void {
@@ -65,7 +62,7 @@ export class SystemComponent implements OnInit {
     }
 
     goToAssignment(id: any) {
-        this.router.navigate(["/system/assignment"],  {queryParams: {id: id}})
+        this.router.navigate(["/system/assignment"], { queryParams: { id: id } })
     }
 
     shouldRun = true
@@ -78,4 +75,9 @@ export class SystemComponent implements OnInit {
     goToAccountPage() {
         this.router.navigateByUrl("/system/account")
     }
+
+    goToMainPage() {
+        this.router.navigateByUrl("/system/main-page")
+    }
 }
+

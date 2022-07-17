@@ -1,0 +1,16 @@
+<p>{{step.title}}</p>
+
+<div>
+    <img [src]="image_src">
+</div>
+
+<p>{{step.description}}</p>
+
+Отметьте то, что было сделано:
+<div *ngFor="let item of step.checklist">
+    <mat-checkbox [(ngModel)]="item.isChecked">
+        {{item.title}}
+    </mat-checkbox>
+</div>
+
+<button (click)="completeStep()">Завершить шаг</button>

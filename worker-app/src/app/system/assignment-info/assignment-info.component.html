@@ -4,11 +4,11 @@
 
         <ul>
             <li *ngFor="let step of steps">
-                <mat-checkbox [(ngModel)]="step.completed">
-                    <div class="step">
-                        {{step.description}}
+                <div class="step" (click)="openStep(step.id)" [ngClass]="[step.status == 'completed' ? 'completed' : 'not-started']">
+                    <div>
+                        {{step.title}}
                     </div>
-                </mat-checkbox>
+                </div>
             </li>
         </ul>
     </div>

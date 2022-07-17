@@ -5,7 +5,41 @@ ul {
 
 .step {
     max-width: 100%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    border: 1px solid rgb(219, 219, 219);
+    border-radius: 4px;
+    margin-bottom: 7px;
 }
+
+.completed {
+  background-color: rgb(224, 222, 222);
+}
+
+.not-started {
+  background-color: rgb(191, 246, 187);
+}
+
+.segoePrintFont {
+  width: 100px;
+  height: 100px;
+  background-color: red;
+  color: red;
+}
+
+.sPrintFont {
+  width: 100px;
+  height: 100px;
+  background-color: blue;
+  color: blue
+}
+
+.step div {
+  padding-left: 20px;
+  font-size: 18px;
+}
+
 
 :host::ng-deep.mat-checkbox-layout {
   white-space: normal !important;
