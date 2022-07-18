@@ -95,51 +95,26 @@ export class AssingmentIngoPageComponent implements OnInit {
   createReport() {
     let doc = new jsPDF('p', 'pt', 'a4');
 
-
-    // console.log(doc.getFontList())
-
-    // doc.setFont('zapfdingbats');
-    // doc.setFontSize(10);
-    // doc.text("А ну чики брики и в дамки!", 10, 10);
-
     doc.addFileToVFS("OpenSans-Regular.ttf", font)
     doc.addFont("OpenSans-Regular.ttf", "OpenSans", "normal");
     doc.setFont("OpenSans", "normal");
 
-    doc.text("А ну чики брики и в дамки!", 10, 10);
+    let x = 15, y = 40;
+    let width = 300, height = 180;
 
-    // let x = 15, y = 40;
-    // let width = 300, height = 180;
+    doc.text(this.assignment.task_title, x, y)
+    y = y + 40;
 
-    // const variable = this.assignment.task_title
-    // console.log(this.assignment.task_title)
-    // doc.text("TEXT", 0, 15)
-    // doc.text("Текст на русском языке", 15, 15)
+    this.steps.forEach((step: any) => {
+      if (step.report_string) {
 
+        doc.text(step.title, x, y)
+        y = y + 40;
 
-    // this.steps.forEach((step: any) => {
-    //   if (step.report_string) {
-    //     doc.addImage(step.report_string, 'PNG', x, y, width, height)
-
-    //     y = y + height + 20;
-    //   }
-    // })
-
-
-
-    // const doc = new jsPDF("p", "pt");
-
-    // doc.addFont("Arimo-Regular.ttf", "Arimo", "normal");
-    // doc.addFont("Arimo-Bold.ttf", "Arimo", "bold");
-    // doc.setFont("Arimo", "normal");
-
-    // doc.setFontSize(28);
-
-    // doc.text("Мой Текст на русском!", 100, 100);
-
-    // doc.setFont("Arimo", "bold");
-
-    // doc.text("Hello, BOLD World!", 100, 150);
+        doc.addImage(step.report_string, 'PNG', x, y, width, height)
+        y = y + height + 20;
+      }
+    })
 
     doc.save("customFonts.pdf");
   }
