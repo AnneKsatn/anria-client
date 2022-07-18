@@ -1,65 +1,98 @@
-<h2 mat-dialog-title>Информация о назначении</h2>
+<div class="main">
 
+    <h2 mat-dialog-title>Информация о назначении</h2>
 
-<div>
-    <span>
-        <label>Задача</label>
-        <div class="data-box task-title">
-            {{assignment.task_title}}
-        </div>
-    </span>
-</div>
-
-<div class="row">
-    <span class="user-data">
-        <label>Исполнитель</label>
-        <div class="data-box">
-            {{assignment.worker_name}}
-        </div>
-    </span>
-    <span class="user-data">
-        <label>Инициатор</label>
-        <div class="data-box">
-            {{assignment.initiator}}
-        </div>
-    </span>
-
-    <span class="user-data">
-        <label>Статус</label>
-        <div class="data-box">
-            {{assignment.status}}
-        </div>
-    </span>
-</div>
-
-
-<div class="row">
-    <div class="time-picker">
-        <label>Время начала выполнения задания</label>
-        <p-calendar [(ngModel)]="assignment.date_start" [showTime]="true" [showSeconds]="true" inputId="time">
-        </p-calendar>
+    <div>
+        <span>
+            <label>Задача</label>
+            <div class="data-box task-title">
+                {{assignment.task_title}}
+            </div>
+        </span>
     </div>
 
-    <div class="time-picker">
-        <label>Время окончания выполнения задания</label>
-        <p-calendar [(ngModel)]="assignment.date_end" [showTime]="true" [showSeconds]="true" inputId="time">
-        </p-calendar>
+    <div class="row">
+        <span class="user-data">
+            <label>Исполнитель</label>
+            <div class="data-box">
+                {{assignment.worker_name}}
+            </div>
+        </span>
+        <span class="user-data">
+            <label>Инициатор</label>
+            <div class="data-box">
+                {{assignment.initiator}}
+            </div>
+        </span>
+
+        <span class="user-data">
+            <label>Статус</label>
+            <div class="data-box">
+                {{assignment.status}}
+            </div>
+        </span>
     </div>
-</div>
 
 
-<div class="steps-title">Шаги задачи</div>
-
-<div *ngFor="let step of steps">
-        <div class="data-box task-title">
-            {{step.title}}
+    <div class="row">
+        <div class="time-picker">
+            <label>Время начала выполнения задания</label>
+            <p-calendar [(ngModel)]="assignment.date_start" [showTime]="true" [showSeconds]="true" inputId="time">
+            </p-calendar>
         </div>
+
+        <div class="time-picker">
+            <label>Время окончания выполнения задания</label>
+            <p-calendar [(ngModel)]="assignment.date_end" [showTime]="true" [showSeconds]="true" inputId="time">
+            </p-calendar>
+        </div>
+    </div>
+
+    <h2 class="header" mat-dialog-title>Пошаговый отчет по выполненной задаче</h2>
+
+    <div *ngFor="let step of steps">
+        <label>Название шага</label>
+        <div class="data-box task-title">
+            Шаг: {{step.title}}
+        </div>
+
+        <div class="row">
+            <span class="user-data">
+                <label>Затраченное время (в секундах)</label>
+                <div class="data-box task-title">
+                    {{step.elapsed_seconds}}
+                </div>
+            </span>
+        </div>
+
+        <div class="row">
+            <label>Контрольный список</label>
+        </div>
+
+        <div *ngFor="let item of step.checklist">
+            <div class="data-box task-title checklist-item">
+                {{item.title}}
+
+                <i *ngIf="item.isChecked" class="pi pi-check"></i>
+                <i *ngIf="!item.isChecked" class="pi pi-times"></i>
+
+            </div>
+        </div>
+
+        <div class="img">
+            <img [src]="step.report_string" alt="Red dot" />
+        </div>
+
+    </div>
 </div>
 
 <div class="confirm-btn">
     <!-- <button pButton pRipple type="button" label="Сохранить изменения" class="p-button-outlined"
         (click)="assignTask()"></button> -->
 
-    <button pButton pRipple type="button" label="Удалить назначение" class="p-button-outlined delete-btn"
-        (click)="deleteAssignment()"></button>
+    <button *ngIf="assignment.status=='not started'" pButton pRipple type="button" label="Удалить назначение"
+        class="p-button-outlined delete-btn" (click)="deleteAssignment()"></button>
+
+    <button *ngIf="assignment.status=='completed'" pButton pRipple type="button" label="Сформировать отчет"
+        class="p-button-outlined delete-btn" (click)="createReport()"></button>
 </div>

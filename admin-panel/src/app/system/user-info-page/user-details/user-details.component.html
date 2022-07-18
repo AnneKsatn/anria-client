@@ -2,31 +2,14 @@
     <h2>Профиль сотрудника</h2>
 
     <div class="btns">
-        <button 
-            pButton 
-            pRipple 
-            icon="bx bx-edit" 
-            type="button" 
-            class="p-button-outlined"
-            (click)="editWorker()">
+        <button pButton pRipple icon="bx bx-edit" type="button" class="p-button-outlined" (click)="editWorker()">
         </button>
 
-        <button 
-            pButton
-            pRipple
-            icon="bx bx-lock"
-            type="button"
-            class="p-button-outlined"
+        <button pButton pRipple icon="bx bx-lock" type="button" class="p-button-outlined"
             (click)="showResertPaswordDialog()">
         </button>
 
-        <button 
-            pButton
-            pRipple
-            icon="bx bx-trash"
-            type="button"
-            class="p-button-outlined"
-            (click)="showDeleteDialog()">
+        <button pButton pRipple icon="bx bx-trash" type="button" class="p-button-outlined" (click)="showDeleteDialog()">
         </button>
     </div>
 </div>
@@ -123,7 +106,7 @@
     [style]="{width: '40vw'}" [draggable]="false" [resizable]="false">
 
     <span class="p-float-label">
-        <input type="text" id="inputtext" pInputText [(ngModel)]="password"/>
+        <input type="text" id="inputtext" pInputText [(ngModel)]="password" />
         <label>Пароль</label>
     </span>
 

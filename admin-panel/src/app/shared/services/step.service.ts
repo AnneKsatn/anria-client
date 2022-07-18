@@ -32,4 +32,8 @@ export class StepService {
     return this.firestore.collection("steps").doc(step_id).update(step)
   }
 
+  getAssignStepById(stepId: string, assignmentId: string) {
+    let url = "assignments/" + assignmentId + "/steps"
+    return this.firestore.collection(url).doc(stepId).get()
+  }
 }

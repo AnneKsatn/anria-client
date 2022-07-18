@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-assingments-page',
@@ -23,9 +23,11 @@ export class AssingmentsPageComponent implements OnInit {
 
   constructor(
     public firestore: AngularFirestore,
-    public router: Router) { }
+    public router: Router,
+  ) { }
 
   ngOnInit(): void {
+
     this.firestore.collection('/assignments').snapshotChanges().subscribe((data: any) => {
       this.tasks = data.map(function (assignment: any) {
         return {
@@ -46,6 +48,7 @@ export class AssingmentsPageComponent implements OnInit {
         })
       });
     })
+
   }
 
   addTask() {

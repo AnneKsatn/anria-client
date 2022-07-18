@@ -15,13 +15,9 @@
 
     <div class="input-box">
         <h4>Фотография - подсказка</h4>
-            <p-fileUpload
-            accept="image/*"
-            (uploadHandler)="myUploader($event)"
-            [customUpload]="true"
-            [auto]="true"
+        <p-fileUpload accept="image/*" (uploadHandler)="myUploader($event)" [customUpload]="true" [auto]="true"
             [maxFileSize]="1000000">
-            </p-fileUpload>
+        </p-fileUpload>
     </div>
 
     <div class="input-box">
@@ -45,4 +41,3 @@
     <button pButton pRipple type="submit" class="p-button-outlined create-step-btn" [disabled]="form.invalid">Добавить
         шаг</button>
 </form>
-

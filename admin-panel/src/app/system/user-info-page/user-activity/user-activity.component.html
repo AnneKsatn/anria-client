@@ -1,5 +1,6 @@
 <h2>Задачи</h2>
 
+
 <div class="table">
     <div class="card">
         <p-table #dt1 [value]="tasks" dataKey="id" [rows]="10" [showCurrentPageReport]="true"
@@ -8,35 +9,39 @@
             scrollDirection="both">
             <ng-template pTemplate="header">
                 <tr>
-                    <th style="width:50%">Название</th>
+                    <th style="width:50%">Задача</th>
                     <th style="width:15%">Статус</th>
                     <th style="width:15%">Старт</th>
                     <th style="width:15%">Конец</th>
                     <th style="width:30%">Инициатор</th>
-                    <th style="width:30%">Проверяющий</th>
                 </tr>
             </ng-template>
 
             <ng-template pTemplate="body" let-task>
                 <tr (click)="goToTaskPage(task)">
                     <td style="width:50%">
-                        {{task.title}}
-                    </td>
-
-                    <td style="width:15%">
-                        {{task.status}}
+                        {{task.task_title}}
                     </td>
                     <td style="width:15%">
-                        {{task.start}}
+                        <div *ngIf="task.status == 'completed'">
+                            Завершено
+                        </div>
+                        <div *ngIf="task.status == 'not_started'">
+                            Не начато
+                        </div>
+                        <div *ngIf="task.status == 'in_progress'">
+                            Выполяется
+                        </div>
+ 
                     </td>
                     <td style="width:15%">
-                        {{task.end}}
+                        {{task.date_start | date:'medium':'ru-RU'}} 
+                    </td>
+                    <td style="width:15%">
+                        {{task.date_end | date:'medium':'ru-RU'}}
                     </td>
                     <td style="width:30%">
-                        {{task.creator}}
-                    </td>
-                    <td style="width:30%">
-                        {{task.reviewer}}
+                        {{task.initiator}}
                     </td>
                 </tr>
             </ng-template>

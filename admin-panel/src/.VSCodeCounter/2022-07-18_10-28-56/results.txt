@@ -1,0 +1,180 @@
+Date : 2022-07-18 10:28:56
+Directory : c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src
+Total : 123 files,  4190 codes, 471 comments, 985 blanks, all 5646 lines
+
+Languages
++------------+------------+------------+------------+------------+------------+
+| language   | files      | code       | comment    | blank      | total      |
++------------+------------+------------+------------+------------+------------+
+| TypeScript |         70 |      2,309 |        210 |        592 |      3,111 |
+| SCSS       |         26 |        941 |         45 |        217 |      1,203 |
+| HTML       |         27 |        940 |        216 |        176 |      1,332 |
++------------+------------+------------+------------+------------+------------+
+
+Directories
++------------------------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                                                                           | files      | code       | comment    | blank      | total      |
++------------------------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                                                              |        123 |      4,190 |        471 |        985 |      5,646 |
+| app                                                                                                                                            |        116 |      4,119 |        397 |        956 |      5,472 |
+| app\auth                                                                                                                                       |          8 |        129 |         25 |         35 |        189 |
+| app\auth\login                                                                                                                                 |          4 |         77 |          5 |         27 |        109 |
+| app\shared                                                                                                                                     |         12 |        164 |          0 |         60 |        224 |
+| app\shared\components                                                                                                                          |          4 |         33 |          0 |         13 |         46 |
+| app\shared\components\main-layout                                                                                                              |          4 |         33 |          0 |         13 |         46 |
+| app\shared\services                                                                                                                            |          8 |        131 |          0 |         47 |        178 |
+| app\system                                                                                                                                     |         90 |      3,716 |        371 |        842 |      4,929 |
+| app\system\add-worker-page                                                                                                                     |          4 |        168 |         11 |         25 |        204 |
+| app\system\assingment-ingo-page                                                                                                                |          4 |        270 |          3 |         73 |        346 |
+| app\system\assingments-page                                                                                                                    |          4 |        109 |          9 |         21 |        139 |
+| app\system\edit-profile-page                                                                                                                   |          4 |        174 |         12 |         28 |        214 |
+| app\system\groups                                                                                                                              |          4 |         32 |          0 |         13 |         45 |
+| app\system\localization-page                                                                                                                   |          4 |         89 |          0 |         37 |        126 |
+| app\system\shared                                                                                                                              |          1 |         97 |          0 |          3 |        100 |
+| app\system\task-info-page                                                                                                                      |         20 |        656 |         35 |        193 |        884 |
+| app\system\task-info-page\add-step-page                                                                                                        |          4 |        141 |          7 |         40 |        188 |
+| app\system\task-info-page\dialog-add-step                                                                                                      |          4 |         62 |          9 |         19 |         90 |
+| app\system\task-info-page\step-info-page                                                                                                       |          4 |        200 |          1 |         58 |        259 |
+| app\system\task-info-page\step-photo                                                                                                           |          4 |         31 |         13 |         12 |         56 |
+| app\system\tasks-page                                                                                                                          |          8 |        232 |         10 |         60 |        302 |
+| app\system\tasks-page\dialog-add-task                                                                                                          |          4 |         63 |          9 |         22 |         94 |
+| app\system\user-info-page                                                                                                                      |         28 |      1,152 |        124 |        261 |      1,537 |
+| app\system\user-info-page\assign-task                                                                                                          |          4 |        129 |          2 |         31 |        162 |
+| app\system\user-info-page\assignment-info                                                                                                      |          4 |        143 |         26 |         42 |        211 |
+| app\system\user-info-page\user-activity                                                                                                        |          4 |        158 |         16 |         24 |        198 |
+| app\system\user-info-page\user-calendar                                                                                                        |          4 |        109 |          6 |         26 |        141 |
+| app\system\user-info-page\user-details                                                                                                         |          4 |        247 |          9 |         40 |        296 |
+| app\system\user-info-page\user-onboarding                                                                                                      |          4 |         71 |          3 |         18 |         92 |
+| app\system\workers-page                                                                                                                        |          4 |        207 |         64 |         58 |        329 |
+| environments                                                                                                                                   |          2 |         22 |         20 |         10 |         52 |
++------------------------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++------------------------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| filename                                                                                                                                       | language   | code       | comment    | blank      | total      |
++------------------------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\app-routing.module.ts                                                   | TypeScript |         10 |          0 |          3 |         13 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\app.component.html                                                      | HTML       |          1 |          0 |          0 |          1 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\app.component.scss                                                      | SCSS       |          0 |          0 |          1 |          1 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\app.component.spec.ts                                                   | TypeScript |         31 |          0 |          5 |         36 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\app.component.ts                                                        | TypeScript |          8 |          0 |          3 |         11 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\app.module.ts                                                           | TypeScript |         60 |          1 |          7 |         68 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\auth\auth-routing.module.ts                                             | TypeScript |         14 |          0 |          3 |         17 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\auth\auth.component.html                                                | HTML       |          1 |         20 |          0 |         21 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\auth\auth.component.ts                                                  | TypeScript |         12 |          0 |          3 |         15 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\auth\auth.module.ts                                                     | TypeScript |         25 |          0 |          2 |         27 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\auth\login\login.component.html                                         | HTML       |         23 |          3 |         10 |         36 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\auth\login\login.component.scss                                         | SCSS       |         14 |          0 |          3 |         17 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\auth\login\login.component.spec.ts                                      | TypeScript |         20 |          0 |          6 |         26 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\auth\login\login.component.ts                                           | TypeScript |         20 |          2 |          8 |         30 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\shared\components\main-layout\main-layout.component.html                | HTML       |          2 |          0 |          1 |          3 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\shared\components\main-layout\main-layout.component.scss                | SCSS       |          0 |          0 |          1 |          1 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\shared\components\main-layout\main-layout.component.spec.ts             | TypeScript |         20 |          0 |          6 |         26 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\shared\components\main-layout\main-layout.component.ts                  | TypeScript |         11 |          0 |          5 |         16 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\shared\services\assignment.service.spec.ts                              | TypeScript |         12 |          0 |          5 |         17 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\shared\services\assignment.service.ts                                   | TypeScript |         17 |          0 |          5 |         22 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\shared\services\step.service.spec.ts                                    | TypeScript |         12 |          0 |          5 |         17 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\shared\services\step.service.ts                                         | TypeScript |         30 |          0 |         10 |         40 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\shared\services\task.service.spec.ts                                    | TypeScript |         12 |          0 |          5 |         17 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\shared\services\task.service.ts                                         | TypeScript |         13 |          0 |          4 |         17 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\shared\services\worker.service.spec.ts                                  | TypeScript |         12 |          0 |          5 |         17 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\shared\services\worker.service.ts                                       | TypeScript |         23 |          0 |          8 |         31 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\system\add-worker-page\add-worker-page.component.html                   | HTML       |         85 |          9 |          8 |        102 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\system\add-worker-page\add-worker-page.component.scss                   | SCSS       |         25 |          2 |          4 |         31 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\system\add-worker-page\add-worker-page.component.spec.ts                | TypeScript |         20 |          0 |          6 |         26 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\system\add-worker-page\add-worker-page.component.ts                     | TypeScript |         38 |          0 |          7 |         45 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\system\assingment-ingo-page\assingment-ingo-page.component.html         | HTML       |         66 |          2 |         20 |         88 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\system\assingment-ingo-page\assingment-ingo-page.component.scss         | SCSS       |         91 |          1 |         22 |        114 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\system\assingment-ingo-page\assingment-ingo-page.component.spec.ts      | TypeScript |         20 |          0 |          6 |         26 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\system\assingment-ingo-page\assingment-ingo-page.component.ts           | TypeScript |         93 |          0 |         25 |        118 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\system\assingments-page\assingments-page.component.html                 | HTML       |         47 |          0 |          5 |         52 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\system\assingments-page\assingments-page.component.scss                 | SCSS       |          0 |          0 |          1 |          1 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\system\assingments-page\assingments-page.component.spec.ts              | TypeScript |         20 |          0 |          6 |         26 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\system\assingments-page\assingments-page.component.ts                   | TypeScript |         42 |          9 |          9 |         60 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\system\edit-profile-page\edit-profile-page.component.html               | HTML       |         69 |          9 |          7 |         85 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\system\edit-profile-page\edit-profile-page.component.scss               | SCSS       |         25 |          2 |          4 |         31 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\system\edit-profile-page\edit-profile-page.component.spec.ts            | TypeScript |         20 |          0 |          6 |         26 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\system\edit-profile-page\edit-profile-page.component.ts                 | TypeScript |         60 |          1 |         11 |         72 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\system\groups\groups.component.html                                     | HTML       |          1 |          0 |          1 |          2 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\system\groups\groups.component.scss                                     | SCSS       |          0 |          0 |          1 |          1 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\system\groups\groups.component.spec.ts                                  | TypeScript |         20 |          0 |          6 |         26 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\system\groups\groups.component.ts                                       | TypeScript |         11 |          0 |          5 |         16 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\system\localization-page\localization-page.component.html               | HTML       |         32 |          0 |         16 |         48 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\system\localization-page\localization-page.component.scss               | SCSS       |         26 |          0 |         10 |         36 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\system\localization-page\localization-page.component.spec.ts            | TypeScript |         20 |          0 |          6 |         26 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\system\localization-page\localization-page.component.ts                 | TypeScript |         11 |          0 |          5 |         16 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\system\shared\shared.module.ts                                          | TypeScript |         97 |          0 |          3 |        100 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\system\system-routing.module.ts                                         | TypeScript |         53 |          0 |          4 |         57 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\system\system.component.html                                            | HTML       |         56 |         94 |          6 |        156 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\system\system.component.scss                                            | SCSS       |        251 |          7 |         41 |        299 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\system\system.component.ts                                              | TypeScript |         43 |          0 |         14 |         57 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\system\system.module.ts                                                 | TypeScript |        127 |          2 |          5 |        134 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\system\task-info-page\add-step-page\add-step-page.component.html        | HTML       |         33 |          0 |         10 |         43 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\system\task-info-page\add-step-page\add-step-page.component.scss        | SCSS       |         17 |          0 |          5 |         22 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\system\task-info-page\add-step-page\add-step-page.component.spec.ts     | TypeScript |         20 |          0 |          6 |         26 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\system\task-info-page\add-step-page\add-step-page.component.ts          | TypeScript |         71 |          7 |         19 |         97 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\system\task-info-page\dialog-add-step\dialog-add-step.component.html    | HTML       |         12 |          1 |          3 |         16 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\system\task-info-page\dialog-add-step\dialog-add-step.component.scss    | SCSS       |          6 |          0 |          1 |          7 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\system\task-info-page\dialog-add-step\dialog-add-step.component.spec.ts | TypeScript |         20 |          0 |          6 |         26 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\system\task-info-page\dialog-add-step\dialog-add-step.component.ts      | TypeScript |         24 |          8 |          9 |         41 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\system\task-info-page\step-info-page\step-info-page.component.html      | HTML       |         51 |          0 |         17 |         68 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\system\task-info-page\step-info-page\step-info-page.component.scss      | SCSS       |         32 |          0 |          9 |         41 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\system\task-info-page\step-info-page\step-info-page.component.spec.ts   | TypeScript |         20 |          0 |          6 |         26 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\system\task-info-page\step-info-page\step-info-page.component.ts        | TypeScript |         97 |          1 |         26 |        124 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\system\task-info-page\step-photo\step-photo.component.html              | HTML       |          0 |         13 |          0 |         13 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\system\task-info-page\step-photo\step-photo.component.scss              | SCSS       |          0 |          0 |          1 |          1 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\system\task-info-page\step-photo\step-photo.component.spec.ts           | TypeScript |         20 |          0 |          6 |         26 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\system\task-info-page\step-photo\step-photo.component.ts                | TypeScript |         11 |          0 |          5 |         16 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\system\task-info-page\task-info-page.component.html                     | HTML       |         35 |          1 |          8 |         44 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\system\task-info-page\task-info-page.component.scss                     | SCSS       |         97 |          3 |         28 |        128 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\system\task-info-page\task-info-page.component.spec.ts                  | TypeScript |         20 |          0 |          6 |         26 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\system\task-info-page\task-info-page.component.ts                       | TypeScript |         70 |          1 |         22 |         93 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\system\tasks-page\dialog-add-task\dialog-add-task.component.html        | HTML       |         12 |          1 |          5 |         18 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\system\tasks-page\dialog-add-task\dialog-add-task.component.scss        | SCSS       |          6 |          0 |          1 |          7 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\system\tasks-page\dialog-add-task\dialog-add-task.component.spec.ts     | TypeScript |         20 |          0 |          6 |         26 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\system\tasks-page\dialog-add-task\dialog-add-task.component.ts          | TypeScript |         25 |          8 |         10 |         43 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\system\tasks-page\tasks-page.component.html                             | HTML       |         52 |          0 |          7 |         59 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\system\tasks-page\tasks-page.component.scss                             | SCSS       |         21 |          0 |          5 |         26 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\system\tasks-page\tasks-page.component.spec.ts                          | TypeScript |         20 |          0 |          6 |         26 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\system\tasks-page\tasks-page.component.ts                               | TypeScript |         76 |          1 |         20 |         97 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\system\user-info-page\assign-task\assign-task.component.html            | HTML       |         24 |          0 |          4 |         28 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\system\user-info-page\assign-task\assign-task.component.scss            | SCSS       |         27 |          2 |          6 |         35 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\system\user-info-page\assign-task\assign-task.component.spec.ts         | TypeScript |         20 |          0 |          6 |         26 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\system\user-info-page\assign-task\assign-task.component.ts              | TypeScript |         58 |          0 |         15 |         73 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\system\user-info-page\assignment-info\assignment-info.component.html    | HTML       |         27 |          4 |          5 |         36 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\system\user-info-page\assignment-info\assignment-info.component.scss    | SCSS       |         47 |          1 |          8 |         56 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\system\user-info-page\assignment-info\assignment-info.component.spec.ts | TypeScript |         20 |          0 |          6 |         26 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\system\user-info-page\assignment-info\assignment-info.component.ts      | TypeScript |         49 |         21 |         23 |         93 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\system\user-info-page\user-activity\user-activity.component.html        | HTML       |         47 |          0 |          3 |         50 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\system\user-info-page\user-activity\user-activity.component.scss        | SCSS       |          3 |          0 |          0 |          3 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\system\user-info-page\user-activity\user-activity.component.spec.ts     | TypeScript |         20 |          0 |          6 |         26 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\system\user-info-page\user-activity\user-activity.component.ts          | TypeScript |         88 |         16 |         15 |        119 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\system\user-info-page\user-calendar\user-calendar.component.html        | HTML       |          7 |          0 |          0 |          7 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\system\user-info-page\user-calendar\user-calendar.component.scss        | SCSS       |         16 |          6 |          6 |         28 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\system\user-info-page\user-calendar\user-calendar.component.spec.ts     | TypeScript |         20 |          0 |          6 |         26 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\system\user-info-page\user-calendar\user-calendar.component.ts          | TypeScript |         66 |          0 |         14 |         80 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\system\user-info-page\user-details\user-details.component.html          | HTML       |        122 |          0 |         12 |        134 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\system\user-info-page\user-details\user-details.component.scss          | SCSS       |         59 |          9 |         11 |         79 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\system\user-info-page\user-details\user-details.component.spec.ts       | TypeScript |         20 |          0 |          6 |         26 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\system\user-info-page\user-details\user-details.component.ts            | TypeScript |         46 |          0 |         11 |         57 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\system\user-info-page\user-info-page.component.html                     | HTML       |         26 |         12 |          8 |         46 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\system\user-info-page\user-info-page.component.scss                     | SCSS       |        149 |         11 |         35 |        195 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\system\user-info-page\user-info-page.component.spec.ts                  | TypeScript |         20 |          0 |          6 |         26 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\system\user-info-page\user-info-page.component.ts                       | TypeScript |        100 |         39 |         31 |        170 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\system\user-info-page\user-onboarding\user-onboarding.component.html    | HTML       |         15 |          2 |          3 |         20 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\system\user-info-page\user-onboarding\user-onboarding.component.scss    | SCSS       |          6 |          0 |          1 |          7 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\system\user-info-page\user-onboarding\user-onboarding.component.spec.ts | TypeScript |         20 |          0 |          6 |         26 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\system\user-info-page\user-onboarding\user-onboarding.component.ts      | TypeScript |         30 |          1 |          8 |         39 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\system\workers-page\workers-page.component.html                         | HTML       |         76 |         45 |         16 |        137 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\system\workers-page\workers-page.component.scss                         | SCSS       |         21 |          1 |          9 |         31 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\system\workers-page\workers-page.component.spec.ts                      | TypeScript |         20 |          0 |          6 |         26 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\app\system\workers-page\workers-page.component.ts                           | TypeScript |         90 |         18 |         27 |        135 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\environments\environment.prod.ts                                            | TypeScript |         11 |          0 |          2 |         13 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\environments\environment.ts                                                 | TypeScript |         11 |         20 |          8 |         39 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\index.html                                                                  | HTML       |         18 |          0 |          1 |         19 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\main.ts                                                                     | TypeScript |          9 |          0 |          4 |         13 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\polyfills.ts                                                                | TypeScript |          2 |         50 |          6 |         58 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\styles.scss                                                                 | SCSS       |          2 |          0 |          3 |          5 |
+| c:\Users\Anna_\OneDrive\Документы\GitHub\anria-vue\admin-panel\src\test.ts                                                                     | TypeScript |         18 |          4 |          5 |         27 |
+| Total                                                                                                                                          |            |      4,190 |        471 |        985 |      5,646 |
++------------------------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+

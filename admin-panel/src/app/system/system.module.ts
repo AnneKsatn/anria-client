@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SystemRoutingModule } from './system-routing.module';
 import { WorkersPageComponent } from './workers-page/workers-page.component';
@@ -59,12 +59,17 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
 import { FileUploadModule } from 'primeng/fileupload';
 import { HttpClientModule } from '@angular/common/http';
 import { StepPhotoComponent } from './task-info-page/step-photo/step-photo.component';
+import localeRu from '@angular/common/locales/ru';
+import { registerLocaleData } from '@angular/common';
 
 FullCalendarModule.registerPlugins([
   dayGridPlugin,
   timeGridPlugin,
   interactionPlugin
 ]);
+
+
+registerLocaleData(localeRu, 'ru');
 
 
 @NgModule({
@@ -128,6 +133,9 @@ FullCalendarModule.registerPlugins([
     InputTextareaModule,
     FileUploadModule,
     HttpClientModule
+  ],
+  providers: [
+    { provide: LOCALE_ID, useValue: 'ru' }
   ]
 })
 export class SystemModule { }

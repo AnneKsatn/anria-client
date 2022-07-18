@@ -1,22 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { MatDialog, MatDialogModule, MAT_DIALOG_DATA, MatDialogConfig } from '@angular/material/dialog';
-import { SELECT_ITEM_HEIGHT_EM } from '@angular/material/select/select';
-import { MatTableDataSource } from '@angular/material/table';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
-export interface PeriodicElement {
-  title: string;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  { title: "Проверка функционарирования предохранительного выклчателя задних ворот листогибочного пресса TrueBend 5230" },
-  { title: "Проверка функционарирования предохранительного выклчателя задних ворот листогибочного пресса TrueBend 5230" },
-  { title: "Проверка функционарирования предохранительного выклчателя задних ворот листогибочного пресса TrueBend 5230" },
-  { title: "Проверка функционарирования предохранительного выклчателя задних ворот листогибочного пресса TrueBend 5230" },
-  { title: "Проверка функционарирования предохранительного выклчателя задних ворот листогибочного пресса TrueBend 5230" },
-  { title: "Проверка функционарирования предохранительного выклчателя задних ворот листогибочного пресса TrueBend 5230" },
-];
 
 @Component({
   selector: 'app-user-activity',
@@ -25,94 +10,51 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export class UserActivityComponent implements OnInit {
 
-
-  tasks: any = [
-    {
-      title: "Автоматизированное обслуживание оборудования. 'Листогибочный пресс TruBend 5230'",
-      status: "Выполнено без ошибок",
-      start: "25.09.2022 12:00",
-      end: "25.09.2022 14:00",
-      creator: "Сухова Анна Сергевна",
-      reviewer: "Сухова Анна Сергеевна"
-    },
-    {
-      title: "Автоматизированное обслуживание оборудования. 'Токарный станок'",
-      status: "Выполнено без ошибок",
-      start: "25.09.2022 14:00",
-      end: "25.09.2022 15:00",
-      creator: "Сухова Анна Сергевна",
-      reviewer: "Сухова Анна Сергеевна"
-    },
-    {
-      title: "Автоматизированное обслуживание оборудования. 'Фразерный станок'",
-      status: "Выполнено без ошибок",
-      start: "25.09.2022 15:00",
-      end: "25.09.2022 16:00",
-      creator: "Сухова Анна Сергевна",
-      reviewer: "Сухова Анна Сергеевна"
-    },
-    {
-      title: "Автоматизированное обслуживание оборудования. 'Шлифовочный станок'",
-      status: "Выполнено без ошибок",
-      start: "25.09.2022 18:00",
-      end: "25.09.2022 19:00",
-      creator: "Сухова Анна Сергевна",
-      reviewer: "Сухова Анна Сергеевна"
-    },
-    {
-      title: "Автоматизированное обслуживание оборудования. 'Шлифовочный станок'",
-      status: "Выполнено без ошибок",
-      start: "25.09.2022 15:00",
-      end: "25.09.2022 16:00",
-      creator: "Сухова Анна Сергевна",
-      reviewer: "Сухова Анна Сергеевна"
-    }
-  ]
+  workerId!: string;
+  tasks!: any;
 
   constructor(
-    public dialog: MatDialog,
     public firestore: AngularFirestore,
-    public router: Router) { }
+    public router: Router,
+    private activatedRoute: ActivatedRoute,
+    private cd: ChangeDetectorRef) { }
 
   ngOnInit(): void {
-    this.firestore.collection('/tasks').snapshotChanges().subscribe((data: any) => {
-      // this.tasks = data.map(function (item: any) {
-      //   return {
-      //     "title": item.payload.doc.data().title,
-      //     "id": item.payload.doc.id
-      //   }
-      // })
+    this.activatedRoute.parent?.params.subscribe((params: any) => {
 
-      // this.tasks = new MatTableDataSource(this.dataR)
+      this.workerId = params['id']
+
+      this.firestore.collection('/assignments', ref => ref.where("worker_id", "==", this.workerId)).snapshotChanges().subscribe((data: any) => {
+        this.tasks = data.map(function (assignment: any) {
+          return {
+            date_start: new Date(assignment.payload.doc.data().date_start),
+            date_end: new Date(assignment.payload.doc.data().date_end),
+            status: assignment.payload.doc.data().status,
+            task_title: assignment.payload.doc.data().task_title,
+            worker_id: assignment.payload.doc.data().worker_id,
+            worker: {},
+            initiator: "Касаткина Анна Сергеевна",
+            id: assignment.payload.doc.id
+          }
+        })
+
+        this.cd.detectChanges();
+      })
     })
   }
-
-  displayedColumns: string[] = ['title'];
-  columnsToDisplay: string[] = ['title', 'info', 'edit', 'delete'];
-  data: PeriodicElement[] = ELEMENT_DATA;
 
   addTask() {
   }
 
   deleteTask(id_element: any) {
-    this.firestore.collection("tasks").doc(id_element).delete()
+    // this.firestore.collection("tasks").doc(id_element).delete()
   }
 
   editTask(task: any) {
-    // const dialogRef = this.dialog.open(DialogAddTaskComponent, {
-    //   width: '50%',
-    //   data: task
-    // });
-
-    // dialogRef.afterClosed().subscribe(result => {
-    //   if (result) {
-    //     this.firestore.collection("tasks").doc(result.id).update(result)
-    //   }
-    // });
   }
 
   goToTaskPage(element: any) {
     console.log(element)
-    this.router.navigate(["/system/task-info"], { queryParams: { element_id: element.id } })
+    this.router.navigate(["/system/assignment-info"], { queryParams: { id: element.id } })
   }
 }

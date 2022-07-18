@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AssignmentService } from 'src/app/shared/services/assignment.service';
 import { StepService } from 'src/app/shared/services/step.service';
+import { jsPDF } from "jspdf";
+import { font } from "./font";
 
 @Component({
   selector: 'app-assingment-ingo-page',
@@ -11,14 +14,24 @@ import { StepService } from 'src/app/shared/services/step.service';
 export class AssingmentIngoPageComponent implements OnInit {
 
   id!: string;
-  assignment?: any;
+  assignment!: {
+    date_start: Date,
+    date_end: Date,
+    worker_name: string,
+    initiator: string,
+    steps: Array<any>,
+    task_title: string,
+    status: string
+  };
   steps?: any = [];
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private assignmentService: AssignmentService,
     private stepService: StepService,
-    private router: Router
+    private router: Router,
+    private storage: AngularFireStorage,
+
   ) { }
 
   ngOnInit(): void {
@@ -37,10 +50,22 @@ export class AssingmentIngoPageComponent implements OnInit {
         console.log(this.assignment)
 
         this.assignment.steps.forEach((step: any) => {
-          this.stepService.getStepById(step).subscribe((data: any) => {
-            step = data.data()
-            this.steps.push(data.data())
-            console.log(this.steps)
+          this.stepService.getAssignStepById(step, params['id']).subscribe((data: any) => {
+            let step = data.data()
+
+            console.log(step.report_file)
+
+            if (step.report_file) {
+              const ref = this.storage.ref(step.report_file);
+              ref.getDownloadURL().subscribe((img: any) => {
+                step.report_file = img
+                this.steps.push(step)
+              })
+            }
+
+            if (!step.report_file) {
+              this.steps.push(step)
+            }
           })
         });
       })
@@ -51,5 +76,71 @@ export class AssingmentIngoPageComponent implements OnInit {
     this.assignmentService.deleteAssignment(this.id).then((data: any) => {
       this.router.navigateByUrl("system/assignments")
     })
+  }
+
+  toDataURL(url: any, callback: any) {
+    var xhr = new XMLHttpRequest();
+    xhr.onload = function () {
+      var reader = new FileReader();
+      reader.onloadend = function () {
+        callback(reader.result);
+      }
+      reader.readAsDataURL(xhr.response);
+    };
+    xhr.open('GET', url);
+    xhr.responseType = 'blob';
+    xhr.send();
+  }
+
+  createReport() {
+    let doc = new jsPDF('p', 'pt', 'a4');
+
+
+    // console.log(doc.getFontList())
+
+    // doc.setFont('zapfdingbats');
+    // doc.setFontSize(10);
+    // doc.text("А ну чики брики и в дамки!", 10, 10);
+
+    doc.addFileToVFS("OpenSans-Regular.ttf", font)
+    doc.addFont("OpenSans-Regular.ttf", "OpenSans", "normal");
+    doc.setFont("OpenSans", "normal");
+
+    doc.text("А ну чики брики и в дамки!", 10, 10);
+
+    // let x = 15, y = 40;
+    // let width = 300, height = 180;
+
+    // const variable = this.assignment.task_title
+    // console.log(this.assignment.task_title)
+    // doc.text("TEXT", 0, 15)
+    // doc.text("Текст на русском языке", 15, 15)
+
+
+    // this.steps.forEach((step: any) => {
+    //   if (step.report_string) {
+    //     doc.addImage(step.report_string, 'PNG', x, y, width, height)
+
+    //     y = y + height + 20;
+    //   }
+    // })
+
+
+
+    // const doc = new jsPDF("p", "pt");
+
+    // doc.addFont("Arimo-Regular.ttf", "Arimo", "normal");
+    // doc.addFont("Arimo-Bold.ttf", "Arimo", "bold");
+    // doc.setFont("Arimo", "normal");
+
+    // doc.setFontSize(28);
+
+    // doc.text("Мой Текст на русском!", 100, 100);
+
+    // doc.setFont("Arimo", "bold");
+
+    // doc.text("Hello, BOLD World!", 100, 150);
+
+    doc.save("customFonts.pdf");
   }
 }

@@ -51,7 +51,7 @@ export class StepInfoPageComponent implements OnInit {
           this.checklist.push(
             new FormGroup({
               title: new FormControl(''),
-              status: new FormControl('')
+              isChecked: new FormControl('')
             })
           );
         });
@@ -76,7 +76,7 @@ export class StepInfoPageComponent implements OnInit {
     this.checklist.push(
       new FormGroup({
         title: new FormControl(''),
-        status: new FormControl('not_started')
+        isChecked: new FormControl(false)
       })
     );
   }

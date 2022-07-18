@@ -55,6 +55,17 @@ export class AssignTaskComponent implements OnInit {
     var context = this
     this.firestore.collection("assignments").add(this.assignment)
       .then(function (docRef) {
+        context.task.steps.forEach((item: any) => {
+          context.firestore.collection("steps").doc(item).get().subscribe((step_db: any) => {
+
+            let step = step_db.data()
+            step.status = "not_started"
+            console.log(step)
+            context.firestore.collection("assignments/" + docRef.id + "/steps").doc(item).set(
+              step
+            )
+          })
+        })
         context.router.navigate(["/system/user-info", context.assignment.worker_id, "calendar"])
       })
   }
