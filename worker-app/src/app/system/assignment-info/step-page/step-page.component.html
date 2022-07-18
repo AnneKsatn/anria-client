@@ -1,16 +1,30 @@
-<p>{{step.title}}</p>
+<h2>{{step.title}}</h2>
 
 <div>
     <img [src]="image_src">
 </div>
 
+<h3>Описание шага:</h3>
+
 <p>{{step.description}}</p>
 
-Отметьте то, что было сделано:
 <div *ngFor="let item of step.checklist">
     <mat-checkbox [(ngModel)]="item.isChecked">
         {{item.title}}
     </mat-checkbox>
 </div>
 
-<button (click)="completeStep()">Завершить шаг</button>
+<h3>Приложите фото-отчет:</h3>
+
+<input type="file" class="file-input" (change)="onFileSelected($event)" #fileUpload>
+
+<div class="file-upload">
+
+    {{report_file?.name || "Файл не загружен"}}
+
+    <button mat-mini-fab color="primary" class="upload-btn" (click)="fileUpload.click()">
+        <mat-icon>attach_file</mat-icon>
+    </button>
+</div>
+
+<button  mat-stroked-button color="primary" (click)="completeStep()">Завершить шаг</button>

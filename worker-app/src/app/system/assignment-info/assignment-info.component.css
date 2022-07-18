@@ -14,11 +14,11 @@ ul {
 }
 
 .completed {
-  background-color: rgb(224, 222, 222);
+  background-color: rgb(191, 246, 187);
 }
 
 .not-started {
-  background-color: rgb(191, 246, 187);
+  background-color: rgb(224, 222, 222);
 }
 
 .segoePrintFont {
