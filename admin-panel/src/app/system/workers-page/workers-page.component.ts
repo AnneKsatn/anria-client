@@ -4,7 +4,7 @@ import { Firestore, collectionData, collection } from '@angular/fire/firestore';
 import { MatTableDataSource } from '@angular/material/table';
 
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
-import { WorkerService } from 'src/app/shared/services/worker.service';
+import { UserService } from 'src/app/shared/services/user.service';
 import { Router } from '@angular/router';
 
 export interface PeriodicElement {
@@ -33,14 +33,14 @@ export class WorkersPageComponent implements OnInit {
   constructor(
     public dialog: MatDialog,
     public firestore: AngularFirestore,
-    public workerService: WorkerService,
+    public UserService: UserService,
     public router: Router) { }
 
   ngOnInit(): void {
 
     this.loading = false;
 
-    this.workerService.getWorkers().subscribe((data: any) => {
+    this.UserService.getWorkers().subscribe((data: any) => {
       let users = data.map(function (procedure: any) {
         return {
           fullname: procedure.payload.doc.data().surname

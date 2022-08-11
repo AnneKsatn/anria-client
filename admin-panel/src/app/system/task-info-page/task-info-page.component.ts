@@ -5,6 +5,10 @@ import * as firebase from 'firebase/app';
 import 'firebase/firestore'
 import { MatDialog, MatDialogModule, MAT_DIALOG_DATA, MatDialogConfig } from '@angular/material/dialog';
 import { TaskService } from 'src/app/shared/services/task.service';
+import { DocumentSnapshot } from 'firebase/firestore';
+import { Task } from 'src/app/shared/models/task.model';
+import { StepService } from 'src/app/shared/services/step.service';
+import { Step } from 'src/app/shared/models/step.model';
 
 
 @Component({
@@ -15,38 +19,36 @@ import { TaskService } from 'src/app/shared/services/task.service';
 export class TaskInfoPageComponent implements OnInit {
 
   taskId: any
-  task: any = {
-    steps: []
-  };
+  task!: Task
 
   steps: any = {}
 
   constructor(
     public dialog: MatDialog,
     private activatedRoute: ActivatedRoute,
-    private firestore: AngularFirestore,
     private router: Router,
-    private taskService: TaskService
+    private taskService: TaskService,
+    private stepService: StepService
   ) { }
 
 
   getData() {
-    this.firestore.collection("tasks").doc(this.taskId).get()
-      .subscribe((data: any) => {
-        this.task = data.data()
-        this.task.steps_descriptions = {}
 
-        this.task.steps.forEach((element: any) => {
-          let step: any;
+    this.taskService.getTaskByID(this.taskId).subscribe((data: DocumentSnapshot<Task>) => {
+      this.task = data.data()!
 
-          this.firestore.collection("/steps").doc(element).get().subscribe((data: any) => {
-            step = data.data()
-            step.id = element
+      this.task?.steps.forEach((stepId: string) => {
 
-            this.steps[element] = step
-          })
-        });
-      })
+        let step: any;
+
+        this.stepService.getStepById(stepId).subscribe((data: DocumentSnapshot<Step>) => {
+          step = data.data()
+
+          step.id = stepId
+          this.steps[stepId] = step
+        })
+      });
+    })
   }
 
   ngOnInit(): void {
@@ -58,7 +60,7 @@ export class TaskInfoPageComponent implements OnInit {
   }
 
   orderChanged() {
-    this.firestore.collection("tasks").doc(this.taskId).update(this.task)
+    this.taskService.updateTask(this.taskId, this.task)
   }
 
   addStep() {
@@ -70,16 +72,13 @@ export class TaskInfoPageComponent implements OnInit {
     let index = this.task.steps.indexOf(step)
     this.task.steps.splice(index, 1)
 
-    this.firestore.collection("tasks").doc(this.taskId).update(
-      this.task
-    );
+    this.taskService.updateTask(this.taskId, this.task)
 
     this.getData()
   }
 
   info(step: any) {
     this.router.navigate(["/system/step-info"], { queryParams: { id: step, task_id: this.taskId } })
-    // this.router.navigateByUrl("/system/step-info")
     console.log(step)
   }
 

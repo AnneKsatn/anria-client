@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DialogAddStepComponent } from './dialog-add-step.component';
+import { RegistrationComponent } from './registration.component';
 
-describe('DialogAddStepComponent', () => {
-  let component: DialogAddStepComponent;
-  let fixture: ComponentFixture<DialogAddStepComponent>;
+describe('RegistrationComponent', () => {
+  let component: RegistrationComponent;
+  let fixture: ComponentFixture<RegistrationComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DialogAddStepComponent ]
+      declarations: [ RegistrationComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DialogAddStepComponent);
+    fixture = TestBed.createComponent(RegistrationComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

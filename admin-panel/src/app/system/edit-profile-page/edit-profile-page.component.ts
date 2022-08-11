@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
-import { Observable } from 'rxjs';
-import { WorkerService } from 'src/app/shared/services/worker.service';
-import { debounceTime, switchMap } from 'rxjs/operators';
-import { map } from 'rxjs/operators';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+
+import { UserService } from 'src/app/shared/services/user.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { DocumentSnapshot } from 'firebase/firestore';
+import { User } from 'src/app/shared/models/user.model';
 
 @Component({
   selector: 'app-edit-profile-page',
@@ -13,16 +13,15 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class EditProfilePageComponent implements OnInit {
 
-
   constructor(
-    private workerService: WorkerService,
+    private userService: UserService,
     private activatedRoute: ActivatedRoute,
     private router: Router
   ) { }
 
   form!: FormGroup;
-  worker_id!: string;
-  worker!: any;
+  userId!: string;
+  user?: User;
 
   ngOnInit() {
     this.form = new FormGroup({
@@ -39,23 +38,23 @@ export class EditProfilePageComponent implements OnInit {
     })
 
     this.activatedRoute.queryParams.subscribe((data: any) => {
-      this.worker_id = data['id']
+      this.userId = data['id']
 
-      this.workerService.getWorkerById(this.worker_id).subscribe((data: any) => {
-        this.worker = data.data()
+      this.userService.getWorkerById(this.userId).subscribe((data: DocumentSnapshot<User>) => {
+        this.user = data.data()
         // console.log(this.worker)
 
         this.form.setValue({
-          'name': this.worker.name,
-          'surname': this.worker.surname,
-          'patronymic': this.worker.patronymic,
-          'phone': this.worker.phone,
-          'email': this.worker.email,
-          'password': this.worker.password,
-          'region': this.worker.region || '',
-          'department': this.worker.department,
-          'position': this.worker.position,
-          'number': this.worker.number || '',
+          'name': this.user?.name,
+          'surname': this.user?.surname,
+          'patronymic': this.user?.patronymic,
+          'phone': this.user?.phone,
+          'email': this.user?.email,
+          'password': this.user?.password,
+          'region': this.user?.region || '',
+          'department': this.user?.department,
+          'position': this.user?.position,
+          'number': this.user?.number || '',
         })
       })
 
@@ -64,8 +63,8 @@ export class EditProfilePageComponent implements OnInit {
 
   updateUser() {
     console.log(this.form.value)
-    this.workerService.updateWorker(this.worker_id, this.form.value).then((data: any) => {
-      this.router.navigate(["system/user-info", this.worker_id, "details"])
+    this.userService.updateWorker(this.userId, this.form.value).then((data: any) => {
+      this.router.navigate(["system/user-info", this.userId, "details"])
     })
   }
 }

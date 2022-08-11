@@ -4,7 +4,7 @@ import { Subject } from 'rxjs';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { MatDialog } from '@angular/material/dialog';
-import { WorkerService } from 'src/app/shared/services/worker.service';
+import { UserService } from 'src/app/shared/services/user.service';
 import { ConditionalExpr } from '@angular/compiler';
 
 
@@ -25,15 +25,11 @@ export class UserInfoPageComponent implements OnInit {
     private firestore: AngularFirestore,
     private cd: ChangeDetectorRef,
     public dialog: MatDialog,
-    private workerService: WorkerService,
+    private UserService: UserService,
     private router: Router
   ) { }
 
   ngOnInit(): void {
-    // this.activatedRoute.queryParams.subscribe((params: any) => {
-    //   this.worker_id = params['worker_id']
-    // });
-
     this.activatedRoute.params.subscribe((params: any) => {
       this.worker_id = params['id']
     })
@@ -44,43 +40,7 @@ export class UserInfoPageComponent implements OnInit {
   }
 
   assignTask(): void {
-
     this.router.navigate(["/system/user-info", this.worker_id, "assign-task"])
-
-
-    // let worker = {
-    //   id: this.worker_id
-    // }
-    // const dialogRef = this.dialog.open(DialogAssignmentComponent, {
-    //   width: '50%',
-    //   data: { worker: worker }
-    // });
-
-    // dialogRef.afterClosed().subscribe(result => {
-    //   if (result) {
-    //     console.log(result);
-
-    //     let assignment = {
-    //       worker_id: result.worker.id,
-    //       task_id: result.task.id,
-    //       date_start: result.date_start,
-    //       date_end: result.date_end,
-    //       task_title: result.task.title
-    //     }
-
-    //     this.firestore.collection("assignments").add(assignment)
-    //       .then(function (docRef) {
-    //         console.log(docRef.id);
-    //       })
-
-    //   } else {
-    //     console.log("no")
-    //   }
-    // });
-  }
-
-  deleteEvent(eventToDelete: any) {
-    // this.events = this.events.filter((event) => event !== eventToDelete);
   }
 
   setOptions() {
@@ -90,8 +50,6 @@ export class UserInfoPageComponent implements OnInit {
         center: 'title',
         right: 'dayGridMonth,timeGridWeek,timeGridDay'
       },
-      // editable: false,
-      // selectable: true,
       weekends: false,
       selectMirror: true,
       dayMaxEvents: true,
@@ -114,31 +72,19 @@ export class UserInfoPageComponent implements OnInit {
             title: event.payload.doc.data().task_title
           }
         })
-
-        // this.options.events.forEach((element: any) => {
-        //   this.firestore.collection("tasks").doc(element.task_id).get().subscribe((data_2: any) => {
-        //     element.title = data_2.data().title
-        //     console.log(element.title)
-        //     element.title="keeeek"
-        //   })
-        // });
-
         this.cd.detectChanges();
       })
   }
 
   getWorkerInfo() {
-    this.workerService.getWorkerById(this.worker_id).subscribe((doc: any) => {
+    this.UserService.getWorkerById(this.worker_id).subscribe((doc: any) => {
       this.worker = doc.data()
-
-      // console.log(this.worker)
-
       this.cd.detectChanges();
     })
   }
 
   deleteWorker() {
-    this.workerService.deleteWorkerById(this.worker_id).then((data) => {
+    this.UserService.deleteWorkerById(this.worker_id).then((data) => {
       this.router.navigateByUrl("/system/workers")
     })
   }

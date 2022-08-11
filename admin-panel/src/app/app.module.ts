@@ -20,6 +20,7 @@ import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import { ToolbarModule } from 'primeng/toolbar';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { AuthService } from './shared/services/auth.service';
 
 
 const firebaseConfig = {
@@ -61,7 +62,7 @@ FullCalendarModule.registerPlugins([
     ToolbarModule,
     AngularFireStorageModule
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

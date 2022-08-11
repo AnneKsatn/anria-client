@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { WorkerService } from 'src/app/shared/services/worker.service';
+import { UserService } from 'src/app/shared/services/user.service';
 import { debounceTime, switchMap } from 'rxjs/operators';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
@@ -14,12 +14,11 @@ import { Router } from '@angular/router';
 export class AddWorkerPageComponent implements OnInit {
 
   constructor(
-    private workerService: WorkerService,
+    private UserService: UserService,
     private router: Router
   ) { }
 
   form!: FormGroup;
-
 
   ngOnInit() {
     this.form = new FormGroup({
@@ -37,7 +36,7 @@ export class AddWorkerPageComponent implements OnInit {
   }
 
   addUser() {
-    this.workerService.addWorker(this.form.value).then(err => {
+    this.UserService.addWorker(this.form.value).then(err => {
       this.router.navigateByUrl("system/workers")
     })
   }

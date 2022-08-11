@@ -3,7 +3,9 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { DocumentSnapshot } from 'firebase/firestore';
 import { FileUpload } from 'primeng/fileupload';
+import { Step } from 'src/app/shared/models/step.model';
 import { StepService } from 'src/app/shared/services/step.service';
 
 @Component({
@@ -27,7 +29,7 @@ export class StepInfoPageComponent implements OnInit {
   }
 
   step_id!: string;
-  step!: any;
+  step!: Step;
   image_src: any;
 
   constructor(
@@ -44,10 +46,10 @@ export class StepInfoPageComponent implements OnInit {
       this.step_id = params["id"]
       this.task_id = params["task_id"]
 
-      this.stepService.getStepById(this.step_id).subscribe((data: any) => {
-        this.step = data.data()
+      this.stepService.getStepById(this.step_id).subscribe((data: DocumentSnapshot<Step>) => {
+        this.step = data.data()!
 
-        data.data().checklist.forEach((element: any) => {
+        data.data()!.checklist.forEach((element: any) => {
           this.checklist.push(
             new FormGroup({
               title: new FormControl(''),
@@ -57,9 +59,9 @@ export class StepInfoPageComponent implements OnInit {
         });
 
         this.form.setValue({
-          title: data.data().title,
-          description: data.data().description,
-          checklist: data.data().checklist
+          title: data.data()!.title,
+          description: data.data()!.description,
+          checklist: data.data()!.checklist
         })
 
         const ref = this.storage.ref(this.step.file);

@@ -17,7 +17,7 @@ import { LocalizationPageComponent } from './localization-page/localization-page
 import { StepInfoPageComponent } from './task-info-page/step-info-page/step-info-page.component';
 import { AssignmentInfoComponent } from './user-info-page/assignment-info/assignment-info.component';
 import { AssingmentsPageComponent } from './assingments-page/assingments-page.component';
-import { AssingmentIngoPageComponent } from './assingment-ingo-page/assingment-ingo-page.component';
+import { AssingmentIngoPageComponent } from './assingment-info-page/assingment-ingo-page.component';
 import { AddStepPageComponent } from './task-info-page/add-step-page/add-step-page.component';
 
 

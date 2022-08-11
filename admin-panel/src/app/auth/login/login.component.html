@@ -25,10 +25,12 @@
 
 
     </div>
-
     <div class="form-group">
       <button type="submit" class="btn btn-block btn-primary" [disabled]="form.invalid">
         Войти
+      </button>
+      <button class="btn btn-block btn-primary" (click)="registration()">
+        Регистрация
       </button>
     </div>
   </form>

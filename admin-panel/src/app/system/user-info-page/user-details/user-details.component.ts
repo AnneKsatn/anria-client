@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { CdkFixedSizeVirtualScroll } from '@angular/cdk/scrolling';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { WorkerService } from 'src/app/shared/services/worker.service';
+import { DocumentSnapshot } from 'firebase/firestore';
+import { User } from 'src/app/shared/models/user.model';
+import { UserService } from 'src/app/shared/services/user.service';
 
 @Component({
   selector: 'app-user-details',
@@ -10,15 +13,16 @@ import { WorkerService } from 'src/app/shared/services/worker.service';
 export class UserDetailsComponent implements OnInit {
 
   worker_id: any;
-  worker: any;
+  worker?: User;
   displayDeleteDialog: boolean = false;
   displayPasswordDialog: boolean = false;
   password?: string;
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private workerService: WorkerService,
-    private router: Router
+    private UserService: UserService,
+    private router: Router,
+    private cdr: ChangeDetectorRef
   ) { }
 
   ngOnInit(): void {
@@ -26,8 +30,9 @@ export class UserDetailsComponent implements OnInit {
       this.worker_id = params['id']
     })
 
-    this.workerService.getWorkerById(this.worker_id).subscribe((worker: any) => {
+    this.UserService.getWorkerById(this.worker_id).subscribe((worker: DocumentSnapshot<User>) => {
       this.worker = worker.data()
+      this.cdr.detectChanges()
     })
   }
 
@@ -36,7 +41,7 @@ export class UserDetailsComponent implements OnInit {
   }
 
   deleteWorker() {
-    this.workerService.deleteWorkerById(this.worker_id).then((data: any) => {
+    this.UserService.deleteWorkerById(this.worker_id).then((data: any) => {
       this.router.navigateByUrl("system/workers")
     })
   }
@@ -50,7 +55,7 @@ export class UserDetailsComponent implements OnInit {
   }
 
   resertPassword() {
-    this.workerService.updateWorker(this.worker_id, { 'password': this.password })
+    this.UserService.updateWorker(this.worker_id, { 'password': this.password })
     this.displayPasswordDialog = false;
   }
 }
