@@ -1,156 +1,57 @@
-<!-- 
-  <div class="example-container" [class.example-is-mobile]="mobileQuery.matches" *ngIf="shouldRun">
-
-    <p-toolbar>
-      <div class="p-toolbar-group-left">
-        <i class="pi pi-bars" (click)="snav.toggle()"> </i>
-      </div>
-    
-      <div class="p-toolbar-group-right">
-        <button pButton pRipple type="button" icon="pi pi-envelope" class="p-button-rounded p-button-lg p-button-text"></button>
-        <button pButton pRipple type="button" icon="pi pi-calendar"
-          class="p-button-rounded p-button-lg p-button-secondary p-button-text"></button>
-        <button pButton pRipple type="button" icon="pi pi-bell"
-          class="p-button-rounded p-button-lg p-button-warning p-button-text"></button>
-        <button pButton pRipple type="button" icon="pi pi-user"
-          class="p-button-rounded p-button-lg p-button-info p-button-text"
-          (click)="goToProfilePage()"
-          ></button>
-        <button pButton pRipple type="button" icon="pi pi-sign-out"
-          class="p-button-rounded p-button-lg p-button-text p-button-plain"></button>
-      </div>
-      
-    </p-toolbar>
-
-    <mat-sidenav-container class="example-sidenav-container"
-                           [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
-      <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
-                   [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
-        <mat-nav-list>
-
-            <a mat-list-item routerLink="./tasks" >Задачи</a>
-            <a mat-list-item routerLink="./assignment" >Архив</a>
-        </mat-nav-list>
-      </mat-sidenav>
-  
-      <mat-sidenav-content>
-
-        <div class="content">
-            <router-outlet></router-outlet>
-        </div>
-      </mat-sidenav-content>
-    </mat-sidenav-container>
-  </div> -->
-
-
-  <div class="sidebar">
-    <div class="logo-details">
-      <!-- <i class='bx bxl-c-plus-plus icon'></i> -->
-      <div class="logo_name">UNRIA</div>
-      <i class='bx bx-menu' id="btn"></i>
-    </div>
-    <ul class="nav-list">
-      <!-- <li>
-        <i class='bx bx-search'></i>
-        <input type="text" placeholder="Search...">
-        <span class="tooltip">Search</span>
-      </li> -->
-      <!-- <li>
-        <a href="#">
-          <i class='bx bx-grid-alt'></i>
-          <span class="links_name">Dashboard</span>
-        </a>
-        <span class="tooltip">Dashboard</span>
-      </li> -->
-      <li>
-        <a href="system/workers">
-          <i class='bx bx-user'></i>
-          <span class="links_name">Пользователи</span>
-        </a>
-        <span class="tooltip">Пользователи</span>
-      </li>
-      <li>
-        <a href="system/groups">
-          <i class='bx bx-group'></i>
-          <span class="links_name">Группы</span>
-        </a>
-        <span class="tooltip">Группы</span>
-      </li>
-      <!-- <li>
-        <a href="#">
-          <i class='bx bx-chat'></i>
-          <span class="links_name">Messages</span>
-        </a>
-        <span class="tooltip">Messages</span>
-      </li> -->
-
-            <li>
-              <a href="system/assignments">
-                <i class='bx bx-folder'></i>
-                <span class="links_name">Назначение задач</span>
-              </a>
-              <span class="tooltip">Назначение задач</span>
-            </li>
-
-            <li>
-              <a href="system/tasks">
-                <i class='bx bx-task'></i>
-                <span class="links_name">Шаблоны задач</span>
-              </a>
-              <span class="tooltip">Задачи</span>
-            </li>
-            <li>
-              <!-- <a href="system/tasks">
-                      <i class='bx bx-pie-chart-alt-2'></i>
-                      <span class="links_name">Onboarding</span>
-                    </a> -->
-              <span class="tooltip">Задачи</span>
-            </li>
-            
-            <li>
-              <a href="system/assistant">
-                <i class='bx bx-cog'></i>
-                <span class="links_name">AI - ассистенты</span>
-              </a>
-              <span class="tooltip">AI - ассистент</span>
-            </li>
-      
-      <!-- <li>
-        <a href="#">
-          <i class='bx bx-folder'></i>
-          <span class="links_name">Локализация</span>
-        </a>
-        <span class="tooltip">Files</span>
-      </li> -->
-      <!-- <li>
-        <a href="#">
-          <i class='bx bx-cart-alt'></i>
-          <span class="links_name">Уведомления</span>
-        </a>
-        <span class="tooltip">Уведомления</span>
-      </li> -->
-      <!-- <li>
-        <a href="#">
-          <i class='bx bx-cog'></i>
-          <span class="links_name">Setting</span>
-        </a>
-        <span class="tooltip">Setting</span>
-      </li> -->
-      <li class="profile">
-        <div class="profile-details">
-          <!--<img src="profile.jpg" alt="profileImg">-->
-          <!-- <div class="name_job">
-            <div class="name">Prem Shahi</div>
-            <div class="job">Web designer</div>
-          </div> -->
-        </div>
-        <i class='bx bx-log-out' id="log_out"  (click)="logout()"></i>
-      </li>
-    </ul>
+<div class="sidebar">
+  <div class="logo-details">
+    <div class="logo_name">UNRIA</div>
+    <i class='bx bx-menu' id="btn"></i>
   </div>
-  <section class="home-section">
-    <!-- <div class="text">Dashboard</div> -->
-      <div class="content">
-        <router-outlet></router-outlet>
+  <ul class="nav-list">
+    <li>
+      <a href="system/workers">
+        <i class='bx bx-user'></i>
+        <span class="links_name">Пользователи</span>
+      </a>
+      <span class="tooltip">Пользователи</span>
+    </li>
+    <li>
+      <a href="system/groups">
+        <i class='bx bx-group'></i>
+        <span class="links_name">Группы</span>
+      </a>
+      <span class="tooltip">Группы</span>
+    </li>
+    <li>
+      <a href="system/assignments">
+        <i class='bx bx-folder'></i>
+        <span class="links_name">Назначение задач</span>
+      </a>
+      <span class="tooltip">Назначение задач</span>
+    </li>
+
+    <li>
+      <a href="system/tasks">
+        <i class='bx bx-task'></i>
+        <span class="links_name">Шаблоны задач</span>
+      </a>
+      <span class="tooltip">Задачи</span>
+    </li>
+
+    <li>
+      <a href="system/assistant">
+        <i class='bx bx-cog'></i>
+        <span class="links_name">AI - ассистенты</span>
+      </a>
+      <span class="tooltip">AI - ассистент</span>
+    </li>
+
+    <li class="profile">
+      <div class="profile-details">
       </div>
-  </section>
+      <i class='bx bx-log-out' id="log_out" (click)="logout()"></i>
+    </li>
+  </ul>
+</div>
+<section class="home-section">
+
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
+</section>

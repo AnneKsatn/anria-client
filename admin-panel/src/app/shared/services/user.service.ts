@@ -9,10 +9,12 @@ import { User } from '../models/user.model';
 })
 export class UserService {
 
+  organization_id = window.localStorage.getItem('organization_id')
+
   constructor(public firestore: AngularFirestore) { }
 
   getWorkers() {
-    return this.firestore.collection("/workers").snapshotChanges()
+    return this.firestore.collection("/workers", ref => ref.where("organization_id", "==", this.organization_id)).snapshotChanges()
   }
 
   getWorkerById(id: string): Observable<any> {
@@ -28,6 +30,8 @@ export class UserService {
   }
 
   addWorker(worker: any) {
+
+    worker.organization_id = this.organization_id
     return this.firestore.collection("workers").add(worker)
   }
 

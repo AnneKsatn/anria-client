@@ -9,6 +9,8 @@ import { Task } from '../models/task.model';
 })
 export class TaskService {
 
+  organizaion_id: string = window.localStorage.getItem("organizaion_id") || ''
+
   constructor(
     private firestore: AngularFirestore
   ) { }
@@ -26,10 +28,13 @@ export class TaskService {
   }
 
   getTasks() {
-    return this.firestore.collection('/tasks').snapshotChanges()
+    return this.firestore.collection('/tasks', ref => ref.where("organizaion_id", "==", this.organizaion_id)).snapshotChanges()
   }
 
   addTask(task: Task) {
+
+    task.organizaion_id = this.organizaion_id
+
     return this.firestore.collection("/tasks").add(task)
   }
 }

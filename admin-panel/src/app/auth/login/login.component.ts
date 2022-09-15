@@ -25,29 +25,24 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void { }
 
   onSubmit() {
-    console.log(this.form.value)
-
     this.userService.getUserByEmail(this.form.value.email).snapshotChanges().subscribe((doc: any) => {
       doc = doc.map(function (item: any) {
         return {
           "email": item.payload.doc.data().email,
           "password": item.payload.doc.data().password,
           "role": item.payload.doc.data().role,
-          "company_id": item.payload.doc.data().company_id,
+          "organization_id": item.payload.doc.data().company_id,
           "id": item.payload.doc.id
         }
       })[0]
 
-      console.log(doc)
-
       if (doc) {
         if (this.form.value.password == doc.password && doc.role == 'admin') {
 
-          window.localStorage.setItem('company', doc.company_id)
+          window.localStorage.setItem('organization_id', doc.company_id)
           window.localStorage.setItem('user', doc.id)
+
           this.authService.login()
-
-
           this.router.navigateByUrl("/system/workers")
         }
       }

@@ -11,6 +11,10 @@ button {
   max-width: 100%;
 }
 
+tr {
+  cursor: pointer
+}
+
 td.mat-column-star,  td.mat-column-edit, td.mat-column-delete, td.mat-column-info{
   width: 20px;
   padding-right: 8px;
@@ -25,6 +29,4 @@ td.mat-column-star,  td.mat-column-edit, td.mat-column-delete, td.mat-column-inf
   width: 50%;
 }
 
-
-// 
 

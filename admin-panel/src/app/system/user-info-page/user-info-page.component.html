@@ -1,11 +1,11 @@
-
 <div class="worker-info-page">
   <div class="worker-info">
     <div class="card-container">
 
-      <img class="round" src="https://randomuser.me/api/portraits/women/79.jpg" alt="user" />
+      <img class="round" width="200" height="200"
+        src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" alt="user" />
 
-      <h3>{{worker.surname}} {{worker.name}} {{worker.patronymic}}</h3> 
+      <h3>{{worker.surname}} {{worker.name}} {{worker.patronymic}}</h3>
       <h6>{{worker.region}}</h6>
       <p>{{worker.position}}, {{worker.department}}</p>
 
@@ -24,20 +24,6 @@
           (click)="assignTask()"></button>
       </div>
     </div>
-
-    <!-- 
-      <button class="btn btn-primary float-right" (click)="editWorker()">
-        Редактировать информацию
-      </button>
-  
-      <button class="btn btn-primary float-right" disabled (click)="addEvent()">
-        Сбросить пароль
-      </button>
-  
-      <button class="btn btn-primary float-right" (click)="deleteWorker()">
-        Удалить пользователя
-      </button> -->
-
   </div>
 
   <div class="worker-calendar">
