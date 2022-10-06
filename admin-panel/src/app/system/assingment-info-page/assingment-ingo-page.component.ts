@@ -21,7 +21,8 @@ export class AssingmentIngoPageComponent implements OnInit {
     initiator: string,
     steps: Array<any>,
     task_title: string,
-    status: string
+    status: string,
+    isCompleted: boolean
   };
   steps?: any = [];
 
@@ -43,11 +44,12 @@ export class AssingmentIngoPageComponent implements OnInit {
 
         this.assignment.date_start = new Date(this.assignment.date_start)
         this.assignment.date_end = new Date(this.assignment.date_end)
-
         this.assignment.worker_name = "Сухова Мария Сергеевна"
         this.assignment.initiator = "Касаткина Анна Сергеевна"
 
         console.log(this.assignment)
+
+        console.log(data.data())
 
         this.assignment.steps.forEach((step: any) => {
           this.stepService.getAssignStepById(step, params['id']).subscribe((data: any) => {

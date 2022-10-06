@@ -3,6 +3,6 @@ export class Task {
         public status: string,
         public steps: Array<string>,
         public title: string,
-        public organizaion_id: string
+        public organization_id: string
     ) { }
 }

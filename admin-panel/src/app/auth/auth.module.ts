@@ -10,12 +10,14 @@ import { MatButtonModule } from '@angular/material/button';
 import { RegistrationComponent } from './registration/registration.component';
 import { SharedModule } from '../shared/shared.module';
 import { InputTextModule } from 'primeng/inputtext';
+import { CompanyLoginComponent } from './company-login/company-login.component';
 
 @NgModule({
   declarations: [
     LoginComponent,
     AuthComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    CompanyLoginComponent
   ],
   imports: [
     CommonModule,

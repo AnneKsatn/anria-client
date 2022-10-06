@@ -66,6 +66,8 @@ export class AddStepPageComponent implements OnInit {
   createStep() {
 
     let step = this.form.value
+
+    console.log(step)
     // step.checklist = step.checklist.map(function (item: any) {
     //   console.log(item)
     //   return {

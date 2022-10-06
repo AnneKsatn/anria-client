@@ -30,13 +30,19 @@
 
         <div>
             <div formArrayName="checklist" *ngFor="let item of checklist.controls; let i=index">
-                <input type="text" pInputText [formControlName]="i">
+                <div [formGroupName]="i">
 
-                <button pButton pRipple type="button" icon="pi pi-trash" class="p-button-rounded p-button-text"
-                    (click)="deleteItemFromChecklist(i)"></button>
+                    <input type="text" pInputText formControlName="title">
+
+                    <button pButton pRipple type="button" icon="pi pi-trash" class="p-button-rounded p-button-text"
+                        (click)="deleteItemFromChecklist(i)"></button>
+
+                </div>
             </div>
         </div>
     </div>
+
+
 
     <button pButton pRipple type="submit" class="p-button-outlined create-step-btn" [disabled]="form.invalid">Добавить
         шаг</button>

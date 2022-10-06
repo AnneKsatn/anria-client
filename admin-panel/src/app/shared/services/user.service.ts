@@ -14,15 +14,19 @@ export class UserService {
   constructor(public firestore: AngularFirestore) { }
 
   getWorkers() {
-    return this.firestore.collection("/workers", ref => ref.where("organization_id", "==", this.organization_id)).snapshotChanges()
+    return this.firestore.collection(
+      "/workers", ref => ref.where("organization_id", "==", this.organization_id)).snapshotChanges()
   }
 
   getWorkerById(id: string): Observable<any> {
     return this.firestore.collection("workers").doc(id).get()
   }
 
-  getUserByEmail(email: string) {
-    return this.firestore.collection("/workers", ref => ref.where("email", "==", email))
+  getUserByEmail(email: string, organizationId: string) {
+    return this.firestore.collection("/workers", ref => ref
+      .where("email", "==", email)
+      .where("organization_id", '==', organizationId)
+    )
   }
 
   deleteWorkerById(id: string) {

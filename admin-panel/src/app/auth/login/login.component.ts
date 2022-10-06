@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { UserService } from 'src/app/shared/services/user.service';
 
@@ -19,13 +19,17 @@ export class LoginComponent implements OnInit {
   constructor(
     private router: Router,
     private userService: UserService,
-    private authService: AuthService
+    private authService: AuthService,
+    private activatedRoute: ActivatedRoute
   ) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+  }
 
   onSubmit() {
-    this.userService.getUserByEmail(this.form.value.email).snapshotChanges().subscribe((doc: any) => {
+    const organization_id = window.localStorage.getItem("organization_id")
+
+    this.userService.getUserByEmail(this.form.value.email, organization_id!).snapshotChanges().subscribe((doc: any) => {
       doc = doc.map(function (item: any) {
         return {
           "email": item.payload.doc.data().email,
@@ -38,8 +42,6 @@ export class LoginComponent implements OnInit {
 
       if (doc) {
         if (this.form.value.password == doc.password && doc.role == 'admin') {
-
-          window.localStorage.setItem('organization_id', doc.company_id)
           window.localStorage.setItem('user', doc.id)
 
           this.authService.login()
@@ -52,5 +54,4 @@ export class LoginComponent implements OnInit {
   registration() {
     this.router.navigateByUrl("/registration")
   }
-
 }
