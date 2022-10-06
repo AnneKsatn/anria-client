@@ -28,7 +28,9 @@ export class AssingmentsPageComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.firestore.collection('/assignments').snapshotChanges().subscribe((data: any) => {
+    const organizationId = window.localStorage.getItem('organization_id')
+
+    this.firestore.collection('/assignments', ref => ref.where("organization_id", "==", organizationId)).snapshotChanges().subscribe((data: any) => {
       this.tasks = data.map(function (assignment: any) {
         return {
           date_start: new Date(assignment.payload.doc.data().date_start),

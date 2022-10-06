@@ -45,12 +45,15 @@ export class AssignTaskComponent implements OnInit {
 
   assignTask() {
 
+    const organization_id = window.localStorage.getItem("organization_id")
+
     this.assignment.task_id = this.task.id
     this.assignment.task_title = this.task.title
     this.assignment.steps = this.task.steps
 
     this.assignment.date_start = new Date(this.assignment.date_start).toISOString()
     this.assignment.date_end = new Date(this.assignment.date_end).toISOString()
+    this.assignment.organization_id = organization_id
 
     var context = this
     this.firestore.collection("assignments").add(this.assignment)
