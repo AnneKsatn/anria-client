@@ -47,13 +47,10 @@ export class AssingmentIngoPageComponent implements OnInit {
         this.assignment.worker_name = "Сухова Мария Сергеевна"
         this.assignment.initiator = "Касаткина Анна Сергеевна"
 
-        console.log(this.assignment)
-
-        console.log(data.data())
-
         this.assignment.steps.forEach((step: any) => {
-          this.stepService.getAssignStepById(step, params['id']).subscribe((data: any) => {
+          this.stepService.getAssignStepById(step.id, params['id']).subscribe((data: any) => {
             let step = data.data()
+            console.log(step)
 
             console.log(step.report_file)
 
