@@ -11,4 +11,8 @@ export class CompanyService {
   getCompanyByTitle(title: string) {
     return this.firestore.collection("/organization", ref => ref.where("title", "==", title))
   }
+
+  addOrganization(organizaion: any) {
+    return this.firestore.collection("organization").add(organizaion)
+  }
 }

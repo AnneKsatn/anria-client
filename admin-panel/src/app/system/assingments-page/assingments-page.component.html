@@ -5,7 +5,19 @@
         <p-table #dt1 [value]="tasks" dataKey="id" [rows]="10" [showCurrentPageReport]="true"
             [rowsPerPageOptions]="[10,25,50]" styleClass="p-datatable-gridlines" [paginator]="true"
             currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [scrollable]="true"
-            scrollDirection="both">
+            scrollDirection="both" [globalFilterFields]="['task_title']">
+
+                    <ng-template pTemplate="caption">
+                        <div class="flex">
+                            <button pButton label="Clear" class="p-button-outlined" icon="pi pi-filter-slash" (click)="clear(dt1)"></button>
+                            <span class="p-input-icon-left ml-auto">
+                                <i class="pi pi-search"></i>
+                                <input pInputText type="text" [(ngModel)]="search_field" (input)="dt1.filterGlobal($event.target.value, 'contains')"
+                                    placeholder="Search keyword" />
+                            </span>
+                        </div>
+                    </ng-template>
+                    
             <ng-template pTemplate="header">
                 <tr>
                     <th style="width:15%">Пользователь</th>
@@ -14,6 +26,42 @@
                     <th style="width:15%">Старт</th>
                     <th style="width:15%">Конец</th>
                     <th style="width:30%">Инициатор</th>
+                </tr>
+
+                <tr>
+                    <th style="width:15%">
+                        <p-columnFilter type="text" field="user" [showMenu]='false'></p-columnFilter>
+                    </th>
+
+                    <th style="width:50%">
+                        <p-columnFilter type="text" field="task_title" [showMenu]='false'></p-columnFilter>
+                    </th>
+
+                    <th style="width:15%">
+                        <p-columnFilter field="status" matchMode="equals" [showMenu]="false">
+                            <ng-template pTemplate="filter" let-value let-filter="filterCallback">
+                                <p-dropdown [ngModel]="value" [options]="statuses" (onChange)="filter($event.value)"
+                                    placeholder="Any" [showClear]="true">
+                                    <ng-template let-option pTemplate="item">
+                                        <span [class]="'customer-badge status-' + option.value">{{option.label}}</span>
+                                    </ng-template>
+                                </p-dropdown>
+                            </ng-template>
+                        </p-columnFilter>
+                    </th>
+
+                    <th style="width:15%">
+                        <p-columnFilter type="text" field="phone" [showMenu]='false'></p-columnFilter>
+                    </th>
+
+                    <th style="width:15%">
+                        <p-columnFilter type="text" field="phone" [showMenu]='false'></p-columnFilter>
+                    </th>
+
+                    <th style="width:30%">
+                        <p-columnFilter type="text" field="phone" [showMenu]='false'></p-columnFilter>
+                    </th>
+
                 </tr>
             </ng-template>
 

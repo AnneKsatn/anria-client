@@ -11,7 +11,7 @@ import { ActivatedRoute, Route, Router } from '@angular/router';
 export class AssignTaskComponent implements OnInit {
 
   assignment: any = {
-    'isCompleted': false
+    'status': "not_started"
   }
 
   task: any;
@@ -53,6 +53,8 @@ export class AssignTaskComponent implements OnInit {
 
     this.assignment.date_start = new Date(this.assignment.date_start).toISOString()
     this.assignment.date_end = new Date(this.assignment.date_end).toISOString()
+    this.assignment.date_created = new Date().toISOString()
+    this.assignment.creator_id = localStorage.getItem("user")
     this.assignment.organization_id = organization_id
 
     var context = this

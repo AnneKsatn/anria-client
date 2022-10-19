@@ -33,12 +33,21 @@ export class UserActivityComponent implements OnInit {
             task_title: assignment.payload.doc.data().task_title,
             worker_id: assignment.payload.doc.data().worker_id,
             worker: {},
-            initiator: "Касаткина Анна Сергеевна",
-            id: assignment.payload.doc.id
+            creator_id: assignment.payload.doc.data().creator_id,
+            id: assignment.payload.doc.id,
+            date_created: new Date(assignment.payload.doc.data().date_created)
           }
         })
 
-        this.cd.detectChanges();
+        this.tasks.forEach((task: any) => {
+          this.firestore.collection("/workers").doc(this.workerId).get().subscribe((data: any) => {
+            task.creator = data.data().surname + " " + data.data().name + " " + data.data().patronymic
+            this.cd.detectChanges();
+          })
+        });
+
+
+        // this.cd.detectChanges();
       })
     })
   }

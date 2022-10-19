@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { ActivatedRoute, Router } from '@angular/router';
+import { TableModule, Table } from 'primeng/table';
 
 @Component({
   selector: 'app-assingments-page',
@@ -21,12 +22,25 @@ export class AssingmentsPageComponent implements OnInit {
     // }
   ]
 
+  search_field: string = "Новая"
+  statuses!: any[];
+
+  @ViewChild('dt1') public dataTable!: Table;
+
   constructor(
     public firestore: AngularFirestore,
     public router: Router,
+    public ref: ChangeDetectorRef
   ) { }
 
   ngOnInit(): void {
+
+    setTimeout(() => {
+      if (this.dataTable !== undefined) {
+        console.log("HERE")
+        this.dataTable.filterGlobal("Новая", 'contains');
+      }
+    }, 1000);
 
     const organizationId = window.localStorage.getItem('organization_id')
 
@@ -47,9 +61,16 @@ export class AssingmentsPageComponent implements OnInit {
       this.tasks.forEach((element: any) => {
         this.firestore.collection("workers").doc(element.worker_id).get().subscribe(data => {
           element.worker = data.data()
+          this.ref.detectChanges()
         })
       });
     })
+
+    this.statuses = [
+      { label: 'Не начата', value: 'not_started' },
+      { label: 'В прогрессе', value: 'in progress' },
+      { label: 'Завершена', value: 'completed' }
+    ]
 
   }
 
@@ -60,5 +81,9 @@ export class AssingmentsPageComponent implements OnInit {
   goToTaskPage(element: any) {
     console.log(element)
     this.router.navigate(["/system/assignment-info"], { queryParams: { id: element.id } })
+  }
+
+  clear(table: any) {
+    table.clear();
   }
 }

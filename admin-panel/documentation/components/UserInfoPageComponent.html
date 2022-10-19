@@ -1,0 +1,1147 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>admin-panel documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">admin-panel documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li
+  >
+  UserInfoPageComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/system/user-info-page/user-info-page.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+            <tr>
+                <td class="col-md-3">changeDetection</td>
+                <td class="col-md-9"><code>ChangeDetectionStrategy.OnPush</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-user-info-page</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./user-info-page.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./user-info-page.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#options" >options</a>
+                            </li>
+                            <li>
+                                <a href="#worker" >worker</a>
+                            </li>
+                            <li>
+                                <a href="#worker_id" >worker_id</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#assignTask" >assignTask</a>
+                            </li>
+                            <li>
+                                <a href="#deleteWorker" >deleteWorker</a>
+                            </li>
+                            <li>
+                                <a href="#editWorker" >editWorker</a>
+                            </li>
+                            <li>
+                                <a href="#getWorkerInfo" >getWorkerInfo</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#openActivity" >openActivity</a>
+                            </li>
+                            <li>
+                                <a href="#openCalendar" >openCalendar</a>
+                            </li>
+                            <li>
+                                <a href="#openInfo" >openInfo</a>
+                            </li>
+                            <li>
+                                <a href="#openOnboarding" >openOnboarding</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(activatedRoute: <a href="https://angular.io/api/router/ActivatedRoute" target="_blank">ActivatedRoute</a>, cd: <a href="https://angular.io/api/core/ChangeDetectorRef" target="_blank">ChangeDetectorRef</a>, UserService: <a href="../injectables/UserService.html" target="_self">UserService</a>, router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/system/user-info-page/user-info-page.component.ts:17</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>activatedRoute</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/ActivatedRoute" target="_blank" >ActivatedRoute</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>cd</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/core/ChangeDetectorRef" target="_blank" >ChangeDetectorRef</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>UserService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/UserService.html" target="_self" >UserService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/Router" target="_blank" >Router</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="assignTask"></a>
+                    <span class="name">
+                        <span ><b>assignTask</b></span>
+                        <a href="#assignTask"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>assignTask()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="34"
+                            class="link-to-prism">src/app/system/user-info-page/user-info-page.component.ts:34</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="deleteWorker"></a>
+                    <span class="name">
+                        <span ><b>deleteWorker</b></span>
+                        <a href="#deleteWorker"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>deleteWorker()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="45"
+                            class="link-to-prism">src/app/system/user-info-page/user-info-page.component.ts:45</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="editWorker"></a>
+                    <span class="name">
+                        <span ><b>editWorker</b></span>
+                        <a href="#editWorker"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>editWorker()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="51"
+                            class="link-to-prism">src/app/system/user-info-page/user-info-page.component.ts:51</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getWorkerInfo"></a>
+                    <span class="name">
+                        <span ><b>getWorkerInfo</b></span>
+                        <a href="#getWorkerInfo"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getWorkerInfo()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="38"
+                            class="link-to-prism">src/app/system/user-info-page/user-info-page.component.ts:38</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="26"
+                            class="link-to-prism">src/app/system/user-info-page/user-info-page.component.ts:26</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="openActivity"></a>
+                    <span class="name">
+                        <span ><b>openActivity</b></span>
+                        <a href="#openActivity"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>openActivity()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="63"
+                            class="link-to-prism">src/app/system/user-info-page/user-info-page.component.ts:63</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="openCalendar"></a>
+                    <span class="name">
+                        <span ><b>openCalendar</b></span>
+                        <a href="#openCalendar"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>openCalendar()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="59"
+                            class="link-to-prism">src/app/system/user-info-page/user-info-page.component.ts:59</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="openInfo"></a>
+                    <span class="name">
+                        <span ><b>openInfo</b></span>
+                        <a href="#openInfo"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>openInfo()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="55"
+                            class="link-to-prism">src/app/system/user-info-page/user-info-page.component.ts:55</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="openOnboarding"></a>
+                    <span class="name">
+                        <span ><b>openOnboarding</b></span>
+                        <a href="#openOnboarding"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>openOnboarding()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="67"
+                            class="link-to-prism">src/app/system/user-info-page/user-info-page.component.ts:67</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="options"></a>
+                    <span class="name">
+                        <span ><b>options</b></span>
+                        <a href="#options"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{}</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/system/user-info-page/user-info-page.component.ts:15</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="worker"></a>
+                    <span class="name">
+                        <span ><b>worker</b></span>
+                        <a href="#worker"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{}</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/system/user-info-page/user-info-page.component.ts:17</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="worker_id"></a>
+                    <span class="name">
+                        <span ><b>worker_id</b></span>
+                        <a href="#worker_id"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&quot;&quot;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/system/user-info-page/user-info-page.component.ts:16</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, ChangeDetectionStrategy, OnInit, ChangeDetectorRef } from &#x27;@angular/core&#x27;;
+import { ActivatedRoute, Router } from &#x27;@angular/router&#x27;;
+import { UserService } from &#x27;src/app/shared/services/user.service&#x27;;
+
+
+
+@Component({
+  selector: &#x27;app-user-info-page&#x27;,
+  templateUrl: &#x27;./user-info-page.component.html&#x27;,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  styleUrls: [&#x27;./user-info-page.component.scss&#x27;]
+})
+export class UserInfoPageComponent implements OnInit {
+
+  options: any &#x3D; {};
+  worker_id: string &#x3D; &quot;&quot;;
+  worker: any &#x3D; {}
+
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private cd: ChangeDetectorRef,
+    private UserService: UserService,
+    private router: Router
+  ) { }
+
+  ngOnInit(): void {
+    this.activatedRoute.params.subscribe((params: any) &#x3D;&gt; {
+      this.worker_id &#x3D; params[&#x27;id&#x27;]
+    })
+
+    this.getWorkerInfo()
+  }
+
+  assignTask(): void {
+    this.router.navigate([&quot;/system/user-info&quot;, this.worker_id, &quot;assign-task&quot;])
+  }
+
+  getWorkerInfo() {
+    this.UserService.getWorkerById(this.worker_id).subscribe((doc: any) &#x3D;&gt; {
+      this.worker &#x3D; doc.data()
+      this.cd.detectChanges();
+    })
+  }
+
+  deleteWorker() {
+    this.UserService.deleteWorkerById(this.worker_id).then((data) &#x3D;&gt; {
+      this.router.navigateByUrl(&quot;/system/workers&quot;)
+    })
+  }
+
+  editWorker() {
+    this.router.navigateByUrl(&quot;system/edit-profile-page&quot;)
+  }
+
+  openInfo() {
+    this.router.navigate([&quot;/system/user-info&quot;, this.worker_id, &quot;details&quot;])
+  }
+
+  openCalendar() {
+    this.router.navigate([&quot;/system/user-info&quot;, this.worker_id, &quot;calendar&quot;])
+  }
+
+  openActivity() {
+    this.router.navigate([&quot;/system/user-info&quot;, this.worker_id, &quot;activity&quot;])
+  }
+
+  openOnboarding() {
+    this.router.navigate([&quot;/system/user-info&quot;, this.worker_id, &quot;user-onboarding&quot;])
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;worker-info-page&quot;&gt;
+  &lt;div class&#x3D;&quot;worker-info&quot;&gt;
+    &lt;div class&#x3D;&quot;card-container&quot;&gt;
+
+      &lt;img class&#x3D;&quot;round&quot; width&#x3D;&quot;200&quot; height&#x3D;&quot;200&quot;
+        src&#x3D;&quot;https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png&quot; alt&#x3D;&quot;user&quot; /&gt;
+
+      &lt;h3&gt;{{worker.surname}} {{worker.name}} {{worker.patronymic}}&lt;/h3&gt;
+      &lt;h6&gt;{{worker.region}}&lt;/h6&gt;
+      &lt;p&gt;{{worker.position}}, {{worker.department}}&lt;/p&gt;
+
+      &lt;div class&#x3D;&quot;btns&quot;&gt;
+        &lt;button pButton pRipple icon&#x3D;&quot;bx bx-user&quot; type&#x3D;&quot;button&quot; class&#x3D;&quot;p-button-outlined&quot; (click)&#x3D;&quot;openInfo()&quot;&gt;&lt;/button&gt;
+        &lt;button pButton pRipple icon&#x3D;&quot;bx bx-calendar&quot; type&#x3D;&quot;button&quot; class&#x3D;&quot;p-button-outlined&quot;
+          (click)&#x3D;&quot;openCalendar()&quot;&gt;&lt;/button&gt;
+        &lt;button pButton pRipple icon&#x3D;&quot;bx bx-task&quot; type&#x3D;&quot;button&quot; class&#x3D;&quot;p-button-outlined&quot;
+          (click)&#x3D;&quot;openActivity()&quot;&gt;&lt;/button&gt;
+        &lt;button pButton pRipple icon&#x3D;&quot;bx bx-pie-chart-alt-2&quot; type&#x3D;&quot;button&quot; class&#x3D;&quot;p-button-outlined&quot;
+          (click)&#x3D;&quot;openOnboarding()&quot;&gt;&lt;/button&gt;
+      &lt;/div&gt;
+
+      &lt;div class&#x3D;&quot;buttons&quot;&gt;
+        &lt;button pButton pRipple type&#x3D;&quot;button&quot; label&#x3D;&quot;Назначить задачу&quot; class&#x3D;&quot;p-button-outlined&quot;
+          (click)&#x3D;&quot;assignTask()&quot;&gt;&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class&#x3D;&quot;worker-calendar&quot;&gt;
+    &lt;router-outlet&gt;&lt;/router-outlet&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./user-info-page.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">
+.worker-info-page {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.worker-info {
+    width: 25%;
+    min-width: 200px;
+}
+
+.worker-calendar {
+    width: 70%;
+    height: 500px;
+    padding: 25px;
+    background-color: white;
+    padding-top: 20px;
+    border-radius: 2px;
+    box-shadow: 0px 10px 20px -10px rgba(0, 0, 0, 0.75);
+    color: #B3B8CD;
+    overflow: auto;
+}
+
+
+@import url(&#x27;https://fonts.googleapis.com/css?family&#x3D;Montserrat&#x27;);
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #28223F;
+    font-family: Montserrat, sans-serif;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    min-height: 100vh;
+    margin: 0;
+}
+
+h3 {
+    margin: 10px 0;
+}
+
+h6 {
+    margin: 5px 0;
+    text-transform: uppercase;
+}
+
+p {
+    font-size: 14px;
+    line-height: 21px;
+}
+
+.card-container {
+    // background-color: #231E39;
+    border-radius: 5px;
+    // box-shadow: 0px 10px 20px -10px rgba(0, 0, 0, 0.75);
+    color: #B3B8CD;
+    padding-top: 10px;
+    position: relative;
+    // width: 350px;
+    max-width: 100%;
+    text-align: center;
+}
+
+.head {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.card-container .round {
+    border: 1px solid #B3B8CD;  
+    border-radius: 50%;
+    padding: 7px;
+    // width: 90%;
+}
+
+.btns button {
+    // background-color: #FAFFD8;
+    // color: black;
+    // border-color: #FAFFD8;
+
+    background-color: #11101D;
+    color: #fff;
+}
+
+.buttons button {
+    width: 193px;
+    margin-top: 10px;
+    // background-color: #11101D;
+    background-color: #06A77D;
+    color: white;
+    border-color: #06A77D;
+    // color: #fff;
+    font-weight: lighter;
+}
+
+:host::ng-deep .p-button-label {
+    font-weight: 200;
+}
+
+.fix {
+    width: 10%;
+    min-height: 100%;
+}
+
+.user-menu {
+    width: 10%;
+    min-height: 100%;
+    // background-color: #02899C;
+}
+
+button.primary {
+    background-color: #03BFCB;
+    border: 1px solid #03BFCB;
+    border-radius: 3px;
+    color: #231E39;
+    font-family: Montserrat, sans-serif;
+    font-weight: 500;
+    padding: 10px 25px;
+}
+
+button.primary.ghost {
+    background-color: transparent;
+    color: #02899C;
+    // width: 100%;
+}
+
+.skills {
+    text-align: left;
+    padding: 15px;
+    margin-top: 10px;
+}
+
+.skills ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.skills ul li {
+    border: 1px solid #2D2747;
+    border-radius: 2px;
+    display: inline-block;
+    font-size: 12px;
+    margin: 0 7px 7px 0;
+    padding: 7px;
+}
+
+footer {
+    background-color: #222;
+    color: #fff;
+    font-size: 14px;
+    bottom: 0;
+    position: fixed;
+    left: 0;
+    right: 0;
+    text-align: center;
+    z-index: 999;
+}
+
+footer p {
+    margin: 10px 0;
+}
+
+footer i {
+    color: red;
+}
+
+footer a {
+    color: #3c97bf;
+    text-decoration: none;
+}
+
+.calendar {
+    min-height: 60vh;
+}
+
+
+.img {
+    background-size: cover;
+    width: 200px;
+    height: 200px;
+    background-image: url(&quot;https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png&quot;);
+}
+
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="worker-info-page">  <div class="worker-info">    <div class="card-container">      <img class="round" width="200" height="200"        src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" alt="user" />      <h3>{{worker.surname}} {{worker.name}} {{worker.patronymic}}</h3>      <h6>{{worker.region}}</h6>      <p>{{worker.position}}, {{worker.department}}</p>      <div class="btns">        <button pButton pRipple icon="bx bx-user" type="button" class="p-button-outlined" (click)="openInfo()"></button>        <button pButton pRipple icon="bx bx-calendar" type="button" class="p-button-outlined"          (click)="openCalendar()"></button>        <button pButton pRipple icon="bx bx-task" type="button" class="p-button-outlined"          (click)="openActivity()"></button>        <button pButton pRipple icon="bx bx-pie-chart-alt-2" type="button" class="p-button-outlined"          (click)="openOnboarding()"></button>      </div>      <div class="buttons">        <button pButton pRipple type="button" label="Назначить задачу" class="p-button-outlined"          (click)="assignTask()"></button>      </div>    </div>  </div>  <div class="worker-calendar">    <router-outlet></router-outlet>  </div></div></div>'
+    var COMPONENTS = [{'name': 'AddStepPageComponent', 'selector': 'app-add-step-page'},{'name': 'AddWorkerPageComponent', 'selector': 'app-add-worker-page'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AssignmentInfoComponent', 'selector': 'app-assignment-info'},{'name': 'AssignTaskComponent', 'selector': 'app-assign-task'},{'name': 'AssingmentIngoPageComponent', 'selector': 'app-assingment-ingo-page'},{'name': 'AssingmentsPageComponent', 'selector': 'app-assingments-page'},{'name': 'AuthComponent', 'selector': 'app-auth'},{'name': 'CompanyLoginComponent', 'selector': 'app-company-login'},{'name': 'DialogAddTaskComponent', 'selector': 'app-dialog-add-task'},{'name': 'EditProfilePageComponent', 'selector': 'app-edit-profile-page'},{'name': 'GroupsComponent', 'selector': 'app-groups'},{'name': 'LocalizationPageComponent', 'selector': 'app-localization-page'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MainLayoutComponent', 'selector': 'app-main-layout'},{'name': 'RegistrationComponent', 'selector': 'app-registration'},{'name': 'StepInfoPageComponent', 'selector': 'app-step-info-page'},{'name': 'StepPhotoComponent', 'selector': 'app-step-photo'},{'name': 'SystemComponent', 'selector': 'app-system'},{'name': 'TaskInfoPageComponent', 'selector': 'app-task-info-page'},{'name': 'TasksPageComponent', 'selector': 'app-tasks-page'},{'name': 'UserActivityComponent', 'selector': 'app-user-activity'},{'name': 'UserCalendarComponent', 'selector': 'app-user-calendar'},{'name': 'UserDetailsComponent', 'selector': 'app-user-details'},{'name': 'UserInfoPageComponent', 'selector': 'app-user-info-page'},{'name': 'UserOnboardingComponent', 'selector': 'app-user-onboarding'},{'name': 'WorkersPageComponent', 'selector': 'app-workers-page'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'UserInfoPageComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'UserInfoPageComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

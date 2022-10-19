@@ -1,0 +1,24 @@
+version: "3"
+
+services:
+  web:
+    build: .
+    ports: 
+      - "4200:4200"
+    volumes:
+      - "/app/node_modules"
+      - ".:/app"
+  # angular:
+  #   image: node
+  #   volumes: 
+  #     - ".:/app"
+  #   environment:
+  #     NODE_ENV: development
+  #     HOST: 0.0.0.0
+  #   working_dir: /app
+  #   # container_name: angular-app
+  #   # restart: always
+  #   ports:
+  #     - "4200:4200"
+
+  #   command: sh -c "cd /app; npm install; npm run dev --host 0.0.0.0"

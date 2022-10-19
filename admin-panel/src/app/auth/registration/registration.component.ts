@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/shared/services/auth.service';
+import { CompanyService } from 'src/app/shared/services/company.service';
 import { UserService } from 'src/app/shared/services/user.service';
 
 @Component({
@@ -14,7 +15,8 @@ export class RegistrationComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    private router: Router
+    private router: Router,
+    private companyService: CompanyService
   ) { }
 
   form!: FormGroup;
@@ -38,7 +40,7 @@ export class RegistrationComponent implements OnInit {
       "title": this.form.value.organizaion
     }
 
-    this.userService.addOrganization(organizaion).then(res => {
+    this.companyService.addOrganization(organizaion).then(res => {
 
       let user = {
         "email": this.form.value.email,

@@ -106,43 +106,16 @@ export class AssingmentIngoPageComponent implements OnInit {
     let width = 300, height = 180;
 
     doc.text(this.assignment.task_title, x, y)
+    y = y + 20
+    doc.line(x, y, x + 500, y);
     y = y + 40
-
-    // this.steps.forEach(async (step: any) => {
-
-    //   console.log(step.checklist)
-    //   doc.text(step.title, x, y)
-    //   y = y + 40;
-
-    //   doc.text("Checklist", x, y)
-    //   y = y + 30;
-
-    //   step.checklist.forEach((item: any) => {
-    //     doc.text(item.title, x, y)
-    //     x = x + 300
-    //     doc.text(item.isChecked.toString(), x, y)
-    //     x = x - 300
-    //     y = y + 20
-    //   })
-
-    //   if (step.report_file) {
-    //     const elemen = document.getElementById(step.id) as HTMLImageElement
-    //     const img = new Image();
-    //     img.src = elemen.src;
-
-    //     img.onload = () => {
-    //       doc.addImage(img, 'png', x, y, 250, 250);
-    //       console.log("Добавление")
-    //     };
-    //   }
-    // })
-
-
 
     await this.steps.reduce(async (i: any, step: any) => {
       await i;
       console.log(step.checklist)
       doc.text(step.title, x, y)
+      y = y + 10
+      doc.line(x, y, x + 300, y);
       y = y + 40;
 
       doc.text("Checklist", x, y)

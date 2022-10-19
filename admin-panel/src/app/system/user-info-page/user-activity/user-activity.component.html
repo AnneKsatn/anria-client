@@ -14,6 +14,8 @@
                     <th style="width:15%">Старт</th>
                     <th style="width:15%">Конец</th>
                     <th style="width:30%">Инициатор</th>
+                    <th style="width:15%">Дата создания</th>
+
                 </tr>
             </ng-template>
 
@@ -23,6 +25,11 @@
                         {{task.task_title}}
                     </td>
                     <td style="width:15%">
+
+                        <span *ngIf="task.status == 'not_started'" class="product-badge status-not-started">Не начато</span>
+                        <span *ngIf="task.status == 'completed'" class="product-badge status-completed">Завершено</span>
+                        <span *ngIf="task.status == 'in_progress'" class="product-badge status-in-progress">Выполяетсяо</span>
+<!-- 
                         <div *ngIf="task.status == 'completed'">
                             Завершено
                         </div>
@@ -31,19 +38,22 @@
                         </div>
                         <div *ngIf="task.status == 'in_progress'">
                             Выполяется
-                        </div>
- 
+                        </div> -->
+
                     </td>
                     <td style="width:15%">
-                        {{task.date_start | date:'medium':'ru-RU'}} 
+                        {{task.date_start | date:'medium':'ru-RU'}}
                     </td>
                     <td style="width:15%">
                         {{task.date_end | date:'medium':'ru-RU'}}
                     </td>
                     <td style="width:30%">
-                        {{task.initiator}}
+                        {{task.creator}}
                     </td>
-                </tr>
+                    <td style="width:15%">
+                        {{task.date_created | date:'medium':'ru-RU'}}
+                    </td>
+                    </tr>
             </ng-template>
             <ng-template pTemplate="emptymessage">
                 <tr>
